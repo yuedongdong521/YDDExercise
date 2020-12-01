@@ -1,0 +1,68 @@
+//
+//  PrefixHeader.pch
+//  YDDExercise
+//
+//  Created by ydd on 2019/7/17.
+//  Copyright © 2019 ydd. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#ifdef __OBJC__
+
+#import "Masonry.h"
+#import "YYWebImage.h"
+
+#import "YDDAppManager.h"
+#import "UIView+HUDExtend.h"
+
+#import "UIButton+YDDExtend.h"
+#import "UIView+YDDExtend.h"
+#import "UILabel+YDDExtend.h"
+#import "NSString+YDDExtend.h"
+#import "YYModel.h"
+
+
+#define weakObj(obj) __weak typeof(obj) weak##obj = obj
+#define strongObj(type,obj) __strong typeof(type) strong##type = obj
+
+#define ScreenScale [UIScreen mainScreen].scale
+#define ScreenHeight  [UIScreen mainScreen].bounds.size.height
+#define ScreenWidth   [UIScreen mainScreen].bounds.size.width
+#define ViewX(view) view.frame.origin.x
+#define ViewY(view) view.frame.origin.y
+#define ViewW(view) view.frame.size.width
+#define ViewH(view) view.frame.size.height
+
+#define kNavigationBarHeight IS_IPHONE_X ? 88 : 64
+#define kSafeBottom IS_IPHONE_X ? 34 : 0
+#define kSafeTop IS_IPHONE_X ? 44 : 0
+
+#define UIColorHexRGBA(rgb,a) [UIColor colorWithRed:((float)((rgb & 0xFF0000) >> 16))/255.0 green:((float)((rgb & 0x00FF00) >> 8))/255.0 blue:((float)(rgb & 0x0000FF))/255.0 alpha:((float)a)]
+
+
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_IPHONE_X (IS_IPHONE && (ScreenHeight >= 812.0 || ScreenHeight >= 896 ))
+
+
+#define IS_iPhoneX \
+({BOOL isPhoneX = NO;\
+if (@available(iOS 11.0, *)) {\
+isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0 && IS_IPHONE;\
+}\
+(isPhoneX);})
+
+#define kHeadIconDefault [UIImage imageNamed:@"headIcon"]
+#define kImagePlaceholder [UIImage imageNamed:@"defaultIcon"]
+
+
+
+
+
+
+#endif
+
+#endif /* PrefixHeader_pch */
