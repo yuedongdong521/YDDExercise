@@ -21,6 +21,9 @@
 		844714CA22DEF01300B69CE7 /* YDDAddImageTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 844714C922DEF01300B69CE7 /* YDDAddImageTools.m */; };
 		844714CE22DF0C2A00B69CE7 /* YDDPhotoPreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 844714CD22DF0C2A00B69CE7 /* YDDPhotoPreCollectionViewCell.m */; };
 		844714D722DF1FAD00B69CE7 /* YDDPhotoGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 844714D522DF1FAD00B69CE7 /* YDDPhotoGroupView.m */; };
+		84E36BDC2577B6F9009C6C9F /* YDDMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E36BDB2577B6F9009C6C9F /* YDDMineViewController.m */; };
+		84E36BE32577B73F009C6C9F /* YDDStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E36BE22577B73F009C6C9F /* YDDStudyViewController.m */; };
+		84E36C022578C059009C6C9F /* YDDAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E36C012578C059009C6C9F /* YDDAnimationViewController.m */; };
 		B0D8D8012881E3249DCE593B /* libPods-YDDExercise.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCD78E34D2233443A1B4D61 /* libPods-YDDExercise.a */; };
 		DF888EDB22E8AFAB00755CDE /* YDDTransitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF888ED622E8AFAA00755CDE /* YDDTransitionViewController.m */; };
 		DF888EDC22E8AFAB00755CDE /* YDDTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DF888ED722E8AFAA00755CDE /* YDDTransition.m */; };
@@ -99,6 +102,13 @@
 		844714CD22DF0C2A00B69CE7 /* YDDPhotoPreCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDPhotoPreCollectionViewCell.m; sourceTree = "<group>"; };
 		844714D522DF1FAD00B69CE7 /* YDDPhotoGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDDPhotoGroupView.m; sourceTree = "<group>"; };
 		844714D622DF1FAD00B69CE7 /* YDDPhotoGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDDPhotoGroupView.h; sourceTree = "<group>"; };
+		84E36BDA2577B6F9009C6C9F /* YDDMineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDMineViewController.h; sourceTree = "<group>"; };
+		84E36BDB2577B6F9009C6C9F /* YDDMineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDMineViewController.m; sourceTree = "<group>"; };
+		84E36BE12577B73F009C6C9F /* YDDStudyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDStudyViewController.h; sourceTree = "<group>"; };
+		84E36BE22577B73F009C6C9F /* YDDStudyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDStudyViewController.m; sourceTree = "<group>"; };
+		84E36BFB2578B64E009C6C9F /* YDDDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDDefine.h; sourceTree = "<group>"; };
+		84E36C002578C059009C6C9F /* YDDAnimationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDAnimationViewController.h; sourceTree = "<group>"; };
+		84E36C012578C059009C6C9F /* YDDAnimationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDAnimationViewController.m; sourceTree = "<group>"; };
 		C0648B53D474694EF53A9309 /* Pods-YDDExercise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YDDExercise.release.xcconfig"; path = "Target Support Files/Pods-YDDExercise/Pods-YDDExercise.release.xcconfig"; sourceTree = "<group>"; };
 		DF888ED522E8AFAA00755CDE /* YDDTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDDTransition.h; sourceTree = "<group>"; };
 		DF888ED622E8AFAA00755CDE /* YDDTransitionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDDTransitionViewController.m; sourceTree = "<group>"; };
@@ -216,19 +226,19 @@
 		8447148122DED2E500B69CE7 /* YDDExercise */ = {
 			isa = PBXGroup;
 			children = (
+				84E36BD52577B4EE009C6C9F /* App */,
 				DF888ED422E8AF7700755CDE /* TransitionAnimation */,
 				DFCCF5DA22E4A53700F15B62 /* Sidebar */,
-				DFCCF5D622E44E8000F15B62 /* Home */,
 				DFCCF5AE22E3E6E100F15B62 /* login */,
 				DFCCF59D22E3433600F15B62 /* Categroy */,
 				DFCCF59622E33A5700F15B62 /* BaseClass */,
-				844714B822DEE67800B69CE7 /* Photos */,
 				844714B422DEE64000B69CE7 /* Tools */,
 				8447148222DED2E500B69CE7 /* AppDelegate.h */,
 				8447148322DED2E500B69CE7 /* AppDelegate.m */,
 				DFCCF5C422E3FB4D00F15B62 /* YDDAppManager.h */,
 				DFCCF5C522E3FB4D00F15B62 /* YDDAppManager.m */,
 				844714CB22DEFFD800B69CE7 /* PrefixHeader.pch */,
+				84E36BFB2578B64E009C6C9F /* YDDDefine.h */,
 				8447148822DED2E500B69CE7 /* Main.storyboard */,
 				8447148B22DED2E600B69CE7 /* Assets.xcassets */,
 				8447148D22DED2E600B69CE7 /* LaunchScreen.storyboard */,
@@ -306,6 +316,55 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		84E36BD12577B44B009C6C9F /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				DFCCF5D022E44D3400F15B62 /* YDDTabBarController.h */,
+				DFCCF5D122E44D3400F15B62 /* YDDTabBarController.m */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		84E36BD52577B4EE009C6C9F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				84E36BE02577B708009C6C9F /* Study */,
+				84E36BD92577B63C009C6C9F /* Mine */,
+				844714B822DEE67800B69CE7 /* Photos */,
+				DFCCF5D622E44E8000F15B62 /* Home */,
+				84E36BD12577B44B009C6C9F /* TabBar */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		84E36BD92577B63C009C6C9F /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				84E36BDA2577B6F9009C6C9F /* YDDMineViewController.h */,
+				84E36BDB2577B6F9009C6C9F /* YDDMineViewController.m */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		84E36BE02577B708009C6C9F /* Study */ = {
+			isa = PBXGroup;
+			children = (
+				84E36BFF2578C025009C6C9F /* Animation */,
+				84E36BE12577B73F009C6C9F /* YDDStudyViewController.h */,
+				84E36BE22577B73F009C6C9F /* YDDStudyViewController.m */,
+			);
+			path = Study;
+			sourceTree = "<group>";
+		};
+		84E36BFF2578C025009C6C9F /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				84E36C002578C059009C6C9F /* YDDAnimationViewController.h */,
+				84E36C012578C059009C6C9F /* YDDAnimationViewController.m */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		8809421FB9A487310556B579 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,8 +388,6 @@
 			isa = PBXGroup;
 			children = (
 				DFF24F0222EC2FF800C85F17 /* WebView */,
-				DFCCF5D022E44D3400F15B62 /* YDDTabBarController.h */,
-				DFCCF5D122E44D3400F15B62 /* YDDTabBarController.m */,
 				844714B622DEE65C00B69CE7 /* YDDWaterfallFlowLayout.h */,
 				844714B522DEE65C00B69CE7 /* YDDWaterfallFlowLayout.m */,
 				DFCCF59722E3416100F15B62 /* YDDBaseViewController.h */,
@@ -521,6 +578,7 @@
 		8447147722DED2E500B69CE7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = YDD;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = ydd;
 				TargetAttributes = {
@@ -633,6 +691,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				844714C722DEEB2A00B69CE7 /* YDDPhotosCollectionViewCell.m in Sources */,
+				84E36C022578C059009C6C9F /* YDDAnimationViewController.m in Sources */,
 				DFCCF59922E3416100F15B62 /* YDDBaseViewController.m in Sources */,
 				8447149222DED2E600B69CE7 /* main.m in Sources */,
 				844714CE22DF0C2A00B69CE7 /* YDDPhotoPreCollectionViewCell.m in Sources */,
@@ -655,6 +714,7 @@
 				DF888EDB22E8AFAB00755CDE /* YDDTransitionViewController.m in Sources */,
 				DF888EDC22E8AFAB00755CDE /* YDDTransition.m in Sources */,
 				DFFDA02722E74A1D006FE5CF /* YDDHomeModel.m in Sources */,
+				84E36BDC2577B6F9009C6C9F /* YDDMineViewController.m in Sources */,
 				DFCCF5C022E3F7F100F15B62 /* YDDLoginViewController.m in Sources */,
 				DFCCF5BD22E3ECB600F15B62 /* NSObject+YDDExtend.m in Sources */,
 				8447148422DED2E500B69CE7 /* AppDelegate.m in Sources */,
@@ -662,6 +722,7 @@
 				DFCCF5CC22E434E900F15B62 /* YDDLogonViewController.m in Sources */,
 				DFCCF5A922E35E6E00F15B62 /* UINavigationController+StatuBar.m in Sources */,
 				DFCCF5BA22E3E98800F15B62 /* YDDUserBaseInfoModel.m in Sources */,
+				84E36BE32577B73F009C6C9F /* YDDStudyViewController.m in Sources */,
 				DFCCF5C322E3F95400F15B62 /* YDDLogView.m in Sources */,
 				DFCCF59C22E341C600F15B62 /* YDDNavigationBarView.m in Sources */,
 				DFF24F0722EC301500C85F17 /* YDDWebView.m in Sources */,

@@ -72,7 +72,7 @@
         [self.view addSubview:_navBarView];
         [_navBarView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.top.right.mas_equalTo(0);
-            make.height.mas_equalTo(kNavigationBarHeight);
+            make.height.mas_equalTo(kNavBarHeight);
         }];
     }
     return _navBarView;
@@ -90,11 +90,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.fd_prefersNavigationBarHidden = YES;
     self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
 }

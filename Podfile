@@ -1,4 +1,7 @@
 platform :ios, '9.0'
+
+inhibit_all_warnings!
+
 target 'YDDExercise' do
  pod 'Masonry', '~>1.1.0'
  pod 'TOCropViewController', '~>2.5.1'
@@ -13,4 +16,5 @@ target 'YDDExercise' do
  pod 'MBProgressHUD', '~>1.1.0'
  pod 'SDCycleScrollView', '~>1.80'
  pod 'NJKWebViewProgress', '~>0.2.3'
+ pod 'FDFullscreenPopGesture'
 end

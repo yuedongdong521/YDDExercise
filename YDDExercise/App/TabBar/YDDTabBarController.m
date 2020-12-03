@@ -7,9 +7,12 @@
 //
 
 #import "YDDTabBarController.h"
+#import "UIImage+YDDExtend.h"
+
 #import "YDDHomeViewController.h"
 #import "YDDPhotosViewController.h"
-#import "UIImage+YDDExtend.h"
+#import "YDDStudyViewController.h"
+#import "YDDMineViewController.h"
 
 @interface YDDTabBar : UITabBar
 @property (nonatomic, strong) UIButton *centerBtn;
@@ -102,7 +105,7 @@ static YDDTabBarController *_tabBar;
         [tabBar.centerBtn addTarget:self action:@selector(centerAction:) forControlEvents:UIControlEventTouchUpInside];
 //        [self setValue:tabBar forKey:@"tabBar"];
         YDDHomeViewController *homeVC = [[YDDHomeViewController alloc] init];
-        YDDPhotosViewController *photosVC = [[YDDPhotosViewController alloc] init];
+        
         UIImage *homeImage = [UIImage imageNamed:@"tabBarHome"];
         UIImage *homeSelectedImage = [UIImage imageNamed:@"tabBarHomeSelect"];
         homeImage = [homeImage scallImageWidthScallSize:CGSizeMake(20, 20)];
@@ -110,16 +113,35 @@ static YDDTabBarController *_tabBar;
         
         [self addChildVc:homeVC title:@"首页" normalImg:homeImage selectImg:homeSelectedImage];
         
+        YDDPhotosViewController *photosVC = [[YDDPhotosViewController alloc] init];
         UIImage *xiangceImage = [UIImage imageNamed:@"xiangce"];
         UIImage *xiangceSelectImage = [UIImage imageNamed:@"xiangceSelect"];
         xiangceImage = [xiangceImage scallImageWidthScallSize:CGSizeMake(20, 20)];
         xiangceSelectImage = [xiangceSelectImage scallImageWidthScallSize:CGSizeMake(20, 20)];
 
+        
         [self addChildVc:photosVC title:@"相册" normalImg:xiangceImage selectImg:xiangceSelectImage];
         
-        [self setViewControllers:@[homeVC, photosVC]];
+        YDDStudyViewController *studyVC = [[YDDStudyViewController alloc] init];
+        UIImage *studyImage = [UIImage imageNamed:@"study"];
+        UIImage *studySelectImage = [UIImage imageNamed:@"studySelected"];
+        studyImage = [studyImage scallImageWidthScallSize:CGSizeMake(20, 20)];
+        studySelectImage = [studySelectImage scallImageWidthScallSize:CGSizeMake(20, 20)];
+        
+        [self addChildVc:studyVC title:@"学习" normalImg:studyImage selectImg:studySelectImage];
+        
+        YDDMineViewController *mineVC = [[YDDMineViewController alloc] init];
+        UIImage *mineImage = [UIImage imageNamed:@"mine"];
+        UIImage *mineSelectImage = [UIImage imageNamed:@"mineSelected"];
+        mineImage = [mineImage scallImageWidthScallSize:CGSizeMake(20, 20)];
+        mineSelectImage = [mineSelectImage scallImageWidthScallSize:CGSizeMake(20, 20)];
+        
+        [self addChildVc:mineVC title:@"学习" normalImg:mineImage selectImg:mineSelectImage];
+        
+        
+        [self setViewControllers:@[homeVC, photosVC, studyVC, mineVC]];
     
-        self.tabBar.translucent = NO;
+        self.tabBar.translucent = YES;
         
         
     }
@@ -152,6 +174,7 @@ static YDDTabBarController *_tabBar;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.fd_prefersNavigationBarHidden = YES;
     [self.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSLog(@"sub view : %@, frame : %@", NSStringFromClass(obj.class), NSStringFromCGRect(obj.frame));
     }];

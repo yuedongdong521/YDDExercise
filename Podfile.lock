@@ -1,4 +1,5 @@
 PODS:
+  - FDFullscreenPopGesture (1.1)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
   - MJRefresh (3.2.0)
@@ -28,10 +29,11 @@ PODS:
     - YYImage
 
 DEPENDENCIES:
+  - FDFullscreenPopGesture
   - Masonry (~> 1.1.0)
   - MBProgressHUD (~> 1.1.0)
   - MJRefresh (~> 3.2.0)
-  - NJKWebViewProgress
+  - NJKWebViewProgress (~> 0.2.3)
   - OpenUDID (~> 1.0.0)
   - SDCycleScrollView (~> 1.80)
   - TOCropViewController (~> 2.5.1)
@@ -43,38 +45,41 @@ DEPENDENCIES:
   - YYWebImage (~> 1.0.5)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  "git@gitlab.91banban.com:ios_pods/Specs.git":
     - Masonry
     - MBProgressHUD
-    - MJRefresh
     - NJKWebViewProgress
+    - YYCategories
+    - YYModel
+    - YYWebImage
+  trunk:
+    - FDFullscreenPopGesture
+    - MJRefresh
     - OpenUDID
     - SDCycleScrollView
     - SDWebImage
     - TOCropViewController
     - TZImagePickerController
     - YYCache
-    - YYCategories
     - YYImage
-    - YYModel
-    - YYWebImage
 
 SPEC CHECKSUMS:
-  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
+  Masonry: b6fab37fbabf245a9f09ea977b26b6969ad5b75e
+  MBProgressHUD: da6ff2eff2ed6235765fb3e7ace9031b6cdbc038
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
-  NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
+  NJKWebViewProgress: 051a02ce6233fa3ba4de2c391c39a68db236a9cc
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
   SDCycleScrollView: b3c9a5ed840c771c4938978174c7c9d9feefeb96
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
   TOCropViewController: 00dc36c4e4a0f4a45efa91adbf22df8a4fae01d3
   TZImagePickerController: bf4c57b98d8707fce41ea6be872414a71c7a8c9d
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
-  YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
+  YYCategories: f5f25b7281b8d13ff562a19049855785ef9e81bf
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
-  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
-  YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
+  YYModel: 0cb4565b5bd8d59a4b0b83b345cc481aef28312f
+  YYWebImage: 53f1935ca0053e84f9f47db6705535cd55b6e5ed
 
-PODFILE CHECKSUM: 8667bd8d71ed9337620ddeaecaa1b7f477192e70
+PODFILE CHECKSUM: 99a7698068a4376c06cda8ddc51032a4698f6a74
 
-COCOAPODS: 1.7.4
+COCOAPODS: 1.9.3

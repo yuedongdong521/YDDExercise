@@ -19,6 +19,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    // 禁用多点触控
+    [[UIButton appearance] setExclusiveTouch:YES];
+    
     [YDDAppManager checkLoginState];
     
     
