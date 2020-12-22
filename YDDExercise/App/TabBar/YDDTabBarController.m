@@ -136,12 +136,14 @@ static YDDTabBarController *_tabBar;
         mineImage = [mineImage scallImageWidthScallSize:CGSizeMake(20, 20)];
         mineSelectImage = [mineSelectImage scallImageWidthScallSize:CGSizeMake(20, 20)];
         
-        [self addChildVc:mineVC title:@"学习" normalImg:mineImage selectImg:mineSelectImage];
+        [self addChildVc:mineVC title:@"我的" normalImg:mineImage selectImg:mineSelectImage];
         
         
         [self setViewControllers:@[homeVC, photosVC, studyVC, mineVC]];
     
         self.tabBar.translucent = YES;
+        
+        self.selectedIndex = 2;
         
         
     }

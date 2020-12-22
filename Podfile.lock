@@ -1,5 +1,10 @@
 PODS:
+  - CocoaAsyncSocket (7.6.4)
   - FDFullscreenPopGesture (1.1)
+  - KTVCocoaHTTPServer (1.0.0):
+    - CocoaAsyncSocket
+  - KTVHTTPCache (1.0.4):
+    - KTVCocoaHTTPServer
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
   - MJRefresh (3.2.0)
@@ -30,6 +35,7 @@ PODS:
 
 DEPENDENCIES:
   - FDFullscreenPopGesture
+  - KTVHTTPCache (~> 1.0.0)
   - Masonry (~> 1.1.0)
   - MBProgressHUD (~> 1.1.0)
   - MJRefresh (~> 3.2.0)
@@ -53,7 +59,10 @@ SPEC REPOS:
     - YYModel
     - YYWebImage
   trunk:
+    - CocoaAsyncSocket
     - FDFullscreenPopGesture
+    - KTVCocoaHTTPServer
+    - KTVHTTPCache
     - MJRefresh
     - OpenUDID
     - SDCycleScrollView
@@ -64,7 +73,10 @@ SPEC REPOS:
     - YYImage
 
 SPEC CHECKSUMS:
+  CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
+  KTVCocoaHTTPServer: df8d7b861e603ff8037e9b2138aca2563a6b768d
+  KTVHTTPCache: 158a79650b704ebc49a48a2a10def3b584c18d2d
   Masonry: b6fab37fbabf245a9f09ea977b26b6969ad5b75e
   MBProgressHUD: da6ff2eff2ed6235765fb3e7ace9031b6cdbc038
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
@@ -80,6 +92,6 @@ SPEC CHECKSUMS:
   YYModel: 0cb4565b5bd8d59a4b0b83b345cc481aef28312f
   YYWebImage: 53f1935ca0053e84f9f47db6705535cd55b6e5ed
 
-PODFILE CHECKSUM: 99a7698068a4376c06cda8ddc51032a4698f6a74
+PODFILE CHECKSUM: ada01490a13eed3e22da0993954dc05bc942e89b
 
 COCOAPODS: 1.9.3

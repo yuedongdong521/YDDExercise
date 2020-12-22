@@ -52,9 +52,74 @@
         [self cretateHead];
         [self addTextField];
         [self addLogButton];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
+        
     }
     return self;
 }
+
+- (void)keyboardWillShowNotification:(NSNotification *)notify
+{
+    CGRect rect = [notify.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGFloat duration = [notify.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    [self updateBtnKeyboardFrame:rect duration:duration];
+}
+
+- (void)keyboardWillHideNotification:(NSNotification *)notify
+{
+    CGRect rect = [notify.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGFloat duration = [notify.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    [self updateBtnKeyboardFrame:rect duration:duration];
+
+}
+
+- (void)updateBtnKeyboardFrame:(CGRect)keyboardFrame duration:(CGFloat)duration
+{
+    CGFloat keyboardY = keyboardFrame.origin.y;
+    CGRect logBtnFrame = [self convertRect:self.logBtn.frame toView:[UIApplication sharedApplication].delegate.window];
+    
+    CGFloat maxY = CGRectGetMaxY(logBtnFrame);
+    
+    if (keyboardY < ScreenHeight) {
+        if (maxY <= keyboardY) {
+            return;
+        }
+        CGFloat offsetY = maxY - keyboardY;
+        
+        if (duration > 0) {
+            [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                self.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, 0, -offsetY);
+            } completion:^(BOOL finished) {
+                if (!finished) {
+                    self.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, 0, -offsetY);
+                }
+            }];
+        } else {
+            self.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, 0, -offsetY);
+        }
+    } else {
+        
+        if (self.frame.origin.y == 0) {
+            return;
+        }
+        
+        if (duration > 0) {
+            [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                self.transform = CGAffineTransformIdentity;
+            } completion:^(BOOL finished) {
+                if (!finished) {
+                    self.transform = CGAffineTransformIdentity;
+                }
+            }];
+        } else {
+            self.transform = CGAffineTransformIdentity;
+        }
+    }
+}
+
 
 - (void)setInfoModel:(YDDUserBaseInfoModel *)infoModel
 {
@@ -83,6 +148,7 @@
 
 - (void)logBtnAction
 {
+    [self endEditing:YES];
     if (![self checkLogBtnState]) {
         return;
     }
@@ -107,6 +173,7 @@
 
 - (void)registerBtnAction
 {
+    [self endEditing:YES];
     if (self.logonBlock) {
         self.logonBlock();
     }

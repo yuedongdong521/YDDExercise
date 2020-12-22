@@ -10,6 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+struct YDDNumber {
+    NSString *value;
+    NSString *unit;
+};
+typedef struct YDDNumber YDDNumber;
+
 @interface NSString (YDDExtend)
 
 - (NSString *)ydd_subStringToByteIndex:(NSInteger)index;
@@ -21,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (CGSize)ydd_textSize:(CGSize)maxSize font:(UIFont *)font;
 
 + (NSString *)getPathForDocumentWithDirName:(NSString *)dirName fileName:(nullable NSString *)fileName;
+
++ (YDDNumber)maxFourNum:(NSInteger)num;
 
 @end
 

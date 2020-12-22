@@ -9,6 +9,9 @@
 #ifndef YDDDefine_h
 #define YDDDefine_h
 
+#define YDDLog(format, ...) printf("\n[YDD：%s] %s [第%d行] %s\n",[[NSString stringWithFormat:@"%@", [NSDate dateWithTimeIntervalSinceNow:28800]] UTF8String], __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
+
+
 
 #define weakObj(obj) __weak typeof(obj) weak##obj = obj
 #define strongObj(type,obj) __strong typeof(type) strong##type = obj

@@ -45,16 +45,19 @@ static YDDAppManager *_manager;
 
 + (void)checkLoginState
 {
-    [YDDAppManager shareManager];
-    _manager.userInfo = [YDDUserBaseInfoModel ydd_readModelForKey:kUserLastLoginInfo];
-    if (_manager.userInfo && _manager.userInfo.password.length > 0) {
-        NSTimeInterval time = [[NSDate date] timeIntervalSinceDate:_manager.userInfo.loginDate];
+    NSLog(@"开始启动");
+    YDDAppManager *manager = [YDDAppManager shareManager];
+    manager.userInfo = [YDDUserBaseInfoModel ydd_readModelForKey:kUserLastLoginInfo];
+    if (manager.userInfo && _manager.userInfo.password.length > 0) {
+        NSTimeInterval time = [[NSDate date] timeIntervalSinceDate:manager.userInfo.loginDate];
         if (time < 7 * 24 * 3600) {
-            [_manager loginStateDidChanage:AppState_login];
+            [manager loginStateDidChanage:AppState_login];
+            NSLog(@"已登录");
             return;
         }
     }
-    [_manager loginStateDidChanage:AppState_logout];
+    [manager loginStateDidChanage:AppState_logout];
+    NSLog(@"重新登录");
 }
 
 - (void)loginStateDidChanage:(AppState)state

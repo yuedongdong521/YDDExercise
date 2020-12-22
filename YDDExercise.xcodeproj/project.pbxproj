@@ -21,9 +21,12 @@
 		844714CA22DEF01300B69CE7 /* YDDAddImageTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 844714C922DEF01300B69CE7 /* YDDAddImageTools.m */; };
 		844714CE22DF0C2A00B69CE7 /* YDDPhotoPreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 844714CD22DF0C2A00B69CE7 /* YDDPhotoPreCollectionViewCell.m */; };
 		844714D722DF1FAD00B69CE7 /* YDDPhotoGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 844714D522DF1FAD00B69CE7 /* YDDPhotoGroupView.m */; };
+		84722845257F9DC400D87FC8 /* YDDCoordinateSystemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84722844257F9DC400D87FC8 /* YDDCoordinateSystemView.m */; };
 		84E36BDC2577B6F9009C6C9F /* YDDMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E36BDB2577B6F9009C6C9F /* YDDMineViewController.m */; };
 		84E36BE32577B73F009C6C9F /* YDDStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E36BE22577B73F009C6C9F /* YDDStudyViewController.m */; };
 		84E36C022578C059009C6C9F /* YDDAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E36C012578C059009C6C9F /* YDDAnimationViewController.m */; };
+		84E36C3E2578D70A009C6C9F /* YDDAnimationContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E36C3D2578D70A009C6C9F /* YDDAnimationContentViewController.m */; };
+		84E36C462578DB99009C6C9F /* YDDDynamicsAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E36C452578DB99009C6C9F /* YDDDynamicsAnimationView.m */; };
 		B0D8D8012881E3249DCE593B /* libPods-YDDExercise.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCD78E34D2233443A1B4D61 /* libPods-YDDExercise.a */; };
 		DF888EDB22E8AFAB00755CDE /* YDDTransitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF888ED622E8AFAA00755CDE /* YDDTransitionViewController.m */; };
 		DF888EDC22E8AFAB00755CDE /* YDDTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DF888ED722E8AFAA00755CDE /* YDDTransition.m */; };
@@ -102,6 +105,8 @@
 		844714CD22DF0C2A00B69CE7 /* YDDPhotoPreCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDPhotoPreCollectionViewCell.m; sourceTree = "<group>"; };
 		844714D522DF1FAD00B69CE7 /* YDDPhotoGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDDPhotoGroupView.m; sourceTree = "<group>"; };
 		844714D622DF1FAD00B69CE7 /* YDDPhotoGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDDPhotoGroupView.h; sourceTree = "<group>"; };
+		84722843257F9DC400D87FC8 /* YDDCoordinateSystemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDCoordinateSystemView.h; sourceTree = "<group>"; };
+		84722844257F9DC400D87FC8 /* YDDCoordinateSystemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDCoordinateSystemView.m; sourceTree = "<group>"; };
 		84E36BDA2577B6F9009C6C9F /* YDDMineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDMineViewController.h; sourceTree = "<group>"; };
 		84E36BDB2577B6F9009C6C9F /* YDDMineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDMineViewController.m; sourceTree = "<group>"; };
 		84E36BE12577B73F009C6C9F /* YDDStudyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDStudyViewController.h; sourceTree = "<group>"; };
@@ -109,6 +114,10 @@
 		84E36BFB2578B64E009C6C9F /* YDDDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDDefine.h; sourceTree = "<group>"; };
 		84E36C002578C059009C6C9F /* YDDAnimationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDAnimationViewController.h; sourceTree = "<group>"; };
 		84E36C012578C059009C6C9F /* YDDAnimationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDAnimationViewController.m; sourceTree = "<group>"; };
+		84E36C3C2578D70A009C6C9F /* YDDAnimationContentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDAnimationContentViewController.h; sourceTree = "<group>"; };
+		84E36C3D2578D70A009C6C9F /* YDDAnimationContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDAnimationContentViewController.m; sourceTree = "<group>"; };
+		84E36C442578DB99009C6C9F /* YDDDynamicsAnimationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDDynamicsAnimationView.h; sourceTree = "<group>"; };
+		84E36C452578DB99009C6C9F /* YDDDynamicsAnimationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDDynamicsAnimationView.m; sourceTree = "<group>"; };
 		C0648B53D474694EF53A9309 /* Pods-YDDExercise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YDDExercise.release.xcconfig"; path = "Target Support Files/Pods-YDDExercise/Pods-YDDExercise.release.xcconfig"; sourceTree = "<group>"; };
 		DF888ED522E8AFAA00755CDE /* YDDTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDDTransition.h; sourceTree = "<group>"; };
 		DF888ED622E8AFAA00755CDE /* YDDTransitionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDDTransitionViewController.m; sourceTree = "<group>"; };
@@ -349,6 +358,7 @@
 		84E36BE02577B708009C6C9F /* Study */ = {
 			isa = PBXGroup;
 			children = (
+				84E36C432578DB55009C6C9F /* Views */,
 				84E36BFF2578C025009C6C9F /* Animation */,
 				84E36BE12577B73F009C6C9F /* YDDStudyViewController.h */,
 				84E36BE22577B73F009C6C9F /* YDDStudyViewController.m */,
@@ -361,8 +371,21 @@
 			children = (
 				84E36C002578C059009C6C9F /* YDDAnimationViewController.h */,
 				84E36C012578C059009C6C9F /* YDDAnimationViewController.m */,
+				84E36C3C2578D70A009C6C9F /* YDDAnimationContentViewController.h */,
+				84E36C3D2578D70A009C6C9F /* YDDAnimationContentViewController.m */,
 			);
 			path = Animation;
+			sourceTree = "<group>";
+		};
+		84E36C432578DB55009C6C9F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				84E36C442578DB99009C6C9F /* YDDDynamicsAnimationView.h */,
+				84E36C452578DB99009C6C9F /* YDDDynamicsAnimationView.m */,
+				84722843257F9DC400D87FC8 /* YDDCoordinateSystemView.h */,
+				84722844257F9DC400D87FC8 /* YDDCoordinateSystemView.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8809421FB9A487310556B579 /* Frameworks */ = {
@@ -526,6 +549,8 @@
 				8447147C22DED2E500B69CE7 /* Frameworks */,
 				8447147D22DED2E500B69CE7 /* Resources */,
 				7E122FBD2F7616E123996620 /* [CP] Copy Pods Resources */,
+				847228792580A18900D87FC8 /* Run Script */,
+				847228FD2581BE8600D87FC8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -661,6 +686,41 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YDDExercise/Pods-YDDExercise-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		847228792580A18900D87FC8 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /usr/bin/ruby;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nintermediates_directory = ENV['OBJROOT']  \nconfiguration = ENV['CONFIGURATION']  \nplatform = ENV['EFFECTIVE_PLATFORM_NAME']  \narchs = ENV['ARCHS']\n\narchs.split(\" \").each do |architecture|\n\nDir.chdir(\"#{intermediates_directory}/Pods.build\") do\n\n  filelist = \"\"\n\n  Dir.glob(\"#{configuration}#{platform}/*.build/Objects-normal/#{architecture}/*.o\") do |object_file|\n\n    filelist += File.absolute_path(object_file) + \"\\n\"\n\n  end\n\n  File.write(\"#{configuration}#{platform}-#{architecture}.objects.filelist\", filelist)\n\nend\n\nend  \n\n";
+		};
+		847228FD2581BE8600D87FC8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# 每次编译版本号自动加 1\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\n";
+		};
 		BA9A25E9527A0AAFE0DCA588 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -691,6 +751,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				844714C722DEEB2A00B69CE7 /* YDDPhotosCollectionViewCell.m in Sources */,
+				84E36C3E2578D70A009C6C9F /* YDDAnimationContentViewController.m in Sources */,
 				84E36C022578C059009C6C9F /* YDDAnimationViewController.m in Sources */,
 				DFCCF59922E3416100F15B62 /* YDDBaseViewController.m in Sources */,
 				8447149222DED2E600B69CE7 /* main.m in Sources */,
@@ -703,9 +764,11 @@
 				DFCCF5A322E34A0400F15B62 /* UILabel+YDDExtend.m in Sources */,
 				DFFDA02D22E74C7A006FE5CF /* YDDHomeCollectionViewCell.m in Sources */,
 				DFCCF5D522E44E1100F15B62 /* UIImage+YDDExtend.m in Sources */,
+				84722845257F9DC400D87FC8 /* YDDCoordinateSystemView.m in Sources */,
 				DFCCF5DD22E4A58200F15B62 /* YDDLeftSideBarView.m in Sources */,
 				DFCCF5D922E44ECD00F15B62 /* YDDHomeViewController.m in Sources */,
 				DFCCF5A622E3541000F15B62 /* UIView+YDDExtend.m in Sources */,
+				84E36C462578DB99009C6C9F /* YDDDynamicsAnimationView.m in Sources */,
 				844714BD22DEE70000B69CE7 /* YDDPhotosViewController.m in Sources */,
 				DFCCF5CF22E43CDD00F15B62 /* NSString+YDDExtend.m in Sources */,
 				DFCCF5A022E343B300F15B62 /* UIButton+YDDExtend.m in Sources */,
