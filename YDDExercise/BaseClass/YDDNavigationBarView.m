@@ -108,7 +108,8 @@
 {
     if (!_rightBtn) {
         _rightBtn = [UIButton ydd_buttonType:UIButtonTypeCustom target:self action:@selector(rightAction:)];
-        [self addSubview:_leftBtn];
+        [_rightBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self addSubview:_rightBtn];
         [_rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.bottom.mas_equalTo(0);
             make.width.height.mas_equalTo(44);

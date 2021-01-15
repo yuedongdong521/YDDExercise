@@ -130,7 +130,6 @@
     UIBezierPath *path = [UIBezierPath bezierPath];
     [path moveToPoint:startPoint];
     [path addLineToPoint:endPoint];
-    
     return path;
 }
 
@@ -451,7 +450,7 @@ const NSInteger YTitleWidth = 55;
     UILabel *label = [[UILabel alloc] init];
     label.font = kFontPFMedium(12);
     label.textAlignment = alignment;
-    YDDNumber number = [NSString maxFourNum:[num integerValue]];
+    YDDNumber number = [NSString ydd_maxFourNum:[num integerValue]];
     label.text = [NSString stringWithFormat:@"%@%@", number.value, number.unit] ;
     label.backgroundColor = [UIColor greenColor];
     return label;

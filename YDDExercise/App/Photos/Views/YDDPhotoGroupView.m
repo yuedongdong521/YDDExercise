@@ -667,7 +667,7 @@
     
     [UIView setAnimationsEnabled:YES];
     _fromNavigationBarHidden = [UIApplication sharedApplication].statusBarHidden;
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:animated ? UIStatusBarAnimationFade : UIStatusBarAnimationNone];
+    
     
     
     PhotoGroupCell *cell = [self cellForPage:self.currentPage];
@@ -747,7 +747,6 @@
 - (void)dismissAnimated:(BOOL)animated completion:(void (^)(void))completion {
     [UIView setAnimationsEnabled:YES];
     
-    [[UIApplication sharedApplication] setStatusBarHidden:_fromNavigationBarHidden withAnimation:animated ? UIStatusBarAnimationFade : UIStatusBarAnimationNone];
     NSInteger currentIndex = self.currentIndex;
     PhotoGroupCell *cell = [self cellForPage:self.currentPage];
     UIView *fromView = nil;
@@ -1105,7 +1104,7 @@
     
             CGFloat scale =  (ScreenHeight - fabs(deltaY)) / ScreenHeight;
                 CGPoint moveP = [g translationInView:self];
-            CGFloat moveScale = scale > 0.6 ? scale : 0.6;
+//            CGFloat moveScale = scale > 0.6 ? scale : 0.6;
             CGFloat tx = moveP.x; //* moveScale;
             CGFloat ty = moveP.y; //* moveScale;
             NSLog(@"tx = %f, ty = %f, scale = %f", tx, ty, scale);

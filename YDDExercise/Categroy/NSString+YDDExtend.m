@@ -82,7 +82,7 @@
 }
 
 
-+ (NSString *)getPathForDocumentWithDirName:(NSString *)dirName fileName:(NSString *)fileName
++ (NSString *)ydd_pathForDocumentWithDirName:(NSString *)dirName fileName:(NSString *)fileName
 {
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
     NSFileManager *manager = [NSFileManager defaultManager];
@@ -94,7 +94,7 @@
     }
     
     if (!fileName) {
-        fileName = [NSString stringWithFormat:@"%u.png", (NSUInteger)[[NSDate date] timeIntervalSince1970] * 1000];
+        fileName = [NSString stringWithFormat:@"%lu.png", (NSUInteger)[[NSDate date] timeIntervalSince1970] * 1000];
     }
     
     return [path stringByAppendingPathComponent:fileName];
@@ -102,7 +102,7 @@
 
 
 
-+ (YDDNumber)maxFourNum:(NSInteger)num
++ (YDDNumber)ydd_maxFourNum:(NSInteger)num
 {
     YDDNumber number = {@"0", @""};
     if (num < 1e4) {
@@ -162,6 +162,21 @@
     NSDecimalNumber *newNum = [num decimalNumberByRoundingAccordingToBehavior:behavior];
     return [newNum stringValue];
 }
+
+- (NSString *)ydd_filterWithRegex:(NSString *)regexStr
+{
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexStr options:NSRegularExpressionCaseInsensitive error:&error];
+    NSString *result = [regex stringByReplacingMatchesInString:self options:NSMatchingReportCompletion range:NSMakeRange(0, self.length) withTemplate:@""];
+    return result;
+}
+
+/// 筛选中国人名（汉字，少数名族名字包含 ∙ ）
+- (NSString *)ydd_filterChinesName
+{
+    return [self ydd_filterWithRegex:@"[^\u4e00-\u9fa5∙•· ]"];
+}
+
 
 
 @end

@@ -159,7 +159,7 @@
         userInfo.userName = _nameTextField.text;
         if (_uploadImage) {
             NSData *data = UIImagePNGRepresentation(_uploadImage);
-            userInfo.userIcon = [NSString getPathForDocumentWithDirName:@"headIcon" fileName:nil];
+            userInfo.userIcon = [NSString ydd_pathForDocumentWithDirName:@"headIcon" fileName:nil];
             [data writeToFile:userInfo.userIcon atomically:YES];
         }
     }

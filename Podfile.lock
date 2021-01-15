@@ -1,5 +1,6 @@
 PODS:
   - CocoaAsyncSocket (7.6.4)
+  - CocoaDebug (1.6.1)
   - FDFullscreenPopGesture (1.1)
   - KTVCocoaHTTPServer (1.0.0):
     - CocoaAsyncSocket
@@ -14,6 +15,7 @@ PODS:
   - NJKWebViewProgress/Core (0.2.3)
   - NJKWebViewProgress/ProgressView (0.2.3)
   - OpenUDID (1.0.0)
+  - ReactiveObjC (3.1.1)
   - SDCycleScrollView (1.80):
     - SDWebImage (>= 5.0.0)
   - SDWebImage (5.0.6):
@@ -34,6 +36,7 @@ PODS:
     - YYImage
 
 DEPENDENCIES:
+  - CocoaDebug
   - FDFullscreenPopGesture
   - KTVHTTPCache (~> 1.0.0)
   - Masonry (~> 1.1.0)
@@ -41,6 +44,7 @@ DEPENDENCIES:
   - MJRefresh (~> 3.2.0)
   - NJKWebViewProgress (~> 0.2.3)
   - OpenUDID (~> 1.0.0)
+  - ReactiveObjC
   - SDCycleScrollView (~> 1.80)
   - TOCropViewController (~> 2.5.1)
   - TZImagePickerController (~> 3.2.1)
@@ -55,25 +59,28 @@ SPEC REPOS:
     - Masonry
     - MBProgressHUD
     - NJKWebViewProgress
-    - YYCategories
-    - YYModel
-    - YYWebImage
   trunk:
     - CocoaAsyncSocket
+    - CocoaDebug
     - FDFullscreenPopGesture
     - KTVCocoaHTTPServer
     - KTVHTTPCache
     - MJRefresh
     - OpenUDID
+    - ReactiveObjC
     - SDCycleScrollView
     - SDWebImage
     - TOCropViewController
     - TZImagePickerController
     - YYCache
+    - YYCategories
     - YYImage
+    - YYModel
+    - YYWebImage
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
+  CocoaDebug: 3563d3fa48816ff5be7f969edf3b059693973ec8
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   KTVCocoaHTTPServer: df8d7b861e603ff8037e9b2138aca2563a6b768d
   KTVHTTPCache: 158a79650b704ebc49a48a2a10def3b584c18d2d
@@ -82,16 +89,17 @@ SPEC CHECKSUMS:
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
   NJKWebViewProgress: 051a02ce6233fa3ba4de2c391c39a68db236a9cc
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
+  ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   SDCycleScrollView: b3c9a5ed840c771c4938978174c7c9d9feefeb96
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
   TOCropViewController: 00dc36c4e4a0f4a45efa91adbf22df8a4fae01d3
   TZImagePickerController: bf4c57b98d8707fce41ea6be872414a71c7a8c9d
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
-  YYCategories: f5f25b7281b8d13ff562a19049855785ef9e81bf
+  YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
-  YYModel: 0cb4565b5bd8d59a4b0b83b345cc481aef28312f
-  YYWebImage: 53f1935ca0053e84f9f47db6705535cd55b6e5ed
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
+  YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: ada01490a13eed3e22da0993954dc05bc942e89b
+PODFILE CHECKSUM: 77cf259368993736c92d6be7d6cf2c4f731f43ce
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0

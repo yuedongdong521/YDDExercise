@@ -25,6 +25,11 @@
     return [self ydd_labelAlignment:alignment fontName:fontName fontSize:fontSize textColor:nil backgroundColor:nil text:text];
 }
 
++ (instancetype)ydd_labelAlignment:(NSTextAlignment)alignment font:(UIFont *)font textColor:(UIColor *)textColor
+{
+    return [self ydd_labelAlignment:alignment font:font textColor:textColor backgroundColor:nil text:nil];
+}
+
 + (instancetype)ydd_labelAlignment:(NSTextAlignment)alignment
                               font:(UIFont *)font
                               text:(NSString *)text

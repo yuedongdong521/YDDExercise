@@ -103,7 +103,7 @@
 - (NSArray<NSString *> *)dataArray
 {
     if (!_dataArray) {
-        _dataArray = @[@"YDDAnimationViewController"];
+        _dataArray = @[@"YDDAnimationViewController", @"YDDRACViewController"];
     }
     return _dataArray;
 }

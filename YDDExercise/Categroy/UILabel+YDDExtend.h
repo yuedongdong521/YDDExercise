@@ -23,6 +23,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)ydd_labelAlignment:(NSTextAlignment)alignment
                               font:(UIFont *)font
+                         textColor:(UIColor *)textColor;
+
++ (instancetype)ydd_labelAlignment:(NSTextAlignment)alignment
+                              font:(UIFont *)font
                               text:(nullable NSString *)text;
 
 + (instancetype)ydd_labelAlignment:(NSTextAlignment)alignment

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840B20F225A2DF8B00851385 /* YDDCollectionStyleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B20F125A2DF8B00851385 /* YDDCollectionStyleVC.swift */; };
+		840B210425A2E39200851385 /* YDDCollectionStyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B210325A2E39200851385 /* YDDCollectionStyleCell.swift */; };
+		840B211825A2E5CB00851385 /* YDDSwiftFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B211725A2E5CB00851385 /* YDDSwiftFunction.swift */; };
+		840B231625A31E1B00851385 /* YDDCollectionStyleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B231525A31E1B00851385 /* YDDCollectionStyleModel.swift */; };
 		8447148422DED2E500B69CE7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8447148322DED2E500B69CE7 /* AppDelegate.m */; };
 		8447148A22DED2E500B69CE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8447148822DED2E500B69CE7 /* Main.storyboard */; };
 		8447148C22DED2E600B69CE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8447148B22DED2E600B69CE7 /* Assets.xcassets */; };
@@ -22,6 +26,11 @@
 		844714CE22DF0C2A00B69CE7 /* YDDPhotoPreCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 844714CD22DF0C2A00B69CE7 /* YDDPhotoPreCollectionViewCell.m */; };
 		844714D722DF1FAD00B69CE7 /* YDDPhotoGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 844714D522DF1FAD00B69CE7 /* YDDPhotoGroupView.m */; };
 		84722845257F9DC400D87FC8 /* YDDCoordinateSystemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84722844257F9DC400D87FC8 /* YDDCoordinateSystemView.m */; };
+		847611C925A41304009B9B26 /* YDDFlowLayoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847611C725A41304009B9B26 /* YDDFlowLayoutProtocol.swift */; };
+		847611CA25A41304009B9B26 /* YDDPlainFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847611C825A41304009B9B26 /* YDDPlainFlowLayout.swift */; };
+		849F9F8025A6BAB3008495DB /* YDDRACViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849F9F7F25A6BAB3008495DB /* YDDRACViewController.m */; };
+		849F9F8725A6BC6D008495DB /* YDDPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849F9F8625A6BC6D008495DB /* YDDPasswordView.m */; };
+		849F9FAE25A6E80A008495DB /* YDDInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849F9FAD25A6E80A008495DB /* YDDInputView.m */; };
 		84E36BDC2577B6F9009C6C9F /* YDDMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E36BDB2577B6F9009C6C9F /* YDDMineViewController.m */; };
 		84E36BE32577B73F009C6C9F /* YDDStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E36BE22577B73F009C6C9F /* YDDStudyViewController.m */; };
 		84E36C022578C059009C6C9F /* YDDAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E36C012578C059009C6C9F /* YDDAnimationViewController.m */; };
@@ -76,6 +85,11 @@
 
 /* Begin PBXFileReference section */
 		6FCD78E34D2233443A1B4D61 /* libPods-YDDExercise.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YDDExercise.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		840B20F025A2DF8A00851385 /* YDDExercise-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YDDExercise-Bridging-Header.h"; sourceTree = "<group>"; };
+		840B20F125A2DF8B00851385 /* YDDCollectionStyleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDDCollectionStyleVC.swift; sourceTree = "<group>"; };
+		840B210325A2E39200851385 /* YDDCollectionStyleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDDCollectionStyleCell.swift; sourceTree = "<group>"; };
+		840B211725A2E5CB00851385 /* YDDSwiftFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDDSwiftFunction.swift; sourceTree = "<group>"; };
+		840B231525A31E1B00851385 /* YDDCollectionStyleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDDCollectionStyleModel.swift; sourceTree = "<group>"; };
 		8447147F22DED2E500B69CE7 /* YDDExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YDDExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8447148222DED2E500B69CE7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8447148322DED2E500B69CE7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -107,6 +121,14 @@
 		844714D622DF1FAD00B69CE7 /* YDDPhotoGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDDPhotoGroupView.h; sourceTree = "<group>"; };
 		84722843257F9DC400D87FC8 /* YDDCoordinateSystemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDCoordinateSystemView.h; sourceTree = "<group>"; };
 		84722844257F9DC400D87FC8 /* YDDCoordinateSystemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDCoordinateSystemView.m; sourceTree = "<group>"; };
+		847611C725A41304009B9B26 /* YDDFlowLayoutProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDDFlowLayoutProtocol.swift; sourceTree = "<group>"; };
+		847611C825A41304009B9B26 /* YDDPlainFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDDPlainFlowLayout.swift; sourceTree = "<group>"; };
+		849F9F7E25A6BAB3008495DB /* YDDRACViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDRACViewController.h; sourceTree = "<group>"; };
+		849F9F7F25A6BAB3008495DB /* YDDRACViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDRACViewController.m; sourceTree = "<group>"; };
+		849F9F8525A6BC6D008495DB /* YDDPasswordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDPasswordView.h; sourceTree = "<group>"; };
+		849F9F8625A6BC6D008495DB /* YDDPasswordView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDPasswordView.m; sourceTree = "<group>"; };
+		849F9FAC25A6E80A008495DB /* YDDInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDInputView.h; sourceTree = "<group>"; };
+		849F9FAD25A6E80A008495DB /* YDDInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDInputView.m; sourceTree = "<group>"; };
 		84E36BDA2577B6F9009C6C9F /* YDDMineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDMineViewController.h; sourceTree = "<group>"; };
 		84E36BDB2577B6F9009C6C9F /* YDDMineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDMineViewController.m; sourceTree = "<group>"; };
 		84E36BE12577B73F009C6C9F /* YDDStudyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDStudyViewController.h; sourceTree = "<group>"; };
@@ -210,6 +232,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		840B20EF25A2DEEE00851385 /* CollectionStyleChangeAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				840B20F125A2DF8B00851385 /* YDDCollectionStyleVC.swift */,
+				840B210325A2E39200851385 /* YDDCollectionStyleCell.swift */,
+				840B231525A31E1B00851385 /* YDDCollectionStyleModel.swift */,
+			);
+			path = CollectionStyleChangeAnimation;
+			sourceTree = "<group>";
+		};
 		8447147622DED2E500B69CE7 = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +310,8 @@
 		844714B422DEE64000B69CE7 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				849F9F8525A6BC6D008495DB /* YDDPasswordView.h */,
+				849F9F8625A6BC6D008495DB /* YDDPasswordView.m */,
 				844714C822DEF01300B69CE7 /* YDDAddImageTools.h */,
 				844714C922DEF01300B69CE7 /* YDDAddImageTools.m */,
 			);
@@ -325,6 +359,36 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		847611C625A412DC009B9B26 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				840B20F025A2DF8A00851385 /* YDDExercise-Bridging-Header.h */,
+				840B211725A2E5CB00851385 /* YDDSwiftFunction.swift */,
+				847611C725A41304009B9B26 /* YDDFlowLayoutProtocol.swift */,
+				847611C825A41304009B9B26 /* YDDPlainFlowLayout.swift */,
+			);
+			path = Swift;
+			sourceTree = "<group>";
+		};
+		849F9F7D25A6BA31008495DB /* ReactiveObjC */ = {
+			isa = PBXGroup;
+			children = (
+				849F9F8425A6BC34008495DB /* Views */,
+				849F9F7E25A6BAB3008495DB /* YDDRACViewController.h */,
+				849F9F7F25A6BAB3008495DB /* YDDRACViewController.m */,
+			);
+			path = ReactiveObjC;
+			sourceTree = "<group>";
+		};
+		849F9F8425A6BC34008495DB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				849F9FAC25A6E80A008495DB /* YDDInputView.h */,
+				849F9FAD25A6E80A008495DB /* YDDInputView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		84E36BD12577B44B009C6C9F /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,7 +422,7 @@
 		84E36BE02577B708009C6C9F /* Study */ = {
 			isa = PBXGroup;
 			children = (
-				84E36C432578DB55009C6C9F /* Views */,
+				849F9F7D25A6BA31008495DB /* ReactiveObjC */,
 				84E36BFF2578C025009C6C9F /* Animation */,
 				84E36BE12577B73F009C6C9F /* YDDStudyViewController.h */,
 				84E36BE22577B73F009C6C9F /* YDDStudyViewController.m */,
@@ -369,6 +433,8 @@
 		84E36BFF2578C025009C6C9F /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				84E36C432578DB55009C6C9F /* Views */,
+				840B20EF25A2DEEE00851385 /* CollectionStyleChangeAnimation */,
 				84E36C002578C059009C6C9F /* YDDAnimationViewController.h */,
 				84E36C012578C059009C6C9F /* YDDAnimationViewController.m */,
 				84E36C3C2578D70A009C6C9F /* YDDAnimationContentViewController.h */,
@@ -410,6 +476,7 @@
 		DFCCF59622E33A5700F15B62 /* BaseClass */ = {
 			isa = PBXGroup;
 			children = (
+				847611C625A412DC009B9B26 /* Swift */,
 				DFF24F0222EC2FF800C85F17 /* WebView */,
 				844714B622DEE65C00B69CE7 /* YDDWaterfallFlowLayout.h */,
 				844714B522DEE65C00B69CE7 /* YDDWaterfallFlowLayout.m */,
@@ -609,6 +676,7 @@
 				TargetAttributes = {
 					8447147E22DED2E500B69CE7 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1230;
 					};
 					8447149622DED2E600B69CE7 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -758,17 +826,23 @@
 				844714CE22DF0C2A00B69CE7 /* YDDPhotoPreCollectionViewCell.m in Sources */,
 				DFFDA02A22E74C14006FE5CF /* YDDHomeHeaderView.m in Sources */,
 				844714C122DEE8B500B69CE7 /* YDDPhotoModel.m in Sources */,
+				847611CA25A41304009B9B26 /* YDDPlainFlowLayout.swift in Sources */,
+				849F9FAE25A6E80A008495DB /* YDDInputView.m in Sources */,
 				844714CA22DEF01300B69CE7 /* YDDAddImageTools.m in Sources */,
 				844714B722DEE65C00B69CE7 /* YDDWaterfallFlowLayout.m in Sources */,
 				DF888EDD22E8AFAB00755CDE /* YDDDetailsViewController.m in Sources */,
 				DFCCF5A322E34A0400F15B62 /* UILabel+YDDExtend.m in Sources */,
 				DFFDA02D22E74C7A006FE5CF /* YDDHomeCollectionViewCell.m in Sources */,
+				840B211825A2E5CB00851385 /* YDDSwiftFunction.swift in Sources */,
+				840B231625A31E1B00851385 /* YDDCollectionStyleModel.swift in Sources */,
 				DFCCF5D522E44E1100F15B62 /* UIImage+YDDExtend.m in Sources */,
 				84722845257F9DC400D87FC8 /* YDDCoordinateSystemView.m in Sources */,
 				DFCCF5DD22E4A58200F15B62 /* YDDLeftSideBarView.m in Sources */,
 				DFCCF5D922E44ECD00F15B62 /* YDDHomeViewController.m in Sources */,
+				847611C925A41304009B9B26 /* YDDFlowLayoutProtocol.swift in Sources */,
 				DFCCF5A622E3541000F15B62 /* UIView+YDDExtend.m in Sources */,
 				84E36C462578DB99009C6C9F /* YDDDynamicsAnimationView.m in Sources */,
+				849F9F8025A6BAB3008495DB /* YDDRACViewController.m in Sources */,
 				844714BD22DEE70000B69CE7 /* YDDPhotosViewController.m in Sources */,
 				DFCCF5CF22E43CDD00F15B62 /* NSString+YDDExtend.m in Sources */,
 				DFCCF5A022E343B300F15B62 /* UIButton+YDDExtend.m in Sources */,
@@ -778,6 +852,7 @@
 				DF888EDC22E8AFAB00755CDE /* YDDTransition.m in Sources */,
 				DFFDA02722E74A1D006FE5CF /* YDDHomeModel.m in Sources */,
 				84E36BDC2577B6F9009C6C9F /* YDDMineViewController.m in Sources */,
+				840B20F225A2DF8B00851385 /* YDDCollectionStyleVC.swift in Sources */,
 				DFCCF5C022E3F7F100F15B62 /* YDDLoginViewController.m in Sources */,
 				DFCCF5BD22E3ECB600F15B62 /* NSObject+YDDExtend.m in Sources */,
 				8447148422DED2E500B69CE7 /* AppDelegate.m in Sources */,
@@ -785,12 +860,14 @@
 				DFCCF5CC22E434E900F15B62 /* YDDLogonViewController.m in Sources */,
 				DFCCF5A922E35E6E00F15B62 /* UINavigationController+StatuBar.m in Sources */,
 				DFCCF5BA22E3E98800F15B62 /* YDDUserBaseInfoModel.m in Sources */,
+				849F9F8725A6BC6D008495DB /* YDDPasswordView.m in Sources */,
 				84E36BE32577B73F009C6C9F /* YDDStudyViewController.m in Sources */,
 				DFCCF5C322E3F95400F15B62 /* YDDLogView.m in Sources */,
 				DFCCF59C22E341C600F15B62 /* YDDNavigationBarView.m in Sources */,
 				DFF24F0722EC301500C85F17 /* YDDWebView.m in Sources */,
 				DFCCF5D222E44D3400F15B62 /* YDDTabBarController.m in Sources */,
 				844714D722DF1FAD00B69CE7 /* YDDPhotoGroupView.m in Sources */,
+				840B210425A2E39200851385 /* YDDCollectionStyleCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -962,6 +1039,7 @@
 			baseConfigurationReference = E742D6DB7074DDD2FA8848B9 /* Pods-YDDExercise.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8F7D4C878S;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -972,8 +1050,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ydd.test.YDDExercise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "YDDExercise/BaseClass/Swift/YDDExercise-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -983,6 +1066,7 @@
 			baseConfigurationReference = C0648B53D474694EF53A9309 /* Pods-YDDExercise.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8F7D4C878S;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -993,8 +1077,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ydd.test.YDDExercise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "YDDExercise/BaseClass/Swift/YDDExercise-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1002,6 +1089,7 @@
 		844714AF22DED2E700B69CE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = YDDExerciseTests/Info.plist;
@@ -1020,6 +1108,7 @@
 		844714B022DED2E700B69CE7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = YDDExerciseTests/Info.plist;
@@ -1038,6 +1127,7 @@
 		844714B222DED2E700B69CE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = YDDExerciseUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1055,6 +1145,7 @@
 		844714B322DED2E700B69CE7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = YDDExerciseUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

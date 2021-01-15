@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "YDDPhotosViewController.h"
+#import "CocoaDebugTool.h"
 
 @interface AppDelegate ()
 
@@ -24,7 +25,8 @@
     
     [YDDAppManager checkLoginState];
     
-    
+    [CocoaDebugTool logWithString:@"Custom Messages...."];
+    [CocoaDebugTool logWithString:@"Custom Messages...." color:[UIColor redColor]];
     
     
     

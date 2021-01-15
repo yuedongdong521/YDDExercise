@@ -8,6 +8,7 @@
 
 #import "YDDAnimationViewController.h"
 #import "YDDAnimationContentViewController.h"
+#import "YDDExercise-Swift.h"
 
 @interface YDDAnimationViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -61,9 +62,17 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    YDDAnimationContentViewController *obj = [[YDDAnimationContentViewController alloc] initWithType:indexPath.row];
-    obj.navBarView.title = self.dataArray[indexPath.row];
-    [self.navigationController pushViewController:obj animated:YES];
+    if (indexPath.item < 2) {
+        YDDAnimationContentViewController *obj = [[YDDAnimationContentViewController alloc] initWithType:indexPath.row];
+        obj.navBarView.title = self.dataArray[indexPath.row];
+        [self.navigationController pushViewController:obj animated:YES];
+        return;
+    }
+    
+    if (indexPath.item == 2) {
+        YDDCollectionStyleVC *vc = [[YDDCollectionStyleVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     
 }
 
@@ -101,7 +110,7 @@
 - (NSArray<NSString *> *)dataArray
 {
     if (!_dataArray) {
-        _dataArray = @[@"力学动画", @"坐标系"];
+        _dataArray = @[@"力学动画", @"坐标系", @"cellStyle"];
     }
     return _dataArray;
 }
