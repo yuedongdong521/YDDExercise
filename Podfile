@@ -20,4 +20,5 @@ target 'YDDExercise' do
  pod 'KTVHTTPCache', '~> 1.0.0'
  pod 'CocoaDebug', :configurations => ['Debug']
  pod 'ReactiveObjC'
+ pod 'Texture'
 end

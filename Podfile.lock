@@ -15,12 +15,47 @@ PODS:
   - NJKWebViewProgress/Core (0.2.3)
   - NJKWebViewProgress/ProgressView (0.2.3)
   - OpenUDID (1.0.0)
+  - PINCache (3.0.3):
+    - PINCache/Arc-exception-safe (= 3.0.3)
+    - PINCache/Core (= 3.0.3)
+  - PINCache/Arc-exception-safe (3.0.3):
+    - PINCache/Core
+  - PINCache/Core (3.0.3):
+    - PINOperation (~> 1.2.1)
+  - PINOperation (1.2.1)
+  - PINRemoteImage/Core (3.0.3):
+    - PINOperation
+  - PINRemoteImage/iOS (3.0.3):
+    - PINRemoteImage/Core
+  - PINRemoteImage/PINCache (3.0.3):
+    - PINCache (~> 3.0.3)
+    - PINRemoteImage/Core
   - ReactiveObjC (3.1.1)
   - SDCycleScrollView (1.80):
     - SDWebImage (>= 5.0.0)
   - SDWebImage (5.0.6):
     - SDWebImage/Core (= 5.0.6)
   - SDWebImage/Core (5.0.6)
+  - Texture (3.0.0):
+    - Texture/AssetsLibrary (= 3.0.0)
+    - Texture/Core (= 3.0.0)
+    - Texture/MapKit (= 3.0.0)
+    - Texture/Photos (= 3.0.0)
+    - Texture/PINRemoteImage (= 3.0.0)
+    - Texture/Video (= 3.0.0)
+  - Texture/AssetsLibrary (3.0.0):
+    - Texture/Core
+  - Texture/Core (3.0.0)
+  - Texture/MapKit (3.0.0):
+    - Texture/Core
+  - Texture/Photos (3.0.0):
+    - Texture/Core
+  - Texture/PINRemoteImage (3.0.0):
+    - PINRemoteImage/iOS (~> 3.0.0)
+    - PINRemoteImage/PINCache
+    - Texture/Core
+  - Texture/Video (3.0.0):
+    - Texture/Core
   - TOCropViewController (2.5.1)
   - TZImagePickerController (3.2.1)
   - YYCache (1.0.4)
@@ -46,6 +81,7 @@ DEPENDENCIES:
   - OpenUDID (~> 1.0.0)
   - ReactiveObjC
   - SDCycleScrollView (~> 1.80)
+  - Texture
   - TOCropViewController (~> 2.5.1)
   - TZImagePickerController (~> 3.2.1)
   - YYCache (~> 1.0.4)
@@ -67,9 +103,13 @@ SPEC REPOS:
     - KTVHTTPCache
     - MJRefresh
     - OpenUDID
+    - PINCache
+    - PINOperation
+    - PINRemoteImage
     - ReactiveObjC
     - SDCycleScrollView
     - SDWebImage
+    - Texture
     - TOCropViewController
     - TZImagePickerController
     - YYCache
@@ -89,9 +129,13 @@ SPEC CHECKSUMS:
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
   NJKWebViewProgress: 051a02ce6233fa3ba4de2c391c39a68db236a9cc
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
+  PINCache: 7a8fc1a691173d21dbddbf86cd515de6efa55086
+  PINOperation: 00c935935f1e8cf0d1e2d6b542e75b88fc3e5e20
+  PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   SDCycleScrollView: b3c9a5ed840c771c4938978174c7c9d9feefeb96
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
+  Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
   TOCropViewController: 00dc36c4e4a0f4a45efa91adbf22df8a4fae01d3
   TZImagePickerController: bf4c57b98d8707fce41ea6be872414a71c7a8c9d
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
@@ -100,6 +144,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 77cf259368993736c92d6be7d6cf2c4f731f43ce
+PODFILE CHECKSUM: 2f44fefb2bef127cbab154fbddb204fdce2e7516
 
 COCOAPODS: 1.10.0

@@ -24,6 +24,7 @@
 #import "UILabel+YDDExtend.h"
 #import "NSString+YDDExtend.h"
 #import "YYModel.h"
+#import <YYCategories/YYCategories.h>
 #import "YDDDefine.h"
 
 
