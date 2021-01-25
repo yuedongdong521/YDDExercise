@@ -43,6 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (CGSize)textSizeWithMaxSize:(CGSize)maxSize;
 
+- (void)resetGradientLayer;
 
 @end
 

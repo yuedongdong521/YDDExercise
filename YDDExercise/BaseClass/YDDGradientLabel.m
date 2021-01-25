@@ -88,10 +88,34 @@ adjustsFontSizeToFitWidth = _adjustsFontSizeToFitWidth;
     _label.text = text;
 }
 
+- (void)resetGradientLayer
+{
+    
+    NSMutableArray *mutArr = [NSMutableArray array];
+    NSInteger count = _locations.count;
+    for (NSInteger i = 0; i < count; i++) {
+        if (i < count - 1) {
+            [mutArr addObject:@(0)];
+        } else {
+            [mutArr addObject:@(1)];
+        }
+    }
+    
+    _locations = mutArr;
+    
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
+    _gradientLayer.locations = _locations;
+    [CATransaction commit];
+}
+
 - (void)setLocations:(NSArray<NSNumber *> *)locations
 {
     _locations = locations;
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
     _gradientLayer.locations = locations;
+    [CATransaction commit];
 }
 
 - (void)setTextColors:(NSArray<UIColor *> *)textColors

@@ -8,6 +8,9 @@
 
 #import "YDDLyricView.h"
 #import "YDDGradientLabel.h"
+#import <ReactiveObjC/ReactiveObjC.h>
+
+static const BOOL kUserRAC = YES;
 
 @interface YDDLyricCell : UITableViewCell
 
@@ -19,6 +22,10 @@
 
 @property (nonatomic, assign, readonly) CGFloat speed;
 
+@property (nonatomic, strong) RACDisposable *racDisposable;
+
+@property (nonatomic, assign) BOOL hasObserver;
+
 @end
 
 @implementation YDDLyricCell
@@ -27,6 +34,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self.contentView addSubview:self.gradientLabel];
         self.gradientLabel.textColors = @[[UIColor greenColor], [UIColor greenColor], [UIColor grayColor], [UIColor grayColor]];
         self.progress = 0;
@@ -41,6 +49,15 @@
 
 - (void)setLyricModel:(YDDLyricModel *)lyricModel
 {
+    if (kUserRAC) {
+        if (_racDisposable) {
+            [_racDisposable dispose];
+            _racDisposable = nil;
+        }
+    } else {
+        [self removeObserver];
+    }
+    
     _lyricModel = lyricModel;
     
     self.gradientLabel.text = lyricModel.lyricText;
@@ -49,20 +66,52 @@
     [self.gradientLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(size.width);
     }];
+    
+
+    if (kUserRAC) {
+        @weakify(self);
+        _racDisposable = [RACObserve(self.lyricModel, progress) subscribeNext:^(id  _Nullable x) {
+            @strongify(self);
+            self.progress = [x floatValue];
+        }];
+    } else {
+        [self addObserver];
+    }
+}
+
+- (void)addObserver
+{
+    self.hasObserver = YES;
+    /// NSKeyValueObservingOptionInitial 第一次添加就会调用
+    [self.lyricModel addObserver:self forKeyPath:NSStringFromSelector(@selector(progress)) options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial context:nil];
+}
+
+- (void)removeObserver
+{
+    if (self.hasObserver) {
+    
+        [self.lyricModel removeObserver:self forKeyPath:NSStringFromSelector(@selector(progress)) context:nil];
+        self.hasObserver = NO;
+    }
+    
+}
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:NSStringFromSelector(@selector(progress))]) {
+        CGFloat progress = [change[NSKeyValueChangeNewKey] floatValue];
+        self.progress = progress;
+    }
 }
 
 - (void)setProgress:(CGFloat)progress
 {
     _progress = progress < 0 ? 0 : progress > 1 ? 1 : progress;
     
-//    if (_progress == 0) {
-//        CATransaction cm
-//
-//
-//    } else {
-        
+    if (_progress == 0) {
+        [self.gradientLabel resetGradientLayer];
+    } else {
         self.gradientLabel.locations = @[@(0), @(_progress), @(_progress), @(1)];
-//    }
+    }
     
 }
 
@@ -82,6 +131,14 @@
     return _gradientLabel;
 }
 
+- (void)dealloc
+{
+    NSLog(@"YDDLyricCell dealloc");
+    if (!kUserRAC) {
+        [self removeObserver];
+    }
+}
+
 @end
 
 
@@ -96,7 +153,9 @@
 
 @property (nonatomic, assign) NSInteger curRow;
 
-@property (nonatomic, weak) YDDLyricCell *curCell;
+@property (nonatomic, weak) YDDLyricModel *curModel;
+
+@property (nonatomic, assign) BOOL dragging;
 
 @end
 
@@ -135,44 +194,47 @@
 
 - (void)setCurRow:(NSInteger)curRow
 {
-    if (_curCell) {
-        _curCell.progress = 0;
+    
+    if (_curModel) {
+        _curModel.progress = 0;
     }
-    
-    
     
     NSInteger index = curRow - self.line * 0.5;
     if (index < 0 ) {
         self.curRow = self.line * 0.5;
+        _curModel = self.lyricList[0];
     } else if (index >= self.lyricList.count) {
         self.curRow = self.line * 0.5;
+        _curModel = self.lyricList.lastObject;
     } else {
         _curRow = curRow;
-        
-        
+        _curModel = self.lyricList[index];
     }
-    
-    NSIndexPath *path = [NSIndexPath indexPathForRow:_curRow inSection:0];
 
-    [self.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
-    
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
-    if ([cell isKindOfClass:[YDDLyricCell class]]) {
-        _curCell = (YDDLyricCell *)cell;
+    if (self.dragging) {
         [self startTimer];
+    } else {
+        [CATransaction begin];
+        [self scrollToCurRow];
+        [CATransaction commit];
+        @weakify(self);
+        [CATransaction setCompletionBlock:^{
+            @strongify(self);
+                [self startTimer];
+        }];
     }
     
 }
 
 - (void)timerAction
 {
-    if (!_curCell) {
+    if (!_curModel) {
         return;
     }
     
-    CGFloat curProgress = _curCell.progress;
-    curProgress += _curCell.speed;
-    _curCell.progress = curProgress;
+    CGFloat curProgress = _curModel.progress;
+    curProgress += _curModel.speed;
+    _curModel.progress = curProgress;
     if (curProgress > 1) {
         [self stopTimer];
         self.curRow += 1;
@@ -194,6 +256,42 @@
         _timer = nil;
     }
 }
+
+- (void)scrollToCurRow
+{
+    NSIndexPath *path = [NSIndexPath indexPathForRow:_curRow inSection:0];
+    [self.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    self.dragging = YES;
+    NSLog(@"&&& scrollViewWillBeginDragging");
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate) {
+        if (self.dragging) {
+            self.dragging = NO;
+            [self scrollToCurRow];
+        }
+    }
+    
+    NSLog(@"&&& scrollViewDidEndDragging decelerate : %d", decelerate);
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (self.dragging) {
+        self.dragging = NO;
+        [self scrollToCurRow];
+    }
+  
+}
+
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -304,6 +402,12 @@
     }
     return _lyricList;
 }
+
+- (void)dealloc
+{
+    NSLog(@"YDDLyricView dealloc");
+}
+
 
 
 @end

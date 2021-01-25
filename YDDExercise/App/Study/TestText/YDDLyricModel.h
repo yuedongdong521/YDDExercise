@@ -16,6 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) CGFloat duration;
 
+@property (nonatomic, assign) CGFloat progress;
+
+@property (nonatomic, assign, readonly) CGFloat speed;
+
 @end
 
 NS_ASSUME_NONNULL_END

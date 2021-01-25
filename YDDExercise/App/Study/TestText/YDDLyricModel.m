@@ -10,4 +10,13 @@
 
 @implementation YDDLyricModel
 
+- (CGFloat)speed
+{
+    if (self.duration > 0) {
+        return 0.1 / self.duration;
+    }
+    return 0;
+}
+
+
 @end
