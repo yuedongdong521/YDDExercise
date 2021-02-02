@@ -6,10 +6,9 @@
 //  Copyright © 2019 ydd. All rights reserved.
 //
 
-#import "YDDBaseViewController.h"
-
 #define kLeftSideBarWidth 200
 NS_ASSUME_NONNULL_BEGIN
+
 
 @interface YDDLeftSideBarView : UIView
 
@@ -18,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) YDDUserBaseInfoModel *userInfo;
 
 
+- (instancetype)initWithFrame:(CGRect)frame superView:(UIView *)superView;
+
 @end
+
 
 NS_ASSUME_NONNULL_END

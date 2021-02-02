@@ -127,6 +127,7 @@ static const BOOL kUserRAC = YES;
 {
     if (!_gradientLabel) {
         _gradientLabel = [[YDDGradientLabel alloc] init];
+        _gradientLabel.adjustsFontSizeToFitWidth = YES;
     }
     return _gradientLabel;
 }
@@ -192,24 +193,47 @@ static const BOOL kUserRAC = YES;
     self.curRow = 0;
 }
 
+- (void)resetLyric
+{
+    NSMutableArray<YDDLyricModel *> *arr = [NSMutableArray array];
+
+    [self.lyricList enumerateObjectsUsingBlock:^(YDDLyricModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        YDDLyricModel *model = [[YDDLyricModel alloc] init];
+        model.lyricText = obj.lyricText;
+        model.duration = obj.duration;
+        model.progress = 0;
+        [arr addObject:model];
+    }];
+    
+    self.lyricList = arr;
+    
+    [self.tableView beginUpdates];
+    [self.tableView reloadData];
+    [self.tableView endUpdates];
+    
+    self.curRow = self.line * 0.5;
+}
+
 - (void)setCurRow:(NSInteger)curRow
 {
-    
-    if (_curModel) {
-        _curModel.progress = 0;
+    if (self.style == YDDLyricStyle_Oneway) {
+        if (_curModel) {
+            _curModel.progress = 0;
+        }
     }
     
     NSInteger index = curRow - self.line * 0.5;
     if (index < 0 ) {
         self.curRow = self.line * 0.5;
-        _curModel = self.lyricList[0];
-    } else if (index >= self.lyricList.count) {
-        self.curRow = self.line * 0.5;
-        _curModel = self.lyricList.lastObject;
-    } else {
-        _curRow = curRow;
-        _curModel = self.lyricList[index];
+        return;
     }
+    if (index >= self.lyricList.count) {
+        [self resetLyric];
+        return;
+    }
+    
+    _curRow = curRow;
+    _curModel = self.lyricList[index];
 
     if (self.dragging) {
         [self startTimer];
@@ -290,9 +314,6 @@ static const BOOL kUserRAC = YES;
   
 }
 
-
-
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -332,6 +353,9 @@ static const BOOL kUserRAC = YES;
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([UITableViewCell class])];
 
         [_tableView registerClass:[YDDLyricCell class] forCellReuseIdentifier:NSStringFromClass([YDDLyricCell class])];
+        _tableView.estimatedRowHeight = 0;
+        _tableView.estimatedSectionFooterHeight = 0;
+        _tableView.estimatedSectionHeaderHeight = 0;
         if (@available(iOS 13.0, *)) {
             _tableView.automaticallyAdjustsScrollIndicatorInsets = NO;
         } else {

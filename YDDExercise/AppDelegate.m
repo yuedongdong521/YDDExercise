@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "YDDPhotosViewController.h"
 #import "CocoaDebugTool.h"
+#import "KTVHTTPCache.h"
 
 @interface AppDelegate ()
 
@@ -23,16 +24,42 @@
     // 禁用多点触控
     [[UIButton appearance] setExclusiveTouch:YES];
     
+    [self configKTVHTTPCache];
+    
     [YDDAppManager checkLoginState];
     
     [CocoaDebugTool logWithString:@"Custom Messages...."];
     [CocoaDebugTool logWithString:@"Custom Messages...." color:[UIColor redColor]];
     
-    
-    
     return YES;
 }
 
+
+- (void)configKTVHTTPCache
+{
+    NSError *error;
+    [KTVHTTPCache proxyStart:&error];
+    [KTVHTTPCache cacheSetMaxCacheLength:1024 * 1024 * 100];
+    KTVHCDataCacheItem *item = [KTVHTTPCache cacheCacheItemWithURL:[NSURL URLWithString:@"https://video.17kuxiu.com/social_dynamic/video/1267508_1596780091.mp4"]];
+    NSLog(@"cache path: %@", item.URL);
+    
+    
+    if (error) {
+        NSLog(@"Proxy Start Failure, %@", error);
+    } else {
+        NSLog(@"Proxy Start Success");
+    }
+    [KTVHTTPCache encodeSetURLConverter:^NSURL *(NSURL *URL) {
+        NSLog(@"URL Filter reviced URL : %@", URL);
+        return URL;
+    }];
+    [KTVHTTPCache downloadSetUnacceptableContentTypeDisposer:^BOOL(NSURL *URL, NSString *contentType) {
+        NSLog(@"Unsupport Content-Type Filter reviced URL : %@, %@", URL, contentType);
+        return NO;
+    }];
+    NSArray *arr = [KTVHTTPCache downloadAcceptableContentTypes];
+    NSLog(@"arr : %@", arr);
+}
 
 
 

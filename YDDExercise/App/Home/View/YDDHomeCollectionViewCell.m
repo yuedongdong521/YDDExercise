@@ -8,6 +8,7 @@
 
 #import "YDDHomeCollectionViewCell.h"
 #import "YDDHomeModel.h"
+#import "UIView+YDDCorner.h"
 @interface YDDHomeCollectionViewCell ()
 
 @property (nonatomic, strong) UIImageView *imageView;
@@ -33,8 +34,8 @@
             make.left.right.bottom.mas_equalTo(0);
         }];
         
-        [self.imageView cutRadius:10];
-        
+//        [self.imageView cutRadius:10];
+        [self.imageView cutCorners:YDDCornerStyle_all radius:10 color:[UIColor whiteColor]];
     }
     return self;
 }

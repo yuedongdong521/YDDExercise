@@ -7,3 +7,5 @@
 #import "Masonry.h"
 
 #import "UIImageView+WebCache.h"
+
+#import "KTVHTTPCache.h"

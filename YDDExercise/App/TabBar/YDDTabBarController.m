@@ -13,6 +13,8 @@
 #import "YDDPhotosViewController.h"
 #import "YDDStudyViewController.h"
 #import "YDDMineViewController.h"
+#import "YDDVideoRecommendViewController.h"
+#import "YDDTabBarBgView.h"
 
 @interface YDDTabBar : UITabBar
 @property (nonatomic, strong) UIButton *centerBtn;
@@ -87,8 +89,11 @@
 static YDDTabBarController *_tabBar;
 
 
-@interface YDDTabBarController ()
+@interface YDDTabBarController ()<UITabBarControllerDelegate, UITabBarDelegate>
 
+@property (nonatomic, strong) YDDTabBarBgView *tabBarBgView;
+
+@property (nonatomic, assign) NSInteger curSeletedIndex;
 
 @end
 
@@ -100,10 +105,22 @@ static YDDTabBarController *_tabBar;
     self = [super init];
     if (self) {
         
+//        self.delegate = self;
+        self.curSeletedIndex = -1;
+        
         YDDTabBar *tabBar = [[YDDTabBar alloc] init];
         
         [tabBar.centerBtn addTarget:self action:@selector(centerAction:) forControlEvents:UIControlEventTouchUpInside];
 //        [self setValue:tabBar forKey:@"tabBar"];
+        
+        
+        YDDVideoRecommendViewController *videoVC = [[YDDVideoRecommendViewController alloc] init];
+        UIImage *videoImage = [UIImage imageNamed:@"video"];
+        UIImage *videoSelectedImage = [UIImage imageNamed:@"videoSelected"];
+        videoImage = [videoImage scallImageWidthScallSize:CGSizeMake(20, 20)];
+        videoSelectedImage = [videoSelectedImage scallImageWidthScallSize:CGSizeMake(20, 20)];
+        [self addChildVc:videoVC title:@"小视频" normalImg:videoImage selectImg:videoSelectedImage];
+        
         YDDHomeViewController *homeVC = [[YDDHomeViewController alloc] init];
         
         UIImage *homeImage = [UIImage imageNamed:@"tabBarHome"];
@@ -139,9 +156,9 @@ static YDDTabBarController *_tabBar;
         [self addChildVc:mineVC title:@"我的" normalImg:mineImage selectImg:mineSelectImage];
         
         
-        [self setViewControllers:@[homeVC, photosVC, studyVC, mineVC]];
+        [self setViewControllers:@[videoVC, homeVC, photosVC, studyVC, mineVC]];
     
-        self.tabBar.translucent = YES;
+        [self clearTabbar];
         
         self.selectedIndex = 2;
         
@@ -180,6 +197,56 @@ static YDDTabBarController *_tabBar;
     [self.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSLog(@"sub view : %@, frame : %@", NSStringFromClass(obj.class), NSStringFromCGRect(obj.frame));
     }];
+}
+
+
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+{
+    NSInteger curIndex = [self.tabBar.items indexOfObject:item];
+    [self updateTabBar:curIndex];
+}
+
+- (void)setSelectedIndex:(NSUInteger)selectedIndex
+{
+    [super setSelectedIndex:selectedIndex];
+    [self updateTabBar:selectedIndex];
+    self.curSeletedIndex = selectedIndex;
+}
+
+- (void)clearTabbar
+{
+    UIImage *alphaImage =  [UIImage imageWithColor:[UIColor clearColor] size:CGSizeMake(1, 1)];
+    [self.tabBar setBackgroundImage:alphaImage];
+    [self.tabBar setShadowImage:alphaImage];
+    [self.tabBar setTintColor:[UIColor clearColor]];
+    [self.tabBar setBarTintColor:[UIColor clearColor]];
+    self.tabBar.translucent = YES;
+    
+    [self.tabBar insertSubview:self.tabBarBgView atIndex:0];
+}
+
+- (void)updateTabBar:(NSInteger)index
+{
+    if (self.curSeletedIndex == index) {
+        return;
+    }
+    if (index == 0) {
+        self.tabBarBgView.backgroundColor = [UIColor clearColor];
+        self.tabBarBgView.lineView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.05];
+       
+    } else {
+        self.tabBarBgView.backgroundColor = UIColorLightAndDark([UIColor whiteColor], UIColorHexRGBA(0x141416, 0.96));
+        self.tabBarBgView.lineView.backgroundColor = UIColorLightAndDark(UIColorHexRGBA(0xf5f5f5, 1), UIColorHexRGBA(0x262629, 0.96));
+    }
+}
+
+
+- (YDDTabBarBgView *)tabBarBgView
+{
+    if (!_tabBarBgView) {
+        _tabBarBgView = [[YDDTabBarBgView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, kTabBarHeight)];
+    }
+    return _tabBarBgView;
 }
 
 - (void)dealloc

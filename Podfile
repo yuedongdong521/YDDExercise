@@ -13,12 +13,12 @@ target 'YDDExercise' do
  pod 'YYModel', '~>1.0.4'
  pod 'MJRefresh', '~>3.2.0'
  pod 'OpenUDID', '~>1.0.0'
- pod 'MBProgressHUD', '~>1.1.0'
  pod 'SDCycleScrollView', '~>1.80'
  pod 'NJKWebViewProgress', '~>0.2.3'
  pod 'FDFullscreenPopGesture'
- pod 'KTVHTTPCache', '~> 1.0.0'
+ pod 'KTVHTTPCache', '2.0.1'
  pod 'CocoaDebug', :configurations => ['Debug']
  pod 'ReactiveObjC'
  pod 'Texture'
+ pod 'AFNetworking', '4.0.1'
 end

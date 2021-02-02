@@ -10,10 +10,16 @@
 #import "YDDLyricModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, YDDLyricStyle) {
+    YDDLyricStyle_Oneway = 0,
+    YDDLyricStyle_Moreway,
+};
+
 @interface YDDLyricView : UIView
 
 @property (nonatomic, copy) NSArray <YDDLyricModel *>*lyricList;
 
+@property (nonatomic, assign) YDDLyricStyle style;
 
 - (instancetype)initWithFrame:(CGRect)frame line:(CGFloat)line;
 

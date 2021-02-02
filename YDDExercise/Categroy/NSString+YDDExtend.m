@@ -11,77 +11,7 @@
 @implementation NSString (YDDExtend)
 
 
-- (NSString *)ydd_subStringToByteIndex:(NSInteger)index
-{
-    NSInteger sum = 0;
-    NSString *subStr = [[NSString alloc] init];
-    for(int i = 0; i<[self length]; i++){
-        unichar strChar = [self characterAtIndex:i];
-        if(strChar < 256){
-            sum += 1;
-        }
-        else {
-            sum += 2;
-        }
-        if (sum > index) {
-            subStr = [self substringToIndex:i];
-            return subStr;
-        }
-    }
-    return self;
-}
-
-- (NSString *)ydd_subStringFormByteIndex:(NSInteger)index
-{
-    NSInteger sum = 0;
-    NSString *subStr = [[NSString alloc] init];
-    for(int i = 0; i<[self length]; i++){
-        unichar strChar = [self characterAtIndex:i];
-        if(strChar < 256){
-            sum += 1;
-        }
-        else {
-            sum += 2;
-        }
-        if (sum > index) {
-            subStr = [self substringFromIndex:i];
-            return subStr;
-        }
-    }
-    return self;
-}
-
-
-- (NSURL *)ydd_coverUrl
-{
-    if (self.length == 0) {
-        return nil;
-    }
-    if ([self hasPrefix:@"http:"] || [self hasPrefix:@"https:"]) {
-        return [NSURL URLWithString:self];
-    } else {
-        NSURL *url = [NSURL fileURLWithPath:self];
-        if (url) {
-            return url;
-        }
-    }
-    if ([self hasPrefix:@"file"] || [self containsString:@"/users/"]) {
-        return [NSURL fileURLWithPath:self];
-    }
-    NSString *path = [[NSBundle mainBundle] pathForResource:self ofType:@""];
-    if (path) {
-        return [NSURL fileURLWithPath:path];
-    }
-    return nil;
-}
-
-- (CGSize)ydd_textSize:(CGSize)maxSize font:(UIFont *)font
-{
-    NSAttributedString *att = [[NSAttributedString alloc] initWithString:self attributes:@{NSFontAttributeName : font}];
-    return [att boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
-}
-
-
+/// 创建文件夹
 + (NSString *)ydd_pathForDocumentWithDirName:(NSString *)dirName fileName:(NSString *)fileName
 {
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
@@ -100,6 +30,19 @@
     return [path stringByAppendingPathComponent:fileName];
 }
 
++ (nullable NSString *)ydd_readKTVCacheWithPath:(NSString *)path
+{
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSString *file = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject stringByAppendingPathComponent:@"KTVHTTPCache"];
+    NSString *name = [path md5String];
+    NSString *direPath = [NSString stringWithFormat:@"%@/%@", file, name];
+    BOOL isDire;
+    BOOL isExits = [manager fileExistsAtPath:direPath isDirectory:&isDire];
+    if (isDire && isExits) {
+        return [NSString stringWithFormat:@"%@/%@.mp4", direPath, name];
+    }
+    return nil;
+}
 
 
 + (YDDNumber)ydd_maxFourNum:(NSInteger)num
@@ -163,6 +106,81 @@
     return [newNum stringValue];
 }
 
+
+
+/// 截取指定字节长度
+- (NSString *)ydd_subStringToByteIndex:(NSInteger)index
+{
+    NSInteger sum = 0;
+    NSString *subStr = [[NSString alloc] init];
+    for(int i = 0; i<[self length]; i++){
+        unichar strChar = [self characterAtIndex:i];
+        if(strChar < 256){
+            sum += 1;
+        }
+        else {
+            sum += 2;
+        }
+        if (sum > index) {
+            subStr = [self substringToIndex:i];
+            return subStr;
+        }
+    }
+    return self;
+}
+
+/// 从指定字节长度开始截取
+- (NSString *)ydd_subStringFormByteIndex:(NSInteger)index
+{
+    NSInteger sum = 0;
+    NSString *subStr = [[NSString alloc] init];
+    for(int i = 0; i<[self length]; i++){
+        unichar strChar = [self characterAtIndex:i];
+        if(strChar < 256){
+            sum += 1;
+        }
+        else {
+            sum += 2;
+        }
+        if (sum > index) {
+            subStr = [self substringFromIndex:i];
+            return subStr;
+        }
+    }
+    return self;
+}
+
+
+- (NSURL *)ydd_coverUrl
+{
+    if (self.length == 0) {
+        return nil;
+    }
+    if ([self hasPrefix:@"http:"] || [self hasPrefix:@"https:"]) {
+        return [NSURL URLWithString:self];
+    } else {
+        NSURL *url = [NSURL fileURLWithPath:self];
+        if (url) {
+            return url;
+        }
+    }
+    if ([self hasPrefix:@"file"] || [self containsString:@"/users/"]) {
+        return [NSURL fileURLWithPath:self];
+    }
+    NSString *path = [[NSBundle mainBundle] pathForResource:self ofType:@""];
+    if (path) {
+        return [NSURL fileURLWithPath:path];
+    }
+    return nil;
+}
+
+- (CGSize)ydd_textSize:(CGSize)maxSize font:(UIFont *)font
+{
+    NSAttributedString *att = [[NSAttributedString alloc] initWithString:self attributes:@{NSFontAttributeName : font}];
+    return [att boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
+}
+
+
 - (NSString *)ydd_filterWithRegex:(NSString *)regexStr
 {
     NSError *error = NULL;
@@ -176,6 +194,18 @@
 {
     return [self ydd_filterWithRegex:@"[^\u4e00-\u9fa5∙•· ]"];
 }
+
+/// 验证6-18位同时包含数字、大小写字母密码
+- (BOOL)ydd_judgePassWordRegex
+{
+    BOOL result ;
+    // 判断长度大于6位后再接着判断是否同时包含数字和大小写字母
+    NSString * regex =@"^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,18}$";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    result = [pred evaluateWithObject:self];
+    return result;
+}
+
 
 
 

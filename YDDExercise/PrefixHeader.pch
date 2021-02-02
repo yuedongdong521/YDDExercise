@@ -18,11 +18,14 @@
 
 #import "YDDAppManager.h"
 #import "UIView+HUDExtend.h"
+#import "MBProgressHUD+YDDExtend.h"
 
 #import "UIButton+YDDExtend.h"
 #import "UIView+YDDExtend.h"
 #import "UILabel+YDDExtend.h"
 #import "NSString+YDDExtend.h"
+#import "UIColor+YDDExtend.h"
+#import "UIImage+YDDExtend.h"
 #import "YYModel.h"
 #import <YYCategories/YYCategories.h>
 #import "YDDDefine.h"

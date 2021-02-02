@@ -15,19 +15,38 @@
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *idLabel;
 
+@property (nonatomic, strong) UIView *bgView;
+
 @end
 
 @implementation YDDLeftSideBarView
 
-- (instancetype)init
+- (instancetype)initWithFrame:(CGRect)frame superView:(UIView *)superView
 {
-    self = [super init];
+    self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor grayColor];
-        [self createUI];
         
+        [superView addSubview:self.bgView];
+        [superView insertSubview:self atIndex:0];
+        
+        [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(UIEdgeInsetsZero);
+        }];
+        
+        [self createUI];
     }
     return self;
+}
+
+- (void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    if (frame.origin.x == -kLeftSideBarWidth) {
+        self.bgView.hidden = YES;
+    } else if (frame.origin.x == 0) {
+        self.bgView.hidden = NO;
+    }
 }
 
 - (void)setUserInfo:(YDDUserBaseInfoModel *)userInfo
@@ -72,6 +91,16 @@
         make.bottom.mas_equalTo(-50 - (kSafeBottom));
     }];
 }
+
+- (UIView *)bgView
+{
+    if (!_bgView) {
+        _bgView = [[UIView alloc] init];
+        _bgView.backgroundColor = [UIColor clearColor];
+    }
+    return _bgView;
+}
+
 - (UIImageView *)headImageView
 {
     if (!_headImageView) {
@@ -122,3 +151,4 @@
 */
 
 @end
+

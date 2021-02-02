@@ -98,20 +98,18 @@ static YDDAppManager *_manager;
     if (_leftSideBar) {
         _leftSideBar = nil;
     }
-    _leftSideBar = [[YDDLeftSideBarView alloc] init];
+    _leftSideBar = [[YDDLeftSideBarView alloc] initWithFrame:self.sideBarFrame superView:self.navigation.view];
     weakObj(self);
     _leftSideBar.logonBlock = ^{
         strongObj(self, weakself);
         [strongself userLogon];
     };
-    _leftSideBar.frame = self.sideBarFrame;
-    [self.window addSubview:_leftSideBar];
-    
+   
     _leftSideBar.userInfo = _userInfo;
     
     UIPanGestureRecognizer *panGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesAction:)];
     panGes.delegate = self;
-    [self.tabBar.view addGestureRecognizer:panGes];
+    [self.navigation.view addGestureRecognizer:panGes];
     
 }
 
@@ -120,13 +118,13 @@ static YDDAppManager *_manager;
     CGRect navFrame = self.navFrame;
     CGRect sideFrame = self.sideBarFrame;
     if (self.leftSideBar.frame.origin.x == -kLeftSideBarWidth ||
-        self.navigation.view.frame.origin.x == 0) {
+        self.tabBar.view.frame.origin.x == 0) {
         navFrame.origin.x = kLeftSideBarWidth;
         sideFrame.origin.x = 0;
     }
     
-    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        self.navigation.view.frame = navFrame;
+    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        self.tabBar.view.frame = navFrame;
         self.leftSideBar.frame = sideFrame;
     } completion:^(BOOL finished) {
         
@@ -156,13 +154,19 @@ static YDDAppManager *_manager;
 {
     CGPoint moveP = [pan translationInView:_tabBar.view];
     
+    static CGRect startTabFrame, startSideFrame;
+    
     switch (pan.state) {
         case UIGestureRecognizerStateBegan:
-            
+            startTabFrame = self.tabBar.view.frame;
+            startSideFrame = self.leftSideBar.frame;
             break;
         case UIGestureRecognizerStateChanged: {
-            CGRect tabFrame = self.navFrame;
-            CGRect sideFrame = self.sideBarFrame;
+            
+            
+            
+            CGRect tabFrame = startTabFrame;
+            CGRect sideFrame = startSideFrame;
             tabFrame.origin.x += moveP.x;
             sideFrame.origin.x += moveP.x;
             if (tabFrame.origin.x < 0 || sideFrame.origin.x < -kLeftSideBarWidth) {
@@ -172,7 +176,7 @@ static YDDAppManager *_manager;
                 tabFrame.origin.x = kLeftSideBarWidth;
                 sideFrame.origin.x = 0;
             }
-            self.navigation.view.frame = tabFrame;
+            self.tabBar.view.frame = tabFrame;
             self.leftSideBar.frame = sideFrame;
             
         }
@@ -180,7 +184,7 @@ static YDDAppManager *_manager;
         case UIGestureRecognizerStateEnded:
         case UIGestureRecognizerStateFailed:
         case UIGestureRecognizerStateCancelled: {
-            CGRect tabFrame = self.navigation.view.frame;
+            CGRect tabFrame = self.tabBar.view.frame;
             CGRect sideFrame = self.leftSideBar.frame;
             CGPoint speedP = [pan velocityInView:self.tabBar.view];
             if (speedP.x > kLeftSideBarWidth) {
@@ -197,7 +201,7 @@ static YDDAppManager *_manager;
                 }
             }
             [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-                self.navigation.view.frame = tabFrame;
+                self.tabBar.view.frame = tabFrame;
                 self.leftSideBar.frame = sideFrame;
             } completion:^(BOOL finished) {
                 
@@ -206,7 +210,7 @@ static YDDAppManager *_manager;
             break;
         default:
             [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-                self.navigation.view.frame = self.navFrame;
+                self.tabBar.view.frame = self.navFrame;
                 self.leftSideBar.frame = self.sideBarFrame;
             } completion:^(BOOL finished) {
                 

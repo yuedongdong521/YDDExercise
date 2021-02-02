@@ -24,12 +24,14 @@
 #define ViewW(view) view.frame.size.width
 #define ViewH(view) view.frame.size.height
 
-
 #define kNavBarHeight (IS_iPhoneX ? 88 : 64)
 #define kSafeBottom (IS_iPhoneX ? 34 : 0)
 #define kSafeTop (IS_iPhoneX ? 44 : 0)
-
 #define kTabBarHeight (49 + kSafeBottom)
+
+#define kHeightIPHONE6(h) ScreenHeight * h / 667.0
+#define kWidthIPHONE6(h) ScreenWidth * h / 375.0
+
 
 #define UIColorHexRGBA(rgb,a) [UIColor colorWithRed:((float)((rgb & 0xFF0000) >> 16))/255.0 green:((float)((rgb & 0x00FF00) >> 8))/255.0 blue:((float)(rgb & 0x0000FF))/255.0 alpha:((float)a)]
 

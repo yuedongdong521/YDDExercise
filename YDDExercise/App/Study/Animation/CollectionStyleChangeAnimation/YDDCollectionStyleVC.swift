@@ -13,7 +13,7 @@ class YDDCollectionStyleVC: YDDBaseViewController, UICollectionViewDelegate, UIC
     
     lazy var listLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout.init()
-        layout.itemSize = CGSize(width: SwiftScreenWidth(), height:300)
+        layout.itemSize = CGSize(width: SwiftScreenWidth, height:300)
         layout.sectionInset = UIEdgeInsets.zero
         
         return layout
@@ -21,7 +21,7 @@ class YDDCollectionStyleVC: YDDBaseViewController, UICollectionViewDelegate, UIC
     
     lazy var gridLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout.init()
-        layout.itemSize = CGSize(width: (SwiftScreenWidth() -  30) * 0.5, height: 300)
+        layout.itemSize = CGSize(width: (SwiftScreenWidth -  30) * 0.5, height: 300)
         layout.sectionInset = UIEdgeInsets.init(top: 0, left: 10, bottom: 0, right: 10)
         return layout
     }()

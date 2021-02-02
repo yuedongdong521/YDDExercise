@@ -8,12 +8,41 @@
 
 import Foundation
 
-func SwiftScreenWidth() -> CGFloat {
+var SwiftScreenWidth: CGFloat {
     return UIScreen.main.bounds.size.width
 }
 
-func SwiftScreenHeight() -> CGFloat {
+
+var SwiftScreenHeight: CGFloat {
     return UIScreen.main.bounds.size.height
+}
+
+var SwiftIPhone: Bool {
+    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone
+}
+
+var SwiftIPhoneX: Bool {
+    if !SwiftIPhone {
+        return false
+    }
+    if #available(iOS 11.0, *) {
+        guard let window = UIApplication.shared.delegate?.window, let unwrapedWindow = window else {
+            return false
+        }
+        if unwrapedWindow.safeAreaInsets.left > 0 || unwrapedWindow.safeAreaInsets.bottom > 0 {
+            print(unwrapedWindow.safeAreaInsets)
+            return true
+        }
+    }
+    return false
+}
+
+var SwiftNavHeight: CGFloat {
+    return SwiftIPhoneX ? 88 : 64
+}
+
+var SwiftSafeBottom: CGFloat {
+    return SwiftIPhoneX ? 34 : 0
 }
 
 extension UIView {

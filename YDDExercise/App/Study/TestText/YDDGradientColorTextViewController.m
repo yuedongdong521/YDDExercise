@@ -176,6 +176,7 @@
 {
     if (!_lyricView) {
         _lyricView = [[YDDLyricView alloc] initWithFrame:CGRectZero line:12];
+        _lyricView.style = YDDLyricStyle_Moreway;
     }
     return _lyricView;
 }

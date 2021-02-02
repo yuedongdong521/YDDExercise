@@ -1,14 +1,28 @@
 PODS:
-  - CocoaAsyncSocket (7.6.4)
-  - CocoaDebug (1.6.1)
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
+  - CocoaAsyncSocket (7.6.5)
+  - CocoaDebug (1.6.2)
   - FDFullscreenPopGesture (1.1)
   - KTVCocoaHTTPServer (1.0.0):
     - CocoaAsyncSocket
-  - KTVHTTPCache (1.0.4):
+  - KTVHTTPCache (2.0.1):
     - KTVCocoaHTTPServer
   - Masonry (1.1.0)
-  - MBProgressHUD (1.1.0)
-  - MJRefresh (3.2.0)
+  - MJRefresh (3.2.3)
   - NJKWebViewProgress (0.2.3):
     - NJKWebViewProgress/Core (= 0.2.3)
     - NJKWebViewProgress/ProgressView (= 0.2.3)
@@ -31,11 +45,11 @@ PODS:
     - PINCache (~> 3.0.3)
     - PINRemoteImage/Core
   - ReactiveObjC (3.1.1)
-  - SDCycleScrollView (1.80):
+  - SDCycleScrollView (1.82):
     - SDWebImage (>= 5.0.0)
-  - SDWebImage (5.0.6):
-    - SDWebImage/Core (= 5.0.6)
-  - SDWebImage/Core (5.0.6)
+  - SDWebImage (5.10.3):
+    - SDWebImage/Core (= 5.10.3)
+  - SDWebImage/Core (5.10.3)
   - Texture (3.0.0):
     - Texture/AssetsLibrary (= 3.0.0)
     - Texture/Core (= 3.0.0)
@@ -56,8 +70,8 @@ PODS:
     - Texture/Core
   - Texture/Video (3.0.0):
     - Texture/Core
-  - TOCropViewController (2.5.1)
-  - TZImagePickerController (3.2.1)
+  - TOCropViewController (2.5.5)
+  - TZImagePickerController (3.2.9)
   - YYCache (1.0.4)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
@@ -71,11 +85,11 @@ PODS:
     - YYImage
 
 DEPENDENCIES:
+  - AFNetworking (= 4.0.1)
   - CocoaDebug
   - FDFullscreenPopGesture
-  - KTVHTTPCache (~> 1.0.0)
+  - KTVHTTPCache
   - Masonry (~> 1.1.0)
-  - MBProgressHUD (~> 1.1.0)
   - MJRefresh (~> 3.2.0)
   - NJKWebViewProgress (~> 0.2.3)
   - OpenUDID (~> 1.0.0)
@@ -91,17 +105,16 @@ DEPENDENCIES:
   - YYWebImage (~> 1.0.5)
 
 SPEC REPOS:
-  "git@gitlab.91banban.com:ios_pods/Specs.git":
-    - Masonry
-    - MBProgressHUD
-    - NJKWebViewProgress
   trunk:
+    - AFNetworking
     - CocoaAsyncSocket
     - CocoaDebug
     - FDFullscreenPopGesture
     - KTVCocoaHTTPServer
     - KTVHTTPCache
+    - Masonry
     - MJRefresh
+    - NJKWebViewProgress
     - OpenUDID
     - PINCache
     - PINOperation
@@ -119,31 +132,31 @@ SPEC REPOS:
     - YYWebImage
 
 SPEC CHECKSUMS:
-  CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
-  CocoaDebug: 3563d3fa48816ff5be7f969edf3b059693973ec8
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
+  CocoaDebug: 7e1329f8fa4d2ff4be0e3f175b7a32cd7c602118
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   KTVCocoaHTTPServer: df8d7b861e603ff8037e9b2138aca2563a6b768d
-  KTVHTTPCache: 158a79650b704ebc49a48a2a10def3b584c18d2d
-  Masonry: b6fab37fbabf245a9f09ea977b26b6969ad5b75e
-  MBProgressHUD: da6ff2eff2ed6235765fb3e7ace9031b6cdbc038
-  MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
-  NJKWebViewProgress: 051a02ce6233fa3ba4de2c391c39a68db236a9cc
+  KTVHTTPCache: 588c3eb16f6bd1e6fde1e230dabfb7bd4e490a4d
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJRefresh: 2b1214a2dc8f4df4c5dcb028ea2ad4e245425fb7
+  NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
   PINCache: 7a8fc1a691173d21dbddbf86cd515de6efa55086
   PINOperation: 00c935935f1e8cf0d1e2d6b542e75b88fc3e5e20
   PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
-  SDCycleScrollView: b3c9a5ed840c771c4938978174c7c9d9feefeb96
-  SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
+  SDCycleScrollView: a0d74c3384caa72bdfc81470bdbc8c14b3e1fbcf
+  SDWebImage: e378178472b735e84b007bfb55514c97948a0598
   Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
-  TOCropViewController: 00dc36c4e4a0f4a45efa91adbf22df8a4fae01d3
-  TZImagePickerController: bf4c57b98d8707fce41ea6be872414a71c7a8c9d
+  TOCropViewController: da59f531f8ac8a94ef6d6c0fc34009350f9e8bfe
+  TZImagePickerController: 1f92968aa0e98a06b9e2eccca8560acc19254257
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 2f44fefb2bef127cbab154fbddb204fdce2e7516
+PODFILE CHECKSUM: c930539ee5344d89e036b4a6f75c731e5446cabb
 
 COCOAPODS: 1.10.0

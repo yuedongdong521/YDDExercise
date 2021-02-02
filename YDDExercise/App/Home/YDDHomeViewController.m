@@ -164,20 +164,8 @@
 - (void)setNavigBar
 {
     self.navBarView.title = @"首页";
-    [self.navBarView.leftBtn setImage:[UIImage imageNamed:@"zhankaicebianlan"] forState:UIControlStateNormal];
-    [self.navBarView.leftBtn setImageEdgeInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
-    weakObj(self);
-    self.navBarView.leftBlock = ^{
-        strongObj(self, weakself);
-        [strongself leftAction];
-    };
 }
 
-- (void)leftAction
-{
-
-    [kAppManager showOrHideLeftSideBar];
-}
 
 - (NSMutableArray<YDDHomeModel *> *)mutArray
 {
