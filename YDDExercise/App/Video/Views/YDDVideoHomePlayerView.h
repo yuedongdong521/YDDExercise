@@ -30,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (int)updateVideoProgress:(CGFloat)progress;
 
+- (void)saveVideoCompleted:(void (^)(BOOL))completed;
+
 @end
 
 NS_ASSUME_NONNULL_END

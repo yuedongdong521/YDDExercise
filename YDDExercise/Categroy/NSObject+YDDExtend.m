@@ -11,28 +11,32 @@
 #import <objc/runtime.h>
 @implementation NSObject (YDDExtend)
 
-+ (UIViewController *)curTopViewController
+- (UIViewController *)ydd_curTopViewController
 {
     UIViewController *vc = [UIApplication sharedApplication].delegate.window.rootViewController;
-    return [self curTopViewControllerWithVC:vc];
+    return [self ydd_curTopViewControllerWithVC:vc];
 }
 
-+ (UIViewController *)curTopViewControllerWithVC:(UIViewController *)vc
+- (UIViewController *)ydd_curTopViewControllerWithVC:(UIViewController *)vc
 {
     if (vc.presentedViewController) {
-        [self curTopViewControllerWithVC:[vc presentedViewController]];
+        return [self ydd_curTopViewControllerWithVC:[vc presentedViewController]];
     } else if ([vc isKindOfClass:[UITabBarController class]]) {
-        [self curTopViewControllerWithVC:[((UITabBarController *)vc) selectedViewController]];
+        UITabBarController *tabVC = (UITabBarController *)vc;
+        UIViewController *selVC = [tabVC selectedViewController];
+        return [self ydd_curTopViewControllerWithVC:selVC];
     } else if ([vc isKindOfClass:[UINavigationController class]]) {
-        [self curTopViewControllerWithVC:[[((UINavigationController *)vc) viewControllers] lastObject]];
+        UINavigationController *navVC = (UINavigationController *)vc;
+        UIViewController *topVC = navVC.viewControllers.lastObject;
+        return [self ydd_curTopViewControllerWithVC:topVC];
     }
     return vc;
 }
 
-+ (UIViewController *)curTopViewControllerWithView:(UIView *)view
+- (UIViewController *)ydd_curTopViewControllerWithView:(UIView *)view
 {
     UIViewController *vc = [view superViewController];
-    return [self curTopViewControllerWithVC:vc];
+    return [self ydd_curTopViewControllerWithVC:vc];
 }
 
 

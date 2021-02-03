@@ -54,14 +54,14 @@
 - (void)saveVideoCompleted:(void (^)(BOOL))completed
 {
     
-//    NSString *videoPath = self.videoCanchePath;
-//    [YDDPhotoSaveLibraryManager saveVideo:[NSURL fileURLWithPath:videoPath] toAlbumName:YDDALBUM needTips:NO completionHandler:^(BOOL success) {
-//        if (!success) {
-//            [self downloadVideo];
-//        } else {
-//            [MBProgressHUD cus_showMessage:@"下载成功"];
-//        }
-//    }];
+    NSString *videoPath = [NSString ydd_readKTVCacheWithPath:self.player.curUrl];
+    [YDDPhotoSaveLibraryManager saveVideo:[NSURL fileURLWithPath:videoPath] toAlbumName:YDDALBUM needTips:NO completionHandler:^(BOOL success) {
+        if (!success) {
+            [self downloadVideo];
+        } else {
+            [MBProgressHUD cus_showMessage:@"下载成功"];
+        }
+    }];
 }
 
 - (NSString *)downloadDire

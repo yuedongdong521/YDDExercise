@@ -22,8 +22,6 @@ static YDDAppManager *_manager;
 @property (nonatomic, strong) YDDTabBarController *tabBar;
 @property (nonatomic, strong) UINavigationController *navigation;
 
-@property (nonatomic, assign, readonly) CGRect tabBarFrame;
-@property (nonatomic, assign, readonly) CGRect sideBarFrame;
 
 @end
 
@@ -98,124 +96,14 @@ static YDDAppManager *_manager;
     if (_leftSideBar) {
         _leftSideBar = nil;
     }
-    _leftSideBar = [[YDDLeftSideBarView alloc] initWithFrame:self.sideBarFrame superView:self.navigation.view];
+    
+    _leftSideBar = [[YDDLeftSideBarView alloc] initWithNavigationVC:self.navigation];
     weakObj(self);
     _leftSideBar.logonBlock = ^{
         strongObj(self, weakself);
         [strongself userLogon];
     };
-   
     _leftSideBar.userInfo = _userInfo;
-    
-    UIPanGestureRecognizer *panGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesAction:)];
-    panGes.delegate = self;
-    [self.navigation.view addGestureRecognizer:panGes];
-    
-}
-
-- (void)showOrHideLeftSideBar
-{
-    CGRect navFrame = self.tabBarFrame;
-    CGRect sideFrame = self.sideBarFrame;
-    if (self.leftSideBar.frame.origin.x == -kLeftSideBarWidth ||
-        self.tabBar.view.frame.origin.x == 0) {
-        navFrame.origin.x = kLeftSideBarWidth;
-        sideFrame.origin.x = 0;
-    }
-    
-    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        self.tabBar.view.frame = navFrame;
-        self.leftSideBar.frame = sideFrame;
-    } completion:^(BOOL finished) {
-        
-    }];
-}
-
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
-{
-    if (_tabBar.selectedIndex == 0 && _navigation.viewControllers.count == 1) {
-        return YES;
-    }
-    return NO;
-}
-
-
-- (CGRect)tabBarFrame
-{
-    return CGRectMake(0, 0, ScreenWidth, ScreenHeight);
-}
-
-- (CGRect)sideBarFrame
-{
-    return CGRectMake(-kLeftSideBarWidth, 0, kLeftSideBarWidth, ScreenHeight);
-}
-
-- (void)panGesAction:(UIPanGestureRecognizer *)pan
-{
-    CGPoint moveP = [pan translationInView:_tabBar.view];
-    
-    static CGRect startTabFrame, startSideFrame;
-    
-    switch (pan.state) {
-        case UIGestureRecognizerStateBegan:
-            startTabFrame = self.tabBar.view.frame;
-            startSideFrame = self.leftSideBar.frame;
-            break;
-        case UIGestureRecognizerStateChanged: {
-            
-            CGRect tabFrame = startTabFrame;
-            CGRect sideFrame = startSideFrame;
-            tabFrame.origin.x += moveP.x;
-            sideFrame.origin.x += moveP.x;
-            if (tabFrame.origin.x < 0 || sideFrame.origin.x < -kLeftSideBarWidth) {
-                tabFrame.origin.x = 0;
-                sideFrame.origin.x = -kLeftSideBarWidth;
-            } else if (tabFrame.origin.x > kLeftSideBarWidth || sideFrame.origin.x > 0) {
-                tabFrame.origin.x = kLeftSideBarWidth;
-                sideFrame.origin.x = 0;
-            }
-            self.tabBar.view.frame = tabFrame;
-            self.leftSideBar.frame = sideFrame;
-            
-        }
-            break;
-        case UIGestureRecognizerStateEnded:
-        case UIGestureRecognizerStateFailed:
-        case UIGestureRecognizerStateCancelled: {
-            CGRect tabFrame = self.tabBar.view.frame;
-            CGRect sideFrame = self.leftSideBar.frame;
-            CGPoint speedP = [pan velocityInView:self.tabBar.view];
-            if (speedP.x > kLeftSideBarWidth) {
-                tabFrame.origin.x = kLeftSideBarWidth;
-                sideFrame.origin.x = 0;
-            } else {
-                CGFloat halfX = kLeftSideBarWidth * 0.5;
-                if (tabFrame.origin.x > halfX || sideFrame.origin.x > -halfX) {
-                    tabFrame.origin.x = kLeftSideBarWidth;
-                    sideFrame.origin.x = 0;
-                } else {
-                    tabFrame.origin.x = 0;
-                    sideFrame.origin.x = -kLeftSideBarWidth;
-                }
-            }
-            [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-                self.tabBar.view.frame = tabFrame;
-                self.leftSideBar.frame = sideFrame;
-            } completion:^(BOOL finished) {
-                
-            }];
-        }
-            break;
-        default:
-            [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-                self.tabBar.view.frame = self.tabBarFrame;
-                self.leftSideBar.frame = self.sideBarFrame;
-            } completion:^(BOOL finished) {
-                
-            }];
-            
-            break;
-    }
 }
 
 

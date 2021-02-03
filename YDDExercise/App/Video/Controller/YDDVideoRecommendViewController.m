@@ -150,14 +150,14 @@
 
 - (void)downloadVideo
 {
-//    [self.playerView saveVideoCompleted:^(BOOL success) {
-//        if (success) {
-//
-//        } else {
-//
-//        }
-//        NSLog(@"downloadVideo statue : %d", success);
-//    }];
+    [self.playerView saveVideoCompleted:^(BOOL success) {
+        if (success) {
+
+        } else {
+
+        }
+        NSLog(@"downloadVideo statue : %d", success);
+    }];
 }
 
 - (void)loadNewDataCompleted:(void (^)(void))completed
@@ -272,6 +272,7 @@
             if (self.shareBlock) {
                 self.shareBlock(videoModel, coverImage);
             }
+            [self downloadVideo];
         };
         
         

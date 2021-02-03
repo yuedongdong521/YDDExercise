@@ -17,9 +17,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) YDDUserBaseInfoModel *userInfo;
 
 
-- (instancetype)initWithFrame:(CGRect)frame superView:(UIView *)superView;
+- (instancetype)initWithNavigationVC:(UINavigationController *)navigationVC;
+
+
+- (void)hiddenSideBar:(BOOL)hidden animation:(BOOL)animation;
 
 @end
+
 
 
 NS_ASSUME_NONNULL_END

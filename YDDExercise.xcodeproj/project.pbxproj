@@ -115,6 +115,7 @@
 		8499D8D225C7CFE100B848FD /* YDDVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499D8D125C7CFE100B848FD /* YDDVideoPlayer.swift */; };
 		8499D92E25C9271A00B848FD /* emoticon.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8499D92D25C9271A00B848FD /* emoticon.plist */; };
 		8499D93425C9283B00B848FD /* YDDTabBarBgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499D93325C9283B00B848FD /* YDDTabBarBgView.m */; };
+		8499D9BD25CA787300B848FD /* YDDSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499D9BC25CA787300B848FD /* YDDSettingViewController.m */; };
 		849F9F8025A6BAB3008495DB /* YDDRACViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849F9F7F25A6BAB3008495DB /* YDDRACViewController.m */; };
 		849F9F8725A6BC6D008495DB /* YDDPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849F9F8625A6BC6D008495DB /* YDDPasswordView.m */; };
 		849F9FAE25A6E80A008495DB /* YDDInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849F9FAD25A6E80A008495DB /* YDDInputView.m */; };
@@ -358,6 +359,8 @@
 		8499D92D25C9271A00B848FD /* emoticon.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emoticon.plist; sourceTree = "<group>"; };
 		8499D93225C9283B00B848FD /* YDDTabBarBgView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDTabBarBgView.h; sourceTree = "<group>"; };
 		8499D93325C9283B00B848FD /* YDDTabBarBgView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDTabBarBgView.m; sourceTree = "<group>"; };
+		8499D9BB25CA787300B848FD /* YDDSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDSettingViewController.h; sourceTree = "<group>"; };
+		8499D9BC25CA787300B848FD /* YDDSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDSettingViewController.m; sourceTree = "<group>"; };
 		849F9F7E25A6BAB3008495DB /* YDDRACViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDRACViewController.h; sourceTree = "<group>"; };
 		849F9F7F25A6BAB3008495DB /* YDDRACViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDRACViewController.m; sourceTree = "<group>"; };
 		849F9F8525A6BC6D008495DB /* YDDPasswordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDPasswordView.h; sourceTree = "<group>"; };
@@ -866,6 +869,15 @@
 			path = Player;
 			sourceTree = "<group>";
 		};
+		8499D9C125CA787D00B848FD /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				8499D9BB25CA787300B848FD /* YDDSettingViewController.h */,
+				8499D9BC25CA787300B848FD /* YDDSettingViewController.m */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		849F9F7D25A6BA31008495DB /* ReactiveObjC */ = {
 			isa = PBXGroup;
 			children = (
@@ -910,6 +922,7 @@
 		84E36BD52577B4EE009C6C9F /* App */ = {
 			isa = PBXGroup;
 			children = (
+				8499D9C125CA787D00B848FD /* Setting */,
 				8499D86225C79DC000B848FD /* Video */,
 				84E36BE02577B708009C6C9F /* Study */,
 				84E36BD92577B63C009C6C9F /* Mine */,
@@ -1466,6 +1479,7 @@
 				8499D8AB25C79DC100B848FD /* YDDVideoAnchorCollectionView.m in Sources */,
 				848A21AC25C401A2000E2771 /* PPEmojiPreviewView.m in Sources */,
 				DFCCF59C22E341C600F15B62 /* YDDNavigationBarView.m in Sources */,
+				8499D9BD25CA787300B848FD /* YDDSettingViewController.m in Sources */,
 				847377E025BAAA6B0085496D /* YDDLyricModel.m in Sources */,
 				848A21A625C401A2000E2771 /* PPTextBackedString.m in Sources */,
 				DFF24F0722EC301500C85F17 /* YDDWebView.m in Sources */,
