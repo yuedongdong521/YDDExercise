@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
                startPoint:(CGPoint)startPoint
                  endPoint:(CGPoint)endPoint;
 
-- (UIViewController *)superViewController;
+- (nullable UIViewController *)superViewController;
 
 @end
 

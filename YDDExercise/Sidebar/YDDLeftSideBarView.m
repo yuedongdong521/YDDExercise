@@ -31,7 +31,7 @@
         [superView insertSubview:self atIndex:0];
         
         [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_equalTo(UIEdgeInsetsZero);
+            make.edges.mas_equalTo(UIEdgeInsetsMake(0, kLeftSideBarWidth, 0, 0));
         }];
         
         [self createUI];

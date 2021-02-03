@@ -22,7 +22,7 @@ static YDDAppManager *_manager;
 @property (nonatomic, strong) YDDTabBarController *tabBar;
 @property (nonatomic, strong) UINavigationController *navigation;
 
-@property (nonatomic, assign, readonly) CGRect navFrame;
+@property (nonatomic, assign, readonly) CGRect tabBarFrame;
 @property (nonatomic, assign, readonly) CGRect sideBarFrame;
 
 @end
@@ -115,7 +115,7 @@ static YDDAppManager *_manager;
 
 - (void)showOrHideLeftSideBar
 {
-    CGRect navFrame = self.navFrame;
+    CGRect navFrame = self.tabBarFrame;
     CGRect sideFrame = self.sideBarFrame;
     if (self.leftSideBar.frame.origin.x == -kLeftSideBarWidth ||
         self.tabBar.view.frame.origin.x == 0) {
@@ -140,7 +140,7 @@ static YDDAppManager *_manager;
 }
 
 
-- (CGRect)navFrame
+- (CGRect)tabBarFrame
 {
     return CGRectMake(0, 0, ScreenWidth, ScreenHeight);
 }
@@ -162,8 +162,6 @@ static YDDAppManager *_manager;
             startSideFrame = self.leftSideBar.frame;
             break;
         case UIGestureRecognizerStateChanged: {
-            
-            
             
             CGRect tabFrame = startTabFrame;
             CGRect sideFrame = startSideFrame;
@@ -210,7 +208,7 @@ static YDDAppManager *_manager;
             break;
         default:
             [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-                self.tabBar.view.frame = self.navFrame;
+                self.tabBar.view.frame = self.tabBarFrame;
                 self.leftSideBar.frame = self.sideBarFrame;
             } completion:^(BOOL finished) {
                 

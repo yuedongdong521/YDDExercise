@@ -12,7 +12,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSObject (YDDExtend)
 
++ (UIViewController *)curTopViewController;
+
++ (UIViewController *)curTopViewControllerWithVC:(UIViewController *)vc;
+
++ (UIViewController *)curTopViewControllerWithView:(UIView *)view;
+
 +(NSArray<NSString*>*)ydd_GetAllProperty:(id)object;
+
 + (void)ydd_GoThroughAllProperty:(id)object
                    propertyBlock:(void(^)(NSString *propertyName))propertyBlcok;
 
