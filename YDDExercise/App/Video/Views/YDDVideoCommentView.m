@@ -246,7 +246,24 @@
 - (BOOL)judgeUserIsCanCommens { return true;}
 
 /// 发布评论,回复评论
-- (void)commentReplyRequest:(NSString *)text{}
+- (void)commentReplyRequest:(NSString *)text{
+    YDDVideoCommentModel *model = [[YDDVideoCommentModel alloc] init];
+    model.avatarUrl = @"https://img.17kuxiu.com/avatar/1267508_1610985221.png";
+    model.userLevel = 3;
+    model.anchorLevel = 2;
+    model.content = text;
+    model.fromUserId = @"123";
+    model.commentId = @"1";
+    model.nickName = @"摘心";
+    model.targetUserId = @"123";
+    model.timestamp = [NSString stringWithFormat:@"%lld", (long long)[[NSDate date] timeIntervalSince1970] * 1000 - arc4random() % 10000];
+    model.type = @"COMMENT";
+    
+    [self.commentMutArr insertObject:model atIndex:0];
+    
+    [self.tableView reloadData];
+    
+}
 
 - (void)deleteCommentWithCommentModel:(YDDVideoCommentModel *)model indexPath:(NSIndexPath *)indexPath {}
 
@@ -429,7 +446,7 @@
         return;
     }
     
-    [self.inputView clearTextAndReturnInitState];
+    [self.inputView clearTextAndReturnInitState: NO];
     
     [self commentReplyRequest:text];
     

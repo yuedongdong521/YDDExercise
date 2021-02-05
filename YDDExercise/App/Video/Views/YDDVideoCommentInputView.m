@@ -197,12 +197,25 @@
 /// 发送
 - (void)sendButtonClick:(UIButton *)button{
     
-    [self.textView resignFirstResponder];
+//    [self.textView resignFirstResponder];
+//    if (self.sendTextBlock) {
+//        self.sendTextBlock(self.plainText);
+//    }
+//    [self moveInputContentViewWithBottomDistance:kSafeBottom andKeyBoardHeight:_inputViewHeight animationDuration:0.25];
+    
+    [self sendText:self.plainText];
+    
+}
+
+- (void)sendText:(NSString *)text
+{
     if (self.sendTextBlock) {
         self.sendTextBlock(self.plainText);
     }
-    [self moveInputContentViewWithBottomDistance:kSafeBottom andKeyBoardHeight:_inputViewHeight animationDuration:0.25];
+    self.textView.attributedText = nil;
+    self.textView.text = @"";
     
+    [self textViewDidChange:self.textView];
     [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(30);
     }];
@@ -259,7 +272,7 @@
 - (void)setupKeyBoardPlaceholderContent:(NSString *)text{
     self.placeLabel.text = text;
 }
-- (void)clearTextAndReturnInitState{
+- (void)clearTextAndReturnInitState {
     CGFloat keyBoardHeight = self.keyBoardHeight;
     if (!self.isShowKeyBoard) {
         keyBoardHeight = _inputViewHeight;
@@ -268,8 +281,8 @@
     self.textView.attributedText = nil;
     self.textView.text = @"";
     _isHaveText = NO;
-    _bottomDistance = kSafeBottom;
     _keyBoardHeight = _inputViewHeight;
+    _bottomDistance = kSafeBottom;
     [self textViewDidChange:self.textView];
     
     [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {

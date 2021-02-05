@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 设置占位文字
 - (void)setupKeyBoardPlaceholderContent:(NSString *)text;
 /// 清除文字,并回到初始状态
-- (void)clearTextAndReturnInitState;
+- (void)clearTextAndReturnInitState:(BOOL)hiddenKeyboard;
 /// 弹出键盘
 - (void)showKeyBoard;
 /// 隐藏键盘
