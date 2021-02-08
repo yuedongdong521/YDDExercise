@@ -195,9 +195,11 @@ class YDDMenueView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
         
         if offsetX < 0 {
             offsetX = 0
-        } else if offsetX >= CGFloat(self.menueTitles.count) {
+        } else if offsetX >= CGFloat(self.menueTitles.count - 1) {
             offsetX = CGFloat(self.menueTitles.count - 1)
         }
+        
+        print("contentOffset : \(self.collectionView.contentOffset)")
         
         if CGFloat(self.curIndex) > offsetX {
             if CGFloat(self.curIndex) - offsetX >= 1 {
@@ -206,8 +208,9 @@ class YDDMenueView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
             
             if self.curIndex < 0 {
                 self.curIndex = 0;
-                let lineFrame = getLineFrame(self.curIndex)
-                self.lineView.frame = lineFrame;
+                let cellFrame = getCellFrame(self.curIndex)
+                let lineFrame = getLineFrame(cellFrame)
+                self.update(lineFrame, cellFrame)
                 return
             }
             
@@ -217,7 +220,11 @@ class YDDMenueView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
             let space = curFrame.midX - newFrame.midX
             var lineFrame = getLineFrame(curFrame)
             
+            
             let roat = ceil(offsetX) - offsetX
+            
+            var cellFrame = curFrame;
+            cellFrame.origin.x -= (space * roat)
             
             if animationStyle == .line {
                 if roat <= 0.5 {
@@ -231,7 +238,8 @@ class YDDMenueView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
                 lineFrame.origin.x -= space * roat
             }
             print("line x : \(lineFrame.origin.x)")
-            self.lineView.frame = lineFrame
+            self.update(lineFrame, cellFrame)
+    
         } else if CGFloat(self.curIndex) < offsetX {
             if offsetX - CGFloat(self.curIndex) >= 1 {
                 self.curIndex += 1
@@ -239,8 +247,9 @@ class YDDMenueView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
             
             if self.curIndex >= self.menueTitles.count {
                 self.curIndex = self.menueTitles.count - 1
-                let lineFrame = self.getLineFrame(self.curIndex)
-                self.lineView.frame = lineFrame
+                let cellFrame = getCellFrame(self.curIndex)
+                let lineFrame = self.getLineFrame(cellFrame)
+                self.update(lineFrame, cellFrame)
                 return
             }
             
@@ -250,9 +259,13 @@ class YDDMenueView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
             var lineFrame = getLineFrame(curFrame)
             let roat =  offsetX - floor(offsetX)
             
+            var cellFrame = curFrame;
+            cellFrame.origin.x += (space * roat)
+            
             if animationStyle == .line {
                 if roat <= 0.5 {
                     lineFrame.size.width += (space * roat * 2)
+                    
                 } else {
                     lineFrame.size.width = (lineFrame.size.width + space) - (space * (roat - 0.5) * 2)
                     lineFrame.origin.x += (space * (roat - 0.5) * 2)
@@ -261,7 +274,7 @@ class YDDMenueView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
                 lineFrame.origin.x += space * roat
             }
             
-            self.lineView.frame = lineFrame
+            self.update(lineFrame, cellFrame)
             print("line x : \(lineFrame.origin.x)")
         }
         
@@ -297,23 +310,27 @@ class YDDMenueView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
     private func updateLineFrame(_ index: Int, _ animation: Bool, _ completed: (()->Void)?) {
        
         let lineFrame = self.getLineFrame(index)
+        let cellFrame = getCellFrame(index)
         if !animation {
-            self.lineView.frame = lineFrame
+            self.update(lineFrame, cellFrame)
             completed?()
         } else {
             
             UIView.animate(withDuration: 0.25) {
-                self.lineView.frame = lineFrame
+                self.update(lineFrame, cellFrame)
             } completion: { (finish) in
                 if !finish {
-                    self.lineView.frame = lineFrame
+                    self.update(lineFrame, cellFrame)
                 }
                 completed?()
             }
         }
     }
     
-    
+    private func update(_ lineframe: CGRect, _ cellFrame: CGRect) {
+        self.lineView.frame = lineframe
+        self.collectionView.scrollRectToVisible(cellFrame, animated: false)
+    }
     
     /// UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -336,8 +353,8 @@ class YDDMenueView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
         let att = NSAttributedString(string: title, attributes: [NSAttributedString.Key.font : self.menueFont])
         
         var w = att.boundingRect(with: CGSize(width: 1000, height: self.menueHeight), options: .usesLineFragmentOrigin, context: nil).size.width + 1
-        if w < 30 {
-            w = 30
+        if w < 60 {
+            w = 60
         }
         
         return CGSize(width: w, height: self.menueHeight)

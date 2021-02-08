@@ -66,7 +66,7 @@ class YDDMenueViewController: YDDBaseViewController, UICollectionViewDataSource,
     
     private func configDefaultList() {
         var titles = Array<String>()
-        for i in 0...4 {
+        for i in 0...14 {
             let vc = UIViewController()
             vc.view.backgroundColor = UIColor(red: CGFloat(arc4random() % 256) / 255.0, green: CGFloat(arc4random() % 256) / 255.0, blue: CGFloat(arc4random() % 256)  / 255.0, alpha: 1)
             self.addChild(vc)
