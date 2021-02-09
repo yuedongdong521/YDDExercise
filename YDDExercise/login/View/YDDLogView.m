@@ -127,8 +127,8 @@
     if (_viewType == LogViewType_Logon) {
         return;
     }
-    NSData *data = [NSData dataWithContentsOfFile:infoModel.userIcon];
-    UIImage *image = [UIImage imageWithContentsOfFile:infoModel.userIcon];
+//    NSData *data = [NSData dataWithContentsOfFile:infoModel.userIcon];
+//    UIImage *image = [UIImage imageWithContentsOfFile:infoModel.userIcon];
     [_headImage yy_setImageWithURL:[_infoModel.userIcon ydd_coverUrl] placeholder:kHeadIconDefault];
     _nameLabel.text = infoModel.userName;
     _userIdTextField.text = [NSString stringWithFormat:@"%ld", (long)infoModel.userId];
@@ -159,7 +159,7 @@
         userInfo.userName = _nameTextField.text;
         if (_uploadImage) {
             NSData *data = UIImagePNGRepresentation(_uploadImage);
-            userInfo.userIcon = [NSString ydd_pathForDocumentWithDirName:@"headIcon" fileName:nil];
+            userInfo.userIcon = [YDDFileManager ydd_creatRandomDocumentWithDirName:@"headIcon" fileName:nil];
             [data writeToFile:userInfo.userIcon atomically:YES];
         }
     }

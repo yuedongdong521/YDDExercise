@@ -10,41 +10,6 @@
 
 @implementation NSString (YDDExtend)
 
-
-/// 创建文件夹
-+ (NSString *)ydd_pathForDocumentWithDirName:(NSString *)dirName fileName:(NSString *)fileName
-{
-    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
-    NSFileManager *manager = [NSFileManager defaultManager];
-    path = [path stringByAppendingPathComponent:dirName];
-    BOOL isDir = NO;
-    BOOL isEx = [manager fileExistsAtPath:path isDirectory:&isDir];
-    if (!isDir || !isEx) {
-        [manager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
-    }
-    
-    if (!fileName) {
-        fileName = [NSString stringWithFormat:@"%lu.png", (NSUInteger)[[NSDate date] timeIntervalSince1970] * 1000];
-    }
-    
-    return [path stringByAppendingPathComponent:fileName];
-}
-
-+ (nullable NSString *)ydd_readKTVCacheWithPath:(NSString *)path
-{
-    NSFileManager *manager = [NSFileManager defaultManager];
-    NSString *file = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject stringByAppendingPathComponent:@"KTVHTTPCache"];
-    NSString *name = [path md5String];
-    NSString *direPath = [NSString stringWithFormat:@"%@/%@", file, name];
-    BOOL isDire;
-    BOOL isExits = [manager fileExistsAtPath:direPath isDirectory:&isDire];
-    if (isDire && isExits) {
-        return [NSString stringWithFormat:@"%@/%@.mp4", direPath, name];
-    }
-    return nil;
-}
-
-
 + (YDDNumber)ydd_maxFourNum:(NSInteger)num
 {
     YDDNumber number = {@"0", @""};

@@ -370,13 +370,13 @@ const NSInteger YTitleWidth = 55;
     
     self.yTitles = yMutArr;
     
-    CGFloat space = 5;
+//    CGFloat space = 5;
     CGFloat xWidth = self.axisView.frame.size.width / (xValues.count - 1);
-    CGFloat yHeight = self.axisView.frame.size.height / (yValues.count - 1);
+//    CGFloat yHeight = self.axisView.frame.size.height / (yValues.count - 1);
     
     [self.gridView updateRow:yValues.count - 1 column:xValues.count - 1 scale:1];
     
-    CGFloat arrowSize = self.axisView.arrowSize;
+//    CGFloat arrowSize = self.axisView.arrowSize;
     
 
     [self.xTitles mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:xWidth leadSpacing:YTitleWidth tailSpacing:(YTitleWidth - xWidth)];
@@ -422,7 +422,7 @@ const NSInteger YTitleWidth = 55;
     
 
     CGFloat xSpace = width / self.gridView.row;
-    CGFloat ySpace = width / self.gridView.column;
+//    CGFloat ySpace = width / self.gridView.column;
     
     UIBezierPath *path = [[UIBezierPath alloc] init];
     

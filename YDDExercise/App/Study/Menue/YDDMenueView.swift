@@ -77,23 +77,23 @@ private class YDDMenueCell: UICollectionViewCell {
 
 class YDDMenueView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    var space: CGFloat = 10
+    public var space: CGFloat = 10
     
-    var leftSpace: CGFloat = 10
+    public var leftSpace: CGFloat = 10
     
-    var rightSpace: CGFloat = 10
+    public var rightSpace: CGFloat = 10
     
-    var menueHeight: CGFloat = 30
+    public var menueHeight: CGFloat = 30
     
-    var menueFont: UIFont = textFont(fontSize: 16)
+    public var menueFont: UIFont = textFont(fontSize: 16)
     
-    var lineSize = CGSize(width: 10, height: 2)
+    public var lineSize = CGSize(width: 10, height: 2)
     
-    var animationStyle: YDDMenueAnimationStyle = .normal
+    public var animationStyle: YDDMenueAnimationStyle = .normal
     
-    weak var delegate: YDDMenueDelegate?
+    public weak var delegate: YDDMenueDelegate?
     
-    var menueTitles = Array<String>() {
+    public var menueTitles = Array<String>() {
         didSet {
             CATransaction.begin()
             self.collectionView.reloadData()

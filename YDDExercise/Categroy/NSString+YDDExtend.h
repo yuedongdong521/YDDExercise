@@ -19,16 +19,6 @@ typedef struct YDDNumber YDDNumber;
 @interface NSString (YDDExtend)
 
 
-/// 创建文件路径
-/// @param dirName 文件夹名称
-/// @param fileName 文件名
-+ (NSString *)ydd_pathForDocumentWithDirName:(NSString *)dirName fileName:(nullable NSString *)fileName;
-
-
-/// 读取 KTVHTTPCache 缓存MP4文件
-/// @param path <#path description#>
-+ (nullable NSString *)ydd_readKTVCacheWithPath:(NSString *)path;
-
 /// 将数字转成四位数
 /// @param num <#num description#>
 + (YDDNumber)ydd_maxFourNum:(NSInteger)num;

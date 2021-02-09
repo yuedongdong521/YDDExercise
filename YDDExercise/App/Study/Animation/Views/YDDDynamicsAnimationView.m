@@ -196,7 +196,7 @@
 - (void)gavityAction
 {
     return;
-    NSLog(@"重力 action time: %f, running: %d, %@", self.dynamicAnimator.elapsedTime, self.dynamicAnimator.running, NSStringFromCGRect(self.animationView.frame));
+//    NSLog(@"重力 action time: %f, running: %d, %@", self.dynamicAnimator.elapsedTime, self.dynamicAnimator.running, NSStringFromCGRect(self.animationView.frame));
 }
 
 /// 添加重力

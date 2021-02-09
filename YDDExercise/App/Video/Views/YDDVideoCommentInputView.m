@@ -272,7 +272,7 @@
 - (void)setupKeyBoardPlaceholderContent:(NSString *)text{
     self.placeLabel.text = text;
 }
-- (void)clearTextAndReturnInitState {
+- (void)clearTextAndReturnInitState:(BOOL)hiddenKeyboard {
     CGFloat keyBoardHeight = self.keyBoardHeight;
     if (!self.isShowKeyBoard) {
         keyBoardHeight = _inputViewHeight;

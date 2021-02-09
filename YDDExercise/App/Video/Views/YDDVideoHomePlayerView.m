@@ -54,7 +54,7 @@
 - (void)saveVideoCompleted:(void (^)(BOOL))completed
 {
     
-    NSString *videoPath = [NSString ydd_readKTVCacheWithPath:self.player.curUrl];
+    NSString *videoPath = [YDDFileManager ydd_readKTVCacheWithPath:self.player.curUrl];
     [YDDPhotoSaveLibraryManager saveVideo:[NSURL fileURLWithPath:videoPath] toAlbumName:YDDALBUM needTips:NO completionHandler:^(BOOL success) {
         if (!success) {
             [self downloadVideo];

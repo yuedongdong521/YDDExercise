@@ -27,7 +27,6 @@ typedef enum : NSUInteger {
 + (instancetype)shareManager;
 + (void)checkLoginState;
 - (void)loginStateDidChanage:(AppState)state;
-- (void)showOrHideLeftSideBar;
 
 
 

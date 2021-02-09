@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840672A625D2221600E1D1DC /* YDDFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 840672A525D2221600E1D1DC /* YDDFileManager.m */; };
 		840B20F225A2DF8B00851385 /* YDDCollectionStyleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B20F125A2DF8B00851385 /* YDDCollectionStyleVC.swift */; };
 		840B210425A2E39200851385 /* YDDCollectionStyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B210325A2E39200851385 /* YDDCollectionStyleCell.swift */; };
 		840B211825A2E5CB00851385 /* YDDSwiftFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B211725A2E5CB00851385 /* YDDSwiftFunction.swift */; };
@@ -116,6 +117,8 @@
 		8499D92E25C9271A00B848FD /* emoticon.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8499D92D25C9271A00B848FD /* emoticon.plist */; };
 		8499D93425C9283B00B848FD /* YDDTabBarBgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499D93325C9283B00B848FD /* YDDTabBarBgView.m */; };
 		8499D9BD25CA787300B848FD /* YDDSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499D9BC25CA787300B848FD /* YDDSettingViewController.m */; };
+		8499DA2725D142DD00B848FD /* YDDSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499DA2625D142DA00B848FD /* YDDSettingModel.m */; };
+		8499DA2D25D1435700B848FD /* YDDSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499DA2C25D1435700B848FD /* YDDSettingTableViewCell.m */; };
 		849F9F8025A6BAB3008495DB /* YDDRACViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849F9F7F25A6BAB3008495DB /* YDDRACViewController.m */; };
 		849F9F8725A6BC6D008495DB /* YDDPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849F9F8625A6BC6D008495DB /* YDDPasswordView.m */; };
 		849F9FAE25A6E80A008495DB /* YDDInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849F9FAD25A6E80A008495DB /* YDDInputView.m */; };
@@ -174,6 +177,8 @@
 
 /* Begin PBXFileReference section */
 		6FCD78E34D2233443A1B4D61 /* libPods-YDDExercise.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YDDExercise.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		840672A425D2221600E1D1DC /* YDDFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDFileManager.h; sourceTree = "<group>"; };
+		840672A525D2221600E1D1DC /* YDDFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDFileManager.m; sourceTree = "<group>"; };
 		840B20F025A2DF8A00851385 /* YDDExercise-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YDDExercise-Bridging-Header.h"; sourceTree = "<group>"; };
 		840B20F125A2DF8B00851385 /* YDDCollectionStyleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDDCollectionStyleVC.swift; sourceTree = "<group>"; };
 		840B210325A2E39200851385 /* YDDCollectionStyleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDDCollectionStyleCell.swift; sourceTree = "<group>"; };
@@ -361,6 +366,10 @@
 		8499D93325C9283B00B848FD /* YDDTabBarBgView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDTabBarBgView.m; sourceTree = "<group>"; };
 		8499D9BB25CA787300B848FD /* YDDSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDSettingViewController.h; sourceTree = "<group>"; };
 		8499D9BC25CA787300B848FD /* YDDSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDSettingViewController.m; sourceTree = "<group>"; };
+		8499DA2525D142DA00B848FD /* YDDSettingModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDSettingModel.h; sourceTree = "<group>"; };
+		8499DA2625D142DA00B848FD /* YDDSettingModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDSettingModel.m; sourceTree = "<group>"; };
+		8499DA2B25D1435700B848FD /* YDDSettingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDSettingTableViewCell.h; sourceTree = "<group>"; };
+		8499DA2C25D1435700B848FD /* YDDSettingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDSettingTableViewCell.m; sourceTree = "<group>"; };
 		849F9F7E25A6BAB3008495DB /* YDDRACViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDRACViewController.h; sourceTree = "<group>"; };
 		849F9F7F25A6BAB3008495DB /* YDDRACViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDRACViewController.m; sourceTree = "<group>"; };
 		849F9F8525A6BC6D008495DB /* YDDPasswordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDPasswordView.h; sourceTree = "<group>"; };
@@ -558,6 +567,8 @@
 				849F9F8625A6BC6D008495DB /* YDDPasswordView.m */,
 				844714C822DEF01300B69CE7 /* YDDAddImageTools.h */,
 				844714C922DEF01300B69CE7 /* YDDAddImageTools.m */,
+				840672A425D2221600E1D1DC /* YDDFileManager.h */,
+				840672A525D2221600E1D1DC /* YDDFileManager.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -874,6 +885,10 @@
 			children = (
 				8499D9BB25CA787300B848FD /* YDDSettingViewController.h */,
 				8499D9BC25CA787300B848FD /* YDDSettingViewController.m */,
+				8499DA2525D142DA00B848FD /* YDDSettingModel.h */,
+				8499DA2625D142DA00B848FD /* YDDSettingModel.m */,
+				8499DA2B25D1435700B848FD /* YDDSettingTableViewCell.h */,
+				8499DA2C25D1435700B848FD /* YDDSettingTableViewCell.m */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1391,6 +1406,7 @@
 				DFCCF59922E3416100F15B62 /* YDDBaseViewController.m in Sources */,
 				8447149222DED2E600B69CE7 /* main.m in Sources */,
 				844714CE22DF0C2A00B69CE7 /* YDDPhotoPreCollectionViewCell.m in Sources */,
+				8499DA2725D142DD00B848FD /* YDDSettingModel.m in Sources */,
 				DFFDA02A22E74C14006FE5CF /* YDDHomeHeaderView.m in Sources */,
 				8499D8BE25C79DC100B848FD /* YDDVideoGuideView.m in Sources */,
 				8499D8A325C79DC100B848FD /* YDDVideoTransitionViewController.m in Sources */,
@@ -1444,6 +1460,7 @@
 				8499D8BD25C79DC100B848FD /* YDDVideoCommentInputView.m in Sources */,
 				844714BD22DEE70000B69CE7 /* YDDPhotosViewController.m in Sources */,
 				8499D8C425C79EF900B848FD /* UIColor+YDDExtend.m in Sources */,
+				8499DA2D25D1435700B848FD /* YDDSettingTableViewCell.m in Sources */,
 				848A206E25C3B2F4000E2771 /* YDDOffScreenRenderViewController.m in Sources */,
 				DFCCF5CF22E43CDD00F15B62 /* NSString+YDDExtend.m in Sources */,
 				848A201025C194FD000E2771 /* YDDMenueViewController.swift in Sources */,
@@ -1460,6 +1477,7 @@
 				DFCCF5BD22E3ECB600F15B62 /* NSObject+YDDExtend.m in Sources */,
 				8499D8AA25C79DC100B848FD /* YDDVideoCollectionView.m in Sources */,
 				8499D8BA25C79DC100B848FD /* YDDVideoLocationView.m in Sources */,
+				840672A625D2221600E1D1DC /* YDDFileManager.m in Sources */,
 				8447148422DED2E500B69CE7 /* AppDelegate.m in Sources */,
 				DFCCF5C622E3FB4D00F15B62 /* YDDAppManager.m in Sources */,
 				8499D8A425C79DC100B848FD /* YDDVideoRecommendViewController.m in Sources */,

@@ -211,7 +211,7 @@
         return;
     }
     
-    @weakify(self);
+//    @weakify(self);
     cell.updateVideoPreogressBlock = ^int(CGFloat progress) {
 //        @strongify(self);
 //        return [self.playerView updateVideoProgress:progress];
