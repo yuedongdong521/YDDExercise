@@ -15,6 +15,7 @@
 #import "YDDMineViewController.h"
 #import "YDDVideoRecommendViewController.h"
 #import "YDDTabBarBgView.h"
+#import "YDDBaseNavigationController.h"
 
 @interface YDDTabBar : UITabBar
 @property (nonatomic, strong) UIButton *centerBtn;
@@ -119,7 +120,7 @@ static YDDTabBarController *_tabBar;
         UIImage *videoSelectedImage = [UIImage imageNamed:@"videoSelected"];
         videoImage = [videoImage scallImageWidthScallSize:CGSizeMake(20, 20)];
         videoSelectedImage = [videoSelectedImage scallImageWidthScallSize:CGSizeMake(20, 20)];
-        [self addChildVc:videoVC title:@"小视频" normalImg:videoImage selectImg:videoSelectedImage];
+        UINavigationController *videoNav = [self addChildVc:videoVC title:@"小视频" normalImg:videoImage selectImg:videoSelectedImage];
         
         YDDHomeViewController *homeVC = [[YDDHomeViewController alloc] init];
         
@@ -128,7 +129,7 @@ static YDDTabBarController *_tabBar;
         homeImage = [homeImage scallImageWidthScallSize:CGSizeMake(20, 20)];
         homeSelectedImage = [homeSelectedImage scallImageWidthScallSize:CGSizeMake(20, 20)];
         
-        [self addChildVc:homeVC title:@"首页" normalImg:homeImage selectImg:homeSelectedImage];
+        UINavigationController *homeNav = [self addChildVc:homeVC title:@"首页" normalImg:homeImage selectImg:homeSelectedImage];
         
         YDDPhotosViewController *photosVC = [[YDDPhotosViewController alloc] init];
         UIImage *xiangceImage = [UIImage imageNamed:@"xiangce"];
@@ -137,7 +138,7 @@ static YDDTabBarController *_tabBar;
         xiangceSelectImage = [xiangceSelectImage scallImageWidthScallSize:CGSizeMake(20, 20)];
 
         
-        [self addChildVc:photosVC title:@"相册" normalImg:xiangceImage selectImg:xiangceSelectImage];
+        UINavigationController *photosNav = [self addChildVc:photosVC title:@"相册" normalImg:xiangceImage selectImg:xiangceSelectImage];
         
         YDDStudyViewController *studyVC = [[YDDStudyViewController alloc] init];
         UIImage *studyImage = [UIImage imageNamed:@"study"];
@@ -145,7 +146,7 @@ static YDDTabBarController *_tabBar;
         studyImage = [studyImage scallImageWidthScallSize:CGSizeMake(20, 20)];
         studySelectImage = [studySelectImage scallImageWidthScallSize:CGSizeMake(20, 20)];
         
-        [self addChildVc:studyVC title:@"学习" normalImg:studyImage selectImg:studySelectImage];
+        UINavigationController *studyNav = [self addChildVc:studyVC title:@"学习" normalImg:studyImage selectImg:studySelectImage];
         
         YDDMineViewController *mineVC = [[YDDMineViewController alloc] init];
         UIImage *mineImage = [UIImage imageNamed:@"mine"];
@@ -153,10 +154,10 @@ static YDDTabBarController *_tabBar;
         mineImage = [mineImage scallImageWidthScallSize:CGSizeMake(20, 20)];
         mineSelectImage = [mineSelectImage scallImageWidthScallSize:CGSizeMake(20, 20)];
         
-        [self addChildVc:mineVC title:@"我的" normalImg:mineImage selectImg:mineSelectImage];
+        UINavigationController *mineNav = [self addChildVc:mineVC title:@"我的" normalImg:mineImage selectImg:mineSelectImage];
         
         
-        [self setViewControllers:@[videoVC, homeVC, photosVC, studyVC, mineVC]];
+        [self setViewControllers:@[videoNav, homeNav, photosNav, studyNav, mineNav]];
     
         [self clearTabbar];
         
@@ -178,7 +179,7 @@ static YDDTabBarController *_tabBar;
 
 
 
-- (void)addChildVc:(UIViewController *)childVc title:(NSString *)title normalImg:(UIImage *)normalImg selectImg:(UIImage *)selectImg
+- (UINavigationController *)addChildVc:(UIViewController *)childVc title:(NSString *)title normalImg:(UIImage *)normalImg selectImg:(UIImage *)selectImg
 {
     childVc.tabBarItem.image =  [normalImg imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     childVc.tabBarItem.selectedImage = [selectImg imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -187,6 +188,10 @@ static YDDTabBarController *_tabBar;
     [childVc.tabBarItem setTitleTextAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:12], NSForegroundColorAttributeName : [UIColor redColor]} forState:UIControlStateSelected];
     childVc.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -4);
     childVc.tabBarItem.imageInsets = UIEdgeInsetsMake(-1, 0, 1, 0);
+    
+    YDDBaseNavigationController *nav = [[YDDBaseNavigationController alloc] initWithRootViewController:childVc];
+    return nav;
+    
 }
 
 

@@ -20,6 +20,8 @@
 @property (nonatomic, strong) NSMutableArray <YDDHomeModel *>* headArray;
 @property (nonatomic, strong) NSMutableArray <YDDHomeModel *>* mutArray;
 
+@property (nonatomic, weak) UIView *pushView;
+
 
 @end
 
@@ -34,6 +36,11 @@
     
     [self readData];
    
+}
+
+- (UIView *)transitionAnmateView
+{
+    return self.pushView;
 }
 
 - (void)readData
@@ -93,6 +100,10 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.activePush = YES;
+    YDDHomeCollectionViewCell *cell = (YDDHomeCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    self.pushView = cell.imageView;
+    
     YDDDetailsViewController *vc = [[YDDDetailsViewController alloc] init];
     vc.model = self.mutArray[indexPath.item];
     [self.navigationController pushViewController:vc animated:YES];
@@ -102,8 +113,8 @@
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(YDDWaterfallFlowLayout*)collectionViewLayout heightForWidth:(CGFloat)width indexPath:(NSIndexPath*)indexPath
 {
     YDDHomeModel *model = self.mutArray[indexPath.item];
-    if (width > 0) {
-      return  model.width / width * model.height + kLabelHeight;
+    if (model.width > 0) {
+      return  width / model.width * model.height + kLabelHeight;
     }
     return 0;
 }

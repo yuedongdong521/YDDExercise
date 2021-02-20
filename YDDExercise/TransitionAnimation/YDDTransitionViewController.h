@@ -12,7 +12,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface YDDTransitionViewController : YDDBaseViewController
 
+
+@property (nonatomic, assign) BOOL activePop;
+
+@property (nonatomic, assign) BOOL activePush;
+
 - (UIView *)transitionAnmateView;
+
+/// 添加滑动pop手势
+- (void)addPopInteractiveTransition;
 
 @end
 

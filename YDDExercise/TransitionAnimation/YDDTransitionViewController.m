@@ -10,7 +10,13 @@
 #import "YDDTransition.h"
 
 
-@interface YDDTransitionViewController ()<UINavigationControllerDelegate>
+@interface YDDTransitionViewController ()<UINavigationControllerDelegate, UIGestureRecognizerDelegate>
+
+@property (nonatomic, strong) UIPercentDrivenInteractiveTransition *interactiveTransition;
+
+@property (nonatomic, assign) BOOL interactiving;
+
+@property (nonatomic, assign) BOOL hasInteractive;
 
 @end
 
@@ -25,12 +31,88 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.delegate = self;
+    
+    if (self.hasInteractive) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if (self.hasInteractive) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    }
 }
 
 - (UIView *)transitionAnmateView
 {
     return nil;
 }
+
+/// 添加滑动pop手势
+- (void)addPopInteractiveTransition
+{
+    if (!self.navigationController) {
+        return;
+    }
+    
+    self.hasInteractive = YES;
+    
+    UIPanGestureRecognizer *pangesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureAction:)];
+    pangesture.delegate = self;
+    [self.navigationController.view addGestureRecognizer:pangesture];
+    
+    self.interactiveTransition = [[UIPercentDrivenInteractiveTransition alloc] init];
+
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    return YES;
+}
+
+
+- (void)panGestureAction:(UIPanGestureRecognizer *)gesture
+{
+    UIView* view = gesture.view;
+    CGPoint location = [gesture locationInView:view];
+    CGPoint translation = [gesture translationInView:view];
+    
+    switch (gesture.state) {
+        case UIGestureRecognizerStateBegan: {
+            _interactiving = YES;
+            if (location.x < CGRectGetMidX(view.bounds) && self.navigationController.viewControllers.count > 1) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            break;
+        }
+        case UIGestureRecognizerStateChanged: {
+            
+            CGFloat fraction = fabs(translation.x / view.bounds.size.width);
+            
+            NSLog(@"滑动转场动画 ： %f", fraction);
+            [_interactiveTransition updateInteractiveTransition:fraction];
+            break;
+        }
+        case UIGestureRecognizerStateCancelled:
+        case UIGestureRecognizerStateEnded: {
+            _interactiving = NO;
+            CGFloat fraction = fabs(translation.x / view.bounds.size.width);
+            if (fraction < 0.5 || [gesture velocityInView:view].x < 0 || gesture.state == UIGestureRecognizerStateCancelled) {
+                [_interactiveTransition cancelInteractiveTransition];
+            } else {
+                [_interactiveTransition finishInteractiveTransition];
+            }
+            
+            break;
+        }
+        default:
+            break;
+    }
+}
+
 
 /**
  为这个动画添加用户交互
@@ -40,7 +122,7 @@
 {
     
     
-    return nil;
+    return self.hasInteractive ? self.interactiving ? self.interactiveTransition : nil : nil;
 }
 
 /**
@@ -58,11 +140,21 @@
         ![toVC respondsToSelector:@selector(transitionAnmateView)]) {
         return nil;
     }
+    
     YDDTransition *transition = [[YDDTransition alloc] init];
-    if (operation == UINavigationControllerOperationPush) {
+    if (self.activePush && operation == UINavigationControllerOperationPush) {
+        
         transition.animationStatus = AnimationStatus_push;
+        return transition;
+        
     }
-    return transition;
+    
+    if (self.activePop && operation == UINavigationControllerOperationPop) {
+        
+        transition.animationStatus = AnimationStatus_pop;
+        return transition;
+    }
+    return nil;
 }
 
 /*

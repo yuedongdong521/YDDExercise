@@ -20,7 +20,7 @@ static YDDAppManager *_manager;
 
 @property (nonatomic, strong) YDDLeftSideBarView *leftSideBar;
 @property (nonatomic, strong) YDDTabBarController *tabBar;
-@property (nonatomic, strong) UINavigationController *navigation;
+//@property (nonatomic, strong) UINavigationController *navigation;
 
 
 @end
@@ -63,9 +63,9 @@ static YDDAppManager *_manager;
     [self destoryWindow];
     if (state == AppState_login) {
         _tabBar = [[YDDTabBarController alloc] init];
-        _navigation = [[UINavigationController alloc] initWithRootViewController:_tabBar];
-        self.window.rootViewController = _navigation;
-        [self addleftSideBar];
+//        _navigation = [[UINavigationController alloc] initWithRootViewController:_tabBar];
+        self.window.rootViewController = _tabBar;
+//        [self addleftSideBar];
         
     } else {
         YDDLoginViewController *logInVC = [[YDDLoginViewController alloc] init];
@@ -86,9 +86,9 @@ static YDDAppManager *_manager;
     if (_tabBar) {
         _tabBar = nil;
     }
-    if (_navigation) {
-        _navigation = nil;
-    }
+//    if (_navigation) {
+//        _navigation = nil;
+//    }
 }
 
 - (void)addleftSideBar
@@ -97,7 +97,7 @@ static YDDAppManager *_manager;
         _leftSideBar = nil;
     }
     
-    _leftSideBar = [[YDDLeftSideBarView alloc] initWithNavigationVC:self.navigation];
+    _leftSideBar = [[YDDLeftSideBarView alloc] initWithNavigationVC:self.tabBar];
     weakObj(self);
     _leftSideBar.logonBlock = ^{
         strongObj(self, weakself);

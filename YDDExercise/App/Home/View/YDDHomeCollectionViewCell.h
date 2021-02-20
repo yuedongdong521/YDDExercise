@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) YDDHomeModel *model;
 
+@property (nonatomic, strong) UIImageView *imageView;
+
 @end
 
 NS_ASSUME_NONNULL_END

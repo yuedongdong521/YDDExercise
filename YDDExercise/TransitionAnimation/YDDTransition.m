@@ -26,14 +26,32 @@
 }
 
 
+- (YDDTransitionViewController *)fromVC:(nonnull id<UIViewControllerContextTransitioning>)context
+{
+    return (YDDTransitionViewController *)[context viewControllerForKey:UITransitionContextFromViewControllerKey];
+}
+
+- (YDDTransitionViewController *)toVC:(nonnull id<UIViewControllerContextTransitioning>)context
+{
+    return (YDDTransitionViewController *)[context viewControllerForKey:UITransitionContextToViewControllerKey];
+}
+
+
+
 - (void)pushAnimateTransition:(id<UIViewControllerContextTransitioning>)transitionContext
 {
+    /// 当前VC
     YDDTransitionViewController *fromVC = [self fromVC:transitionContext];
+    /// 被push出来的VC
     YDDTransitionViewController *toVC = [self toVC:transitionContext];
     if (![fromVC isKindOfClass:[YDDTransitionViewController class]] ||
         ![toVC isKindOfClass:[YDDTransitionViewController class]]) {
         return;
     }
+    
+    [toVC.view setNeedsLayout];
+    [toVC.view layoutIfNeeded];
+    
     UIView *fromView = [fromVC transitionAnmateView];
     
     UIView *toView = [toVC transitionAnmateView];
@@ -43,32 +61,44 @@
     }
     UIView *containerView =  [transitionContext containerView];
     [containerView addSubview:toVC.view];
-    toVC.view.hidden = YES;
     
       // fromView相对于window的位置
     CGRect fromFrame = [fromView convertRect:fromView.bounds toView:nil];
+    
+    
+    
     CGRect toFrame = [toView convertRect:toView.bounds toView:nil];
+    
     __block UIImageView *toImageView = [[UIImageView alloc] initWithImage:[toView snapshotImage]];
+    
     toImageView.frame = toFrame;
+    toImageView.contentMode = UIViewContentModeScaleAspectFit;
     
     __block UIImageView *fromImageView = [[UIImageView alloc] initWithImage:[fromView snapshotImage]];
     fromImageView.frame = fromFrame;
 
     [containerView addSubview:fromImageView];
     
-    [UIView animateWithDuration:self.animationDuration delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        fromImageView.frame = toFrame;
+    CGAffineTransform transform = [self transformWithfromFrame:fromFrame toFrame:toFrame];
+    
+    toVC.view.alpha = 0;
+    [UIView animateWithDuration:self.animationDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        fromImageView.transform = transform;
     } completion:^(BOOL finished) {
-        toVC.view.hidden = NO;
+        
+        toVC.view.alpha = 1;
         [fromImageView removeFromSuperview];
         fromImageView = nil;
-        [transitionContext completeTransition:YES];
+        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+        
     }];
 }
 
 - (void)popAnimateTransition:(id<UIViewControllerContextTransitioning>)transitionContext
 {
+    /// 当前VC
     YDDTransitionViewController *fromVC = [self fromVC:transitionContext];
+    /// pop出来的VC
     YDDTransitionViewController *toVC = [self toVC:transitionContext];
     if (![fromVC isKindOfClass:[YDDTransitionViewController class]] ||
         ![toVC isKindOfClass:[YDDTransitionViewController class]]) {
@@ -81,36 +111,58 @@
     }
     
     UIView *containerView =  [transitionContext containerView];
-    [containerView addSubview:fromVC.view];
-    fromVC.view.hidden = YES;
+    [containerView addSubview:toVC.view];
     
     CGRect fromFrame = [fromView convertRect:fromView.bounds toView:nil];
     CGRect toFrame = [toView convertRect:toView.bounds toView:nil];
-    __block UIImageView *toImageView = [[UIImageView alloc] initWithImage:[toView snapshotImage]];
-    toImageView.frame = toFrame;
     
     __block UIImageView *fromImageView = [[UIImageView alloc] initWithImage:[fromView snapshotImage]];
     fromImageView.frame = fromFrame;
-
     
     
-    [containerView addSubview:toImageView];
+    CGAffineTransform transform = [self transformWithfromFrame:fromFrame toFrame:toFrame];
     [containerView addSubview:fromImageView];
     
-   
-    fromImageView.hidden = YES;
-    [UIView animateWithDuration:self.animationDuration delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        toImageView.frame = fromFrame;;
+    fromImageView.alpha = 1;
+    [UIView animateWithDuration:self.animationDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        fromImageView.transform = transform;
     } completion:^(BOOL finished) {
-        fromImageView.hidden = NO;
-        [toImageView removeFromSuperview];
-        toImageView = nil;
-        [transitionContext completeTransition:YES];
+        
+        fromImageView.alpha = 0;
+        [fromImageView removeFromSuperview];
+        fromImageView = nil;
+        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+        
     }];
 }
 
+- (CGAffineTransform)transformWithfromFrame:(CGRect)fromFrame toFrame:(CGRect)toFrame
+{
+    CGPoint fromCenter = CGPointMake(CGRectGetMidX(fromFrame), CGRectGetMidY(fromFrame));
+    CGPoint toCenter = CGPointMake(CGRectGetMidX(toFrame), CGRectGetMidY(toFrame));
+    
+    
+    CGFloat a = 1, d = 1;
+    if (fromFrame.size.width != 0) {
+        a = toFrame.size.width / fromFrame.size.width;
+    }
+    if (fromFrame.size.height != 0) {
+        d = toFrame.size.height / fromFrame.size.height;
+    }
+    
+    CGFloat scale = MAX(a, d);
+    
+    CGFloat tx = toCenter.x - fromCenter.x;
+    CGFloat ty = toCenter.y - fromCenter.y;
+    CGAffineTransform transform = CGAffineTransformMake(scale, 0, 0, scale, tx, ty);
+    return transform;
+}
+
+
+
 
 #pragma mark - UIViewControllerAnimatedTransitioning
+/// 执行具体转场动画
 - (void)animateTransition:(nonnull id<UIViewControllerContextTransitioning>)transitionContext {
     switch (self.animationStatus) {
         case AnimationStatus_push:
@@ -124,18 +176,15 @@
     }
 }
 
+/// 返回转场动画执行时间
 - (NSTimeInterval)transitionDuration:(nullable id<UIViewControllerContextTransitioning>)transitionContext {
     return self.animationDuration;
 }
 
-- (YDDTransitionViewController *)fromVC:(nonnull id<UIViewControllerContextTransitioning>)context
-{
-    return (YDDTransitionViewController *)[context viewControllerForKey:UITransitionContextFromViewControllerKey];
-}
 
-- (YDDTransitionViewController *)toVC:(nonnull id<UIViewControllerContextTransitioning>)context
-{
-    return (YDDTransitionViewController *)[context viewControllerForKey:UITransitionContextToViewControllerKey];
+/// 转场动画结束
+- (void)animationEnded:(BOOL) transitionCompleted {
+    
 }
 
 

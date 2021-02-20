@@ -128,6 +128,7 @@
 		84E36C022578C059009C6C9F /* YDDAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E36C012578C059009C6C9F /* YDDAnimationViewController.m */; };
 		84E36C3E2578D70A009C6C9F /* YDDAnimationContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E36C3D2578D70A009C6C9F /* YDDAnimationContentViewController.m */; };
 		84E36C462578DB99009C6C9F /* YDDDynamicsAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E36C452578DB99009C6C9F /* YDDDynamicsAnimationView.m */; };
+		84EF01B225E0BF4A006C3296 /* YDDBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EF01B125E0BF4A006C3296 /* YDDBaseNavigationController.m */; };
 		B0D8D8012881E3249DCE593B /* libPods-YDDExercise.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCD78E34D2233443A1B4D61 /* libPods-YDDExercise.a */; };
 		DF888EDB22E8AFAB00755CDE /* YDDTransitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF888ED622E8AFAA00755CDE /* YDDTransitionViewController.m */; };
 		DF888EDC22E8AFAB00755CDE /* YDDTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DF888ED722E8AFAA00755CDE /* YDDTransition.m */; };
@@ -389,6 +390,8 @@
 		84E36C3D2578D70A009C6C9F /* YDDAnimationContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDAnimationContentViewController.m; sourceTree = "<group>"; };
 		84E36C442578DB99009C6C9F /* YDDDynamicsAnimationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDDynamicsAnimationView.h; sourceTree = "<group>"; };
 		84E36C452578DB99009C6C9F /* YDDDynamicsAnimationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDDynamicsAnimationView.m; sourceTree = "<group>"; };
+		84EF01B025E0BF4A006C3296 /* YDDBaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDBaseNavigationController.h; sourceTree = "<group>"; };
+		84EF01B125E0BF4A006C3296 /* YDDBaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDBaseNavigationController.m; sourceTree = "<group>"; };
 		C0648B53D474694EF53A9309 /* Pods-YDDExercise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YDDExercise.release.xcconfig"; path = "Target Support Files/Pods-YDDExercise/Pods-YDDExercise.release.xcconfig"; sourceTree = "<group>"; };
 		DF888ED522E8AFAA00755CDE /* YDDTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDDTransition.h; sourceTree = "<group>"; };
 		DF888ED622E8AFAA00755CDE /* YDDTransitionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDDTransitionViewController.m; sourceTree = "<group>"; };
@@ -1026,6 +1029,8 @@
 				DFCCF59822E3416100F15B62 /* YDDBaseViewController.m */,
 				DFCCF59A22E341C600F15B62 /* YDDNavigationBarView.h */,
 				DFCCF59B22E341C600F15B62 /* YDDNavigationBarView.m */,
+				84EF01B025E0BF4A006C3296 /* YDDBaseNavigationController.h */,
+				84EF01B125E0BF4A006C3296 /* YDDBaseNavigationController.m */,
 				847377D825BA6EAD0085496D /* YDDGradientLabel.h */,
 				847377D925BA6EAD0085496D /* YDDGradientLabel.m */,
 			);
@@ -1451,6 +1456,7 @@
 				8488F20525B80DDF007BF74A /* YDDTabNodeViewController.m in Sources */,
 				8499D8A925C79DC100B848FD /* YDDVideoCommentModel.m in Sources */,
 				848A21A325C401A2000E2771 /* UIScreen+PPAddition.m in Sources */,
+				84EF01B225E0BF4A006C3296 /* YDDBaseNavigationController.m in Sources */,
 				DFCCF5A622E3541000F15B62 /* UIView+YDDExtend.m in Sources */,
 				84E36C462578DB99009C6C9F /* YDDDynamicsAnimationView.m in Sources */,
 				848A201625C25F52000E2771 /* YDDMenueObjVC.m in Sources */,

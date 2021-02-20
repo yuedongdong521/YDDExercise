@@ -35,18 +35,16 @@
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
-    self.headImageView.frame = CGRectMake(0, 0, ScreenWidth, kHeadImageHeight);
     
-    [_headImageView yy_setImageWithURL:[NSURL URLWithString:_model.iconUrl] options:YYWebImageOptionUseNSURLCache];
+    [_headImageView yy_setImageWithURL:[NSURL URLWithString:_model.iconUrl] placeholder:[UIImage imageNamed:@"defaultIcon"]];
     
     self.navBarView.backgroundColor = [UIColor clearColor];
     self.hiddenNavBarLeftBtn = NO;
     self.navBarView.title = _model.name;
+    
+    self.activePop = YES;
+    [self addPopInteractiveTransition];
 }
-
-
-
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -99,6 +97,7 @@
         _headImageView = [[UIImageView alloc] init];
         _headImageView.clipsToBounds = YES;
         _headImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _headImageView.frame = CGRectMake(0, 0, ScreenWidth, kHeadImageHeight);
     }
     return _headImageView;
 }

@@ -11,8 +11,6 @@
 #import "UIView+YDDCorner.h"
 @interface YDDHomeCollectionViewCell ()
 
-@property (nonatomic, strong) UIImageView *imageView;
-
 @property (nonatomic, strong) UILabel *label;
 
 @end
@@ -55,7 +53,7 @@
     if (!_imageView) {
         _imageView = [[UIImageView alloc] init];
         _imageView.clipsToBounds = YES;
-        _imageView.contentMode = UIViewContentModeScaleAspectFill;
+        _imageView.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _imageView;
 }
