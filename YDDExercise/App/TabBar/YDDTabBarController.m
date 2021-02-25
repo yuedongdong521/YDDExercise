@@ -161,7 +161,7 @@ static YDDTabBarController *_tabBar;
     
         [self clearTabbar];
         
-        self.selectedIndex = 2;
+        self.selectedIndex = 3;
         
         
     }

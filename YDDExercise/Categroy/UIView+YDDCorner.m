@@ -138,7 +138,7 @@ const void* _cornerRadius;
 }
 
 
-- (void)cutCorners:(YDDCornerStyle)cornerType radius:(CGFloat)radius color:(UIColor *)color
+- (void)ydd_cutCorners:(YDDCornerStyle)cornerType radius:(CGFloat)radius color:(UIColor *)color
 {
     if (radius <= 0) {
         [self clearLayer];

@@ -33,6 +33,8 @@
 #import "YDDDefine.h"
 #import "YDDFileManager.h"
 
+#import <ReactiveObjC/ReactiveObjC.h>
+
 #endif
 
 #endif /* PrefixHeader_pch */

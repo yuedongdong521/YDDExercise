@@ -21,7 +21,7 @@ typedef NS_ENUM(NSUInteger, YDDCornerStyle) {
 
 @interface UIView (YDDCorner)
 
-- (void)cutCorners:(YDDCornerStyle)cornerType radius:(CGFloat)radius color:(UIColor *)color;
+- (void)ydd_cutCorners:(YDDCornerStyle)cornerType radius:(CGFloat)radius color:(UIColor *)color;
 
 @end
 

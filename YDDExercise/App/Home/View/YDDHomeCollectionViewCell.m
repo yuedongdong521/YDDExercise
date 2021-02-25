@@ -33,7 +33,7 @@
         }];
         
 //        [self.imageView cutRadius:10];
-        [self.imageView cutCorners:YDDCornerStyle_all radius:10 color:[UIColor whiteColor]];
+        [self.imageView ydd_cutCorners:YDDCornerStyle_all radius:10 color:[UIColor whiteColor]];
     }
     return self;
 }

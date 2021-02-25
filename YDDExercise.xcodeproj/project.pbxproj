@@ -129,6 +129,11 @@
 		84E36C3E2578D70A009C6C9F /* YDDAnimationContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E36C3D2578D70A009C6C9F /* YDDAnimationContentViewController.m */; };
 		84E36C462578DB99009C6C9F /* YDDDynamicsAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E36C452578DB99009C6C9F /* YDDDynamicsAnimationView.m */; };
 		84EF01B225E0BF4A006C3296 /* YDDBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EF01B125E0BF4A006C3296 /* YDDBaseNavigationController.m */; };
+		84EF02D225E63C05006C3296 /* YDDUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EF02D125E63C04006C3296 /* YDDUserInfoModel.m */; };
+		84EF02DB25E63ED9006C3296 /* YDDUserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EF02DA25E63ED9006C3296 /* YDDUserListViewController.m */; };
+		84EF02E125E63FB8006C3296 /* YDDUserInfoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EF02E025E63FB8006C3296 /* YDDUserInfoViewModel.m */; };
+		84EF02E725E63FDE006C3296 /* YDDUserListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EF02E625E63FDE006C3296 /* YDDUserListView.m */; };
+		84EF02ED25E66BA3006C3296 /* YDDUserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EF02EC25E66BA3006C3296 /* YDDUserInfoCell.m */; };
 		B0D8D8012881E3249DCE593B /* libPods-YDDExercise.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCD78E34D2233443A1B4D61 /* libPods-YDDExercise.a */; };
 		DF888EDB22E8AFAB00755CDE /* YDDTransitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF888ED622E8AFAA00755CDE /* YDDTransitionViewController.m */; };
 		DF888EDC22E8AFAB00755CDE /* YDDTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DF888ED722E8AFAA00755CDE /* YDDTransition.m */; };
@@ -392,6 +397,16 @@
 		84E36C452578DB99009C6C9F /* YDDDynamicsAnimationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDDynamicsAnimationView.m; sourceTree = "<group>"; };
 		84EF01B025E0BF4A006C3296 /* YDDBaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDBaseNavigationController.h; sourceTree = "<group>"; };
 		84EF01B125E0BF4A006C3296 /* YDDBaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDBaseNavigationController.m; sourceTree = "<group>"; };
+		84EF02D025E63C04006C3296 /* YDDUserInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDUserInfoModel.h; sourceTree = "<group>"; };
+		84EF02D125E63C04006C3296 /* YDDUserInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDUserInfoModel.m; sourceTree = "<group>"; };
+		84EF02D925E63ED9006C3296 /* YDDUserListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDUserListViewController.h; sourceTree = "<group>"; };
+		84EF02DA25E63ED9006C3296 /* YDDUserListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDUserListViewController.m; sourceTree = "<group>"; };
+		84EF02DF25E63FB8006C3296 /* YDDUserInfoViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDUserInfoViewModel.h; sourceTree = "<group>"; };
+		84EF02E025E63FB8006C3296 /* YDDUserInfoViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDUserInfoViewModel.m; sourceTree = "<group>"; };
+		84EF02E525E63FDE006C3296 /* YDDUserListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDUserListView.h; sourceTree = "<group>"; };
+		84EF02E625E63FDE006C3296 /* YDDUserListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDUserListView.m; sourceTree = "<group>"; };
+		84EF02EB25E66BA3006C3296 /* YDDUserInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDUserInfoCell.h; sourceTree = "<group>"; };
+		84EF02EC25E66BA3006C3296 /* YDDUserInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDUserInfoCell.m; sourceTree = "<group>"; };
 		C0648B53D474694EF53A9309 /* Pods-YDDExercise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YDDExercise.release.xcconfig"; path = "Target Support Files/Pods-YDDExercise/Pods-YDDExercise.release.xcconfig"; sourceTree = "<group>"; };
 		DF888ED522E8AFAA00755CDE /* YDDTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDDTransition.h; sourceTree = "<group>"; };
 		DF888ED622E8AFAA00755CDE /* YDDTransitionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDDTransitionViewController.m; sourceTree = "<group>"; };
@@ -963,6 +978,7 @@
 		84E36BE02577B708009C6C9F /* Study */ = {
 			isa = PBXGroup;
 			children = (
+				84EF02CB25E63B33006C3296 /* MVVM */,
 				848A206A25C3B24D000E2771 /* OffScreenRender */,
 				848A200625C1363D000E2771 /* Menue */,
 				8492527025B9AD7800CD0B9F /* TestText */,
@@ -997,6 +1013,55 @@
 				84722844257F9DC400D87FC8 /* YDDCoordinateSystemView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		84EF02CB25E63B33006C3296 /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				84EF02CF25E63BB8006C3296 /* ViewModel */,
+				84EF02CE25E63B69006C3296 /* Views */,
+				84EF02CD25E63B60006C3296 /* Model */,
+				84EF02CC25E63B4E006C3296 /* ViewController */,
+			);
+			path = MVVM;
+			sourceTree = "<group>";
+		};
+		84EF02CC25E63B4E006C3296 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84EF02D925E63ED9006C3296 /* YDDUserListViewController.h */,
+				84EF02DA25E63ED9006C3296 /* YDDUserListViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		84EF02CD25E63B60006C3296 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84EF02D025E63C04006C3296 /* YDDUserInfoModel.h */,
+				84EF02D125E63C04006C3296 /* YDDUserInfoModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84EF02CE25E63B69006C3296 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				84EF02E525E63FDE006C3296 /* YDDUserListView.h */,
+				84EF02E625E63FDE006C3296 /* YDDUserListView.m */,
+				84EF02EB25E66BA3006C3296 /* YDDUserInfoCell.h */,
+				84EF02EC25E66BA3006C3296 /* YDDUserInfoCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		84EF02CF25E63BB8006C3296 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84EF02DF25E63FB8006C3296 /* YDDUserInfoViewModel.h */,
+				84EF02E025E63FB8006C3296 /* YDDUserInfoViewModel.m */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		8809421FB9A487310556B579 /* Frameworks */ = {
@@ -1411,7 +1476,9 @@
 				DFCCF59922E3416100F15B62 /* YDDBaseViewController.m in Sources */,
 				8447149222DED2E600B69CE7 /* main.m in Sources */,
 				844714CE22DF0C2A00B69CE7 /* YDDPhotoPreCollectionViewCell.m in Sources */,
+				84EF02D225E63C05006C3296 /* YDDUserInfoModel.m in Sources */,
 				8499DA2725D142DD00B848FD /* YDDSettingModel.m in Sources */,
+				84EF02DB25E63ED9006C3296 /* YDDUserListViewController.m in Sources */,
 				DFFDA02A22E74C14006FE5CF /* YDDHomeHeaderView.m in Sources */,
 				8499D8BE25C79DC100B848FD /* YDDVideoGuideView.m in Sources */,
 				8499D8A325C79DC100B848FD /* YDDVideoTransitionViewController.m in Sources */,
@@ -1460,6 +1527,7 @@
 				DFCCF5A622E3541000F15B62 /* UIView+YDDExtend.m in Sources */,
 				84E36C462578DB99009C6C9F /* YDDDynamicsAnimationView.m in Sources */,
 				848A201625C25F52000E2771 /* YDDMenueObjVC.m in Sources */,
+				84EF02E725E63FDE006C3296 /* YDDUserListView.m in Sources */,
 				849F9F8025A6BAB3008495DB /* YDDRACViewController.m in Sources */,
 				8492527325B9AE1500CD0B9F /* YDDGradientColorTextViewController.m in Sources */,
 				848A21AD25C401A2000E2771 /* PPStickerTextView.m in Sources */,
@@ -1494,11 +1562,13 @@
 				848A21AE25C401A2000E2771 /* PPStickerDataManager.m in Sources */,
 				848A21A025C401A2000E2771 /* PPStickerKeyboard.m in Sources */,
 				DFCCF5A922E35E6E00F15B62 /* UINavigationController+StatuBar.m in Sources */,
+				84EF02E125E63FB8006C3296 /* YDDUserInfoViewModel.m in Sources */,
 				848A215A25C3FAFC000E2771 /* MBProgressHUD.m in Sources */,
 				DFCCF5BA22E3E98800F15B62 /* YDDUserBaseInfoModel.m in Sources */,
 				8499D93425C9283B00B848FD /* YDDTabBarBgView.m in Sources */,
 				849F9F8725A6BC6D008495DB /* YDDPasswordView.m in Sources */,
 				84E36BE32577B73F009C6C9F /* YDDStudyViewController.m in Sources */,
+				84EF02ED25E66BA3006C3296 /* YDDUserInfoCell.m in Sources */,
 				DFCCF5C322E3F95400F15B62 /* YDDLogView.m in Sources */,
 				8499D8AB25C79DC100B848FD /* YDDVideoAnchorCollectionView.m in Sources */,
 				848A21AC25C401A2000E2771 /* PPEmojiPreviewView.m in Sources */,
