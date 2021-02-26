@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "YDDPhotosViewController.h"
 #import "CocoaDebugTool.h"
-#import "KTVHTTPCache.h"
+#import <KTVHTTPCache/KTVHTTPCache.h>
 
 @interface AppDelegate ()
 

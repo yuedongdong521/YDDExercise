@@ -72,7 +72,7 @@ import AVFoundation
         var url: URL? = nil
         if videoUrl.hasPrefix("http") || videoUrl.hasPrefix("https") {
             let tmpUrl = URL(string: videoUrl)
-            url = KTVHTTPCache.proxyURL(withOriginalURL: tmpUrl)
+//            url = KTVHTTPCache.proxyURL(withOriginalURL: tmpUrl)
             if url == nil {
                 url = tmpUrl
             }

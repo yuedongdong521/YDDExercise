@@ -12,6 +12,8 @@
 		840B210425A2E39200851385 /* YDDCollectionStyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B210325A2E39200851385 /* YDDCollectionStyleCell.swift */; };
 		840B211825A2E5CB00851385 /* YDDSwiftFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B211725A2E5CB00851385 /* YDDSwiftFunction.swift */; };
 		840B231625A31E1B00851385 /* YDDCollectionStyleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B231525A31E1B00851385 /* YDDCollectionStyleModel.swift */; };
+		8425FEC925E8934F00230692 /* YDDRxSwiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425FEC825E8934F00230692 /* YDDRxSwiftViewController.m */; };
+		8425FECE25E8939000230692 /* YDDRxSwiftVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8425FECD25E8939000230692 /* YDDRxSwiftVC.swift */; };
 		8447148422DED2E500B69CE7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8447148322DED2E500B69CE7 /* AppDelegate.m */; };
 		8447148A22DED2E500B69CE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8447148822DED2E500B69CE7 /* Main.storyboard */; };
 		8447148C22DED2E600B69CE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8447148B22DED2E600B69CE7 /* Assets.xcassets */; };
@@ -134,7 +136,7 @@
 		84EF02E125E63FB8006C3296 /* YDDUserInfoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EF02E025E63FB8006C3296 /* YDDUserInfoViewModel.m */; };
 		84EF02E725E63FDE006C3296 /* YDDUserListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EF02E625E63FDE006C3296 /* YDDUserListView.m */; };
 		84EF02ED25E66BA3006C3296 /* YDDUserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EF02EC25E66BA3006C3296 /* YDDUserInfoCell.m */; };
-		B0D8D8012881E3249DCE593B /* libPods-YDDExercise.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCD78E34D2233443A1B4D61 /* libPods-YDDExercise.a */; };
+		B162CB54420F3D1D58E4892E /* Pods_YDDExercise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F79763665661EB8916A9698 /* Pods_YDDExercise.framework */; };
 		DF888EDB22E8AFAB00755CDE /* YDDTransitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF888ED622E8AFAA00755CDE /* YDDTransitionViewController.m */; };
 		DF888EDC22E8AFAB00755CDE /* YDDTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = DF888ED722E8AFAA00755CDE /* YDDTransition.m */; };
 		DF888EDD22E8AFAB00755CDE /* YDDDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF888ED822E8AFAB00755CDE /* YDDDetailsViewController.m */; };
@@ -182,7 +184,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6FCD78E34D2233443A1B4D61 /* libPods-YDDExercise.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YDDExercise.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F79763665661EB8916A9698 /* Pods_YDDExercise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YDDExercise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840672A425D2221600E1D1DC /* YDDFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDFileManager.h; sourceTree = "<group>"; };
 		840672A525D2221600E1D1DC /* YDDFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDFileManager.m; sourceTree = "<group>"; };
 		840B20F025A2DF8A00851385 /* YDDExercise-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YDDExercise-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -190,6 +192,9 @@
 		840B210325A2E39200851385 /* YDDCollectionStyleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDDCollectionStyleCell.swift; sourceTree = "<group>"; };
 		840B211725A2E5CB00851385 /* YDDSwiftFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDDSwiftFunction.swift; sourceTree = "<group>"; };
 		840B231525A31E1B00851385 /* YDDCollectionStyleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDDCollectionStyleModel.swift; sourceTree = "<group>"; };
+		8425FEC725E8934F00230692 /* YDDRxSwiftViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDRxSwiftViewController.h; sourceTree = "<group>"; };
+		8425FEC825E8934F00230692 /* YDDRxSwiftViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDRxSwiftViewController.m; sourceTree = "<group>"; };
+		8425FECD25E8939000230692 /* YDDRxSwiftVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDDRxSwiftVC.swift; sourceTree = "<group>"; };
 		8447147F22DED2E500B69CE7 /* YDDExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YDDExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8447148222DED2E500B69CE7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8447148322DED2E500B69CE7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -469,7 +474,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0D8D8012881E3249DCE593B /* libPods-YDDExercise.a in Frameworks */,
+				B162CB54420F3D1D58E4892E /* Pods_YDDExercise.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +512,16 @@
 				840B231525A31E1B00851385 /* YDDCollectionStyleModel.swift */,
 			);
 			path = CollectionStyleChangeAnimation;
+			sourceTree = "<group>";
+		};
+		8425FEA825E892A500230692 /* RxSwift */ = {
+			isa = PBXGroup;
+			children = (
+				8425FEC725E8934F00230692 /* YDDRxSwiftViewController.h */,
+				8425FEC825E8934F00230692 /* YDDRxSwiftViewController.m */,
+				8425FECD25E8939000230692 /* YDDRxSwiftVC.swift */,
+			);
+			path = RxSwift;
 			sourceTree = "<group>";
 		};
 		8447147622DED2E500B69CE7 = {
@@ -978,6 +993,7 @@
 		84E36BE02577B708009C6C9F /* Study */ = {
 			isa = PBXGroup;
 			children = (
+				8425FEA825E892A500230692 /* RxSwift */,
 				84EF02CB25E63B33006C3296 /* MVVM */,
 				848A206A25C3B24D000E2771 /* OffScreenRender */,
 				848A200625C1363D000E2771 /* Menue */,
@@ -1067,7 +1083,7 @@
 		8809421FB9A487310556B579 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6FCD78E34D2233443A1B4D61 /* libPods-YDDExercise.a */,
+				4F79763665661EB8916A9698 /* Pods_YDDExercise.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1235,9 +1251,9 @@
 				8447147B22DED2E500B69CE7 /* Sources */,
 				8447147C22DED2E500B69CE7 /* Frameworks */,
 				8447147D22DED2E500B69CE7 /* Resources */,
-				7E122FBD2F7616E123996620 /* [CP] Copy Pods Resources */,
 				847228792580A18900D87FC8 /* Run Script */,
 				847228FD2581BE8600D87FC8 /* ShellScript */,
+				0053EEDE2E8DA8981EF4FD36 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1383,21 +1399,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7E122FBD2F7616E123996620 /* [CP] Copy Pods Resources */ = {
+		0053EEDE2E8DA8981EF4FD36 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YDDExercise/Pods-YDDExercise-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-YDDExercise/Pods-YDDExercise-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YDDExercise/Pods-YDDExercise-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-YDDExercise/Pods-YDDExercise-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YDDExercise/Pods-YDDExercise-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YDDExercise/Pods-YDDExercise-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		847228792580A18900D87FC8 /* Run Script */ = {
@@ -1468,6 +1484,7 @@
 				8499D8B425C79DC100B848FD /* YDDCustomButton.m in Sources */,
 				8499D8B325C79DC100B848FD /* YDDVideoCommentView.m in Sources */,
 				844714C722DEEB2A00B69CE7 /* YDDPhotosCollectionViewCell.m in Sources */,
+				8425FEC925E8934F00230692 /* YDDRxSwiftViewController.m in Sources */,
 				84E36C3E2578D70A009C6C9F /* YDDAnimationContentViewController.m in Sources */,
 				848A21AF25C401A2000E2771 /* PPEmoji.m in Sources */,
 				8499D8B525C79DC100B848FD /* YDDVideoLiveingView.m in Sources */,
@@ -1521,6 +1538,7 @@
 				8499D8D225C7CFE100B848FD /* YDDVideoPlayer.swift in Sources */,
 				847611C925A41304009B9B26 /* YDDFlowLayoutProtocol.swift in Sources */,
 				8488F20525B80DDF007BF74A /* YDDTabNodeViewController.m in Sources */,
+				8425FECE25E8939000230692 /* YDDRxSwiftVC.swift in Sources */,
 				8499D8A925C79DC100B848FD /* YDDVideoCommentModel.m in Sources */,
 				848A21A325C401A2000E2771 /* UIScreen+PPAddition.m in Sources */,
 				84EF01B225E0BF4A006C3296 /* YDDBaseNavigationController.m in Sources */,
@@ -1767,6 +1785,102 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"AsyncDisplayKit\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CocoaAsyncSocket\"",
+					"-framework",
+					"\"CocoaDebug\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreImage\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"FDFullscreenPopGesture\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"KTVCocoaHTTPServer\"",
+					"-framework",
+					"\"KTVHTTPCache\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"MapKit\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"NJKWebViewProgress\"",
+					"-framework",
+					"\"OpenUDID\"",
+					"-framework",
+					"\"PINCache\"",
+					"-framework",
+					"\"PINOperation\"",
+					"-framework",
+					"\"PINRemoteImage\"",
+					"-framework",
+					"\"Photos\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"ReactiveObjC\"",
+					"-framework",
+					"\"RxSwift\"",
+					"-framework",
+					"\"SDCycleScrollView\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SnapKit\"",
+					"-framework",
+					"\"TOCropViewController\"",
+					"-framework",
+					"\"TZImagePickerController\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"YYCache\"",
+					"-framework",
+					"\"YYCategories\"",
+					"-framework",
+					"\"YYImage\"",
+					"-framework",
+					"\"YYModel\"",
+					"-framework",
+					"\"YYWebImage\"",
+					"-weak_framework",
+					"\"UIKit\"",
 				);
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ydd.test.YDDExercise;

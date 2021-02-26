@@ -8,7 +8,7 @@
 
 #import "YDDSettingViewController.h"
 #import "YDDSettingTableViewCell.h"
-#import "KTVHTTPCache.h"
+#import <KTVHTTPCache/KTVHTTPCache.h>
 
 
 @interface YDDSettingViewController ()<UITableViewDelegate, UITableViewDataSource>

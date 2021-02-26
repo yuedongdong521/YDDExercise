@@ -7,8 +7,59 @@
 //
 
 #import "YDDStudyViewController.h"
+#import <malloc/malloc.h>
+
+typedef struct {
+    double a;
+    bool b;
+    int c;
+} Objc1;
+
+
+typedef struct {
+    bool b;
+    double a;
+    int c;
+} Objc2;
+
+
+@interface Class1 : NSObject
+
+@property (nonatomic, assign) double a;
+
+@property (nonatomic, assign) BOOL b;
+
+@property (nonatomic, assign) int c;
+
+@end
+
+@implementation Class1
+
+
+
+@end
+
+@interface Class2 : NSObject
+
+@property (nonatomic, assign) BOOL b;
+@property (nonatomic, assign) double a;
+
+@property (nonatomic, assign) int c;
+
+@end
+
+@implementation Class2
+
+
+
+@end
+
+
+
+
 
 @interface YDDStudyViewController ()<UITableViewDelegate, UITableViewDataSource>
+
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -25,6 +76,28 @@
     
     self.navBarView.title = @"学习";
     
+    Objc2 obj2 = {1, YES, 1};
+    Objc1 obj1 = {YES, 1, 1};
+
+    Class1 *test1 = [[Class1 alloc] init];
+    
+    Class2 *test2 = [[Class2 alloc] init];
+    
+//    test1.a = 1.0;
+    
+    
+    NSLog(@" test1 malloc_size: %lu sizeof : %lu", malloc_size((__bridge const void *)(test1)), sizeof(test1));
+    
+    NSLog(@" test2 malloc_size: %lu sizeof : %lu", malloc_size((__bridge const void *)(test2)), sizeof(test2));
+
+    NSLog(@"objc1 分配 ： %lu", malloc_size(&obj1));
+    
+    NSLog(@"objc2 分配 ： %lu", malloc_size(&obj2));
+    
+    NSLog(@" object1 : %lu", sizeof(obj1));
+    
+    NSLog(@" object2 : %lu", sizeof(obj2));
+
     [self.view addSubview:self.tableView];
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -32,7 +105,7 @@
     }];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+        [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:7 inSection:0]];
     });
 }
 
@@ -107,7 +180,7 @@
 - (NSArray<NSString *> *)dataArray
 {
     if (!_dataArray) {
-        _dataArray = @[@"YDDAnimationViewController", @"YDDRACViewController", @"YDDTextureViewController", @"YDDGradientColorTextViewController", @"YDDMenueObjVC", @"YDDOffScreenRenderViewController", @"YDDUserListViewController"];
+        _dataArray = @[@"YDDAnimationViewController", @"YDDRACViewController", @"YDDTextureViewController", @"YDDGradientColorTextViewController", @"YDDMenueObjVC", @"YDDOffScreenRenderViewController", @"YDDUserListViewController", @"YDDRxSwiftViewController"];
     }
     return _dataArray;
 }
