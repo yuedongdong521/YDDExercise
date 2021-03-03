@@ -1,25 +1,29 @@
 //
-//  YDDRxSwiftViewController.m
+//  YDDSwiftViewController.m
 //  YDDExercise
 //
-//  Created by ydd on 2021/2/26.
+//  Created by ydd on 2021/3/2.
 //  Copyright © 2021 ydd. All rights reserved.
 //
 
-#import "YDDRxSwiftViewController.h"
+#import "YDDSwiftViewController.h"
 #import "YDDExercise-Swift.h"
 
-@interface YDDRxSwiftViewController ()
+
+@interface YDDSwiftViewController ()
+
+
 
 @end
 
-@implementation YDDRxSwiftViewController
+@implementation YDDSwiftViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    YDDRxSwiftVC *vc = [[YDDRxSwiftVC alloc] init];
+    YDDStudySwiftVC *vc = [[YDDStudySwiftVC alloc] init];
+
     [self addChildViewController:vc];
     [self.view addSubview:vc.view];
     vc.view.frame = self.view.bounds;

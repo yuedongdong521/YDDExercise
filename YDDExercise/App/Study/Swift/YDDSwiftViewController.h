@@ -1,8 +1,8 @@
 //
-//  YDDRxSwiftViewController.h
+//  YDDSwiftViewController.h
 //  YDDExercise
 //
-//  Created by ydd on 2021/2/26.
+//  Created by ydd on 2021/3/2.
 //  Copyright © 2021 ydd. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YDDRxSwiftViewController : YDDBaseViewController
+@interface YDDSwiftViewController : YDDBaseViewController
 
 @end
 

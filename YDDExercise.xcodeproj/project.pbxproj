@@ -12,7 +12,10 @@
 		840B210425A2E39200851385 /* YDDCollectionStyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B210325A2E39200851385 /* YDDCollectionStyleCell.swift */; };
 		840B211825A2E5CB00851385 /* YDDSwiftFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B211725A2E5CB00851385 /* YDDSwiftFunction.swift */; };
 		840B231625A31E1B00851385 /* YDDCollectionStyleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B231525A31E1B00851385 /* YDDCollectionStyleModel.swift */; };
-		8425FEC925E8934F00230692 /* YDDRxSwiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425FEC825E8934F00230692 /* YDDRxSwiftViewController.m */; };
+		8425011D25ECE07100230692 /* YDDRxObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8425011C25ECE07100230692 /* YDDRxObservable.swift */; };
+		8425017525EDDAE400230692 /* YDDSwiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425017425EDDAE400230692 /* YDDSwiftViewController.m */; };
+		8425017D25EDDB2700230692 /* YDDStudySwiftVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8425017C25EDDB2700230692 /* YDDStudySwiftVC.swift */; };
+		8425019725EFB97600230692 /* YDDRxBinderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8425019625EFB97500230692 /* YDDRxBinderVC.swift */; };
 		8425FECE25E8939000230692 /* YDDRxSwiftVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8425FECD25E8939000230692 /* YDDRxSwiftVC.swift */; };
 		8447148422DED2E500B69CE7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8447148322DED2E500B69CE7 /* AppDelegate.m */; };
 		8447148A22DED2E500B69CE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8447148822DED2E500B69CE7 /* Main.storyboard */; };
@@ -192,8 +195,11 @@
 		840B210325A2E39200851385 /* YDDCollectionStyleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDDCollectionStyleCell.swift; sourceTree = "<group>"; };
 		840B211725A2E5CB00851385 /* YDDSwiftFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDDSwiftFunction.swift; sourceTree = "<group>"; };
 		840B231525A31E1B00851385 /* YDDCollectionStyleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDDCollectionStyleModel.swift; sourceTree = "<group>"; };
-		8425FEC725E8934F00230692 /* YDDRxSwiftViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDRxSwiftViewController.h; sourceTree = "<group>"; };
-		8425FEC825E8934F00230692 /* YDDRxSwiftViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDRxSwiftViewController.m; sourceTree = "<group>"; };
+		8425011C25ECE07100230692 /* YDDRxObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDDRxObservable.swift; sourceTree = "<group>"; };
+		8425017325EDDAE400230692 /* YDDSwiftViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDSwiftViewController.h; sourceTree = "<group>"; };
+		8425017425EDDAE400230692 /* YDDSwiftViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDSwiftViewController.m; sourceTree = "<group>"; };
+		8425017C25EDDB2700230692 /* YDDStudySwiftVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDDStudySwiftVC.swift; sourceTree = "<group>"; };
+		8425019625EFB97500230692 /* YDDRxBinderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDDRxBinderVC.swift; sourceTree = "<group>"; };
 		8425FECD25E8939000230692 /* YDDRxSwiftVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDDRxSwiftVC.swift; sourceTree = "<group>"; };
 		8447147F22DED2E500B69CE7 /* YDDExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YDDExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8447148222DED2E500B69CE7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -514,12 +520,22 @@
 			path = CollectionStyleChangeAnimation;
 			sourceTree = "<group>";
 		};
+		8425017225EDDA9400230692 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				8425017325EDDAE400230692 /* YDDSwiftViewController.h */,
+				8425017425EDDAE400230692 /* YDDSwiftViewController.m */,
+				8425017C25EDDB2700230692 /* YDDStudySwiftVC.swift */,
+			);
+			path = Swift;
+			sourceTree = "<group>";
+		};
 		8425FEA825E892A500230692 /* RxSwift */ = {
 			isa = PBXGroup;
 			children = (
-				8425FEC725E8934F00230692 /* YDDRxSwiftViewController.h */,
-				8425FEC825E8934F00230692 /* YDDRxSwiftViewController.m */,
 				8425FECD25E8939000230692 /* YDDRxSwiftVC.swift */,
+				8425011C25ECE07100230692 /* YDDRxObservable.swift */,
+				8425019625EFB97500230692 /* YDDRxBinderVC.swift */,
 			);
 			path = RxSwift;
 			sourceTree = "<group>";
@@ -993,6 +1009,7 @@
 		84E36BE02577B708009C6C9F /* Study */ = {
 			isa = PBXGroup;
 			children = (
+				8425017225EDDA9400230692 /* Swift */,
 				8425FEA825E892A500230692 /* RxSwift */,
 				84EF02CB25E63B33006C3296 /* MVVM */,
 				848A206A25C3B24D000E2771 /* OffScreenRender */,
@@ -1484,11 +1501,11 @@
 				8499D8B425C79DC100B848FD /* YDDCustomButton.m in Sources */,
 				8499D8B325C79DC100B848FD /* YDDVideoCommentView.m in Sources */,
 				844714C722DEEB2A00B69CE7 /* YDDPhotosCollectionViewCell.m in Sources */,
-				8425FEC925E8934F00230692 /* YDDRxSwiftViewController.m in Sources */,
 				84E36C3E2578D70A009C6C9F /* YDDAnimationContentViewController.m in Sources */,
 				848A21AF25C401A2000E2771 /* PPEmoji.m in Sources */,
 				8499D8B525C79DC100B848FD /* YDDVideoLiveingView.m in Sources */,
 				848A206625C2D14D000E2771 /* UIView+YDDCorner.m in Sources */,
+				8425017D25EDDB2700230692 /* YDDStudySwiftVC.swift in Sources */,
 				84E36C022578C059009C6C9F /* YDDAnimationViewController.m in Sources */,
 				DFCCF59922E3416100F15B62 /* YDDBaseViewController.m in Sources */,
 				8447149222DED2E600B69CE7 /* main.m in Sources */,
@@ -1510,6 +1527,7 @@
 				8499D8B225C79DC100B848FD /* YDDVideoProgressView.m in Sources */,
 				8499D8BB25C79DC100B848FD /* YDDVideoHomePlayerView.m in Sources */,
 				847377DA25BA6EAD0085496D /* YDDGradientLabel.m in Sources */,
+				8425019725EFB97600230692 /* YDDRxBinderVC.swift in Sources */,
 				8499D8B925C79DC100B848FD /* YDDVideoCommentTableViewCell.m in Sources */,
 				844714CA22DEF01300B69CE7 /* YDDAddImageTools.m in Sources */,
 				8499D8BC25C79DC100B848FD /* YDDVideoLoadMoreView.m in Sources */,
@@ -1590,6 +1608,7 @@
 				DFCCF5C322E3F95400F15B62 /* YDDLogView.m in Sources */,
 				8499D8AB25C79DC100B848FD /* YDDVideoAnchorCollectionView.m in Sources */,
 				848A21AC25C401A2000E2771 /* PPEmojiPreviewView.m in Sources */,
+				8425017525EDDAE400230692 /* YDDSwiftViewController.m in Sources */,
 				DFCCF59C22E341C600F15B62 /* YDDNavigationBarView.m in Sources */,
 				8499D9BD25CA787300B848FD /* YDDSettingViewController.m in Sources */,
 				847377E025BAAA6B0085496D /* YDDLyricModel.m in Sources */,
@@ -1597,6 +1616,7 @@
 				DFF24F0722EC301500C85F17 /* YDDWebView.m in Sources */,
 				848A21A925C401A2000E2771 /* UIButton+PPAddition.m in Sources */,
 				8499D8A625C79DC100B848FD /* YDDVideoShowModel.m in Sources */,
+				8425011D25ECE07100230692 /* YDDRxObservable.swift in Sources */,
 				8499D8AC25C79DC100B848FD /* YDDVideoFollowItem.m in Sources */,
 				DFCCF5D222E44D3400F15B62 /* YDDTabBarController.m in Sources */,
 				84AC893D25B558C000116349 /* YDDTextureViewController.m in Sources */,

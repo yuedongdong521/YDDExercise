@@ -17,9 +17,35 @@ class YDDRxSwiftVC: YDDBaseViewController {
     
     var disposeBag = DisposeBag()
     
+    
+    
     var button = UIButton()
     
+    lazy var tapLabel: UILabel = {
+        let label = UILabel.init()
+        label.font = textFont(fontSize: 14)
+        label.textAlignment = NSTextAlignment.center
+        label.textColor = UIColor.black
+        label.isUserInteractionEnabled = true
+        return label
+    }()
+    
     @objc dynamic var content = ""
+    
+    var timer: RxSwift.Observable<Int>?
+    var timeDisposable: Disposable?
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        self.navigationController?.pushViewController(YDDRxObservable(), animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+  
+        timeDisposable?.dispose()
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,21 +56,20 @@ class YDDRxSwiftVC: YDDBaseViewController {
         testRxTextFiled()
         
         testRxKVO()
+        
+        testNotify()
+        
+        testGesture()
+        
+        testRequest()
+        
+        testTimer()
+        
+        
     }
     
     /// button点击事件
     private func testRxButton() {
-        let btn = UIButton(type: .system)
-        btn.setTitle("Rx点击事件", for: .normal)
-        btn.setTitle("点我干啥", for: .selected)
-        self.view.addSubview(btn)
-        btn.snp.makeConstraints { (make) in
-            make.left.equalTo(20)
-            make.top.equalTo(self.navBarView.snp_bottom).offset(20)
-            make.size.equalTo(CGSize(width: 80, height: 40))
-        }
-        
-        self.button = btn
         
         self.button.rx.tap.subscribe(onNext:{ [weak self] in
             
@@ -56,6 +81,7 @@ class YDDRxSwiftVC: YDDBaseViewController {
         
             NotificationCenter.default.post(name: RxNotifyName, object: "点击了button")
             
+            self?.timeDisposable?.dispose()
             
         }).disposed(by: disposeBag)
     }
@@ -88,15 +114,50 @@ class YDDRxSwiftVC: YDDBaseViewController {
         /// observeWeakly 监听的属性必须是 @objc dynamic 修饰的属性， 参数为类型名和属性名称
         self.rx.observeWeakly(String.self, "content").subscribe(onNext: { [weak self] (text) in
             
-            print("text : \(text ?? "")" + " content : \(self?.content ?? "")")
+            SwiftLog("text : \(text ?? "")" + " content : \(self?.content ?? "")")
         }).disposed(by: disposeBag)
     }
     
     private func testNotify() {
         NotificationCenter.default.rx.notification(RxNotifyName).subscribe(onNext: { [weak self] (notify) in
+            self?.view.backgroundColor = UIColor(red: CGFloat(arc4random() % 10) / 10.0, green: CGFloat(arc4random() % 10) / 10.0, blue: CGFloat(arc4random() % 10) / 10.0, alpha: 1)
+            SwiftLog("RxSwift 通知写法 ： \(notify)")
         
         }).disposed(by: disposeBag)
 
+    }
+    
+    private func testGesture() {
+        let tap = UITapGestureRecognizer()
+        self.tapLabel.addGestureRecognizer(tap)
+        tap.rx.event.subscribe { [weak self] (event) in
+            print("点击label")
+            self?.navigationController?.pushViewController(YDDRxObservable(), animated: true)
+            
+        }.disposed(by: disposeBag)
+    }
+    
+    private func testRequest() {
+        guard let url = URL(string: "http://baidu.com") else { return }
+        URLSession.shared.rx.response(request: URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10))
+            .subscribe(onNext: { (response, data) in
+                SwiftLog("request success : \(data)")
+            }, onError: { (error) in
+                SwiftLog("request fial error : \(error)")
+            }).disposed(by: disposeBag)
+    }
+    
+    private func testTimer() {
+        timer = Observable<Int>.interval(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
+        
+        guard let timer = timer else {
+            return
+        }
+        
+        timeDisposable = timer.subscribe(onNext: { (count) in
+            SwiftLog("rx 定时器: \(count)")
+        })
+        timeDisposable?.disposed(by: disposeBag)
     }
     
     
@@ -107,6 +168,28 @@ class YDDRxSwiftVC: YDDBaseViewController {
     private func setUI() {
         self.view.backgroundColor = UIColor.white
         setUpNav()
+        
+        let btn = UIButton(type: .system)
+        btn.setTitle("Rx点击事件", for: .normal)
+        btn.setTitle("点我干啥", for: .selected)
+        self.view.addSubview(btn)
+        btn.snp.makeConstraints { (make) in
+            make.left.equalTo(20)
+            make.top.equalTo(self.navBarView.snp_bottom).offset(20)
+            make.size.equalTo(CGSize(width: 80, height: 40))
+        }
+        
+        self.button = btn
+        
+        self.view.addSubview(self.tapLabel)
+        self.tapLabel.text = "Observable"
+        self.tapLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(20)
+            make.top.equalTo(self.button.snp_bottom).offset(20)
+            make.width.equalTo(80)
+            make.height.equalTo(40)
+        }
+        
     }
     
     private func setUpNav() {
