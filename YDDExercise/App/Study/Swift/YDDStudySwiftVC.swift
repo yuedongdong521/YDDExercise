@@ -13,7 +13,7 @@ import UIKit
 class YDDStudySwiftVC: YDDBaseViewController {
 
     fileprivate lazy var dataArr: Array<String> = {
-       return ["YDDRxSwiftVC", "YDDRxObservable", "YDDRxBinderVC"]
+       return ["YDDRxSwiftVC", "YDDRxObservable", "YDDRxBinderVC", "YDDRxSubjectsVC", "YDDRxTransformingVC"]
     }()
     
     private lazy var tableView: UITableView = {

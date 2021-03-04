@@ -33,6 +33,8 @@ class YDDRxBinderVC: YDDBaseViewController {
             self?.navigationController?.popViewController(animated: true)
         }
         
+        self.navBarView.title = "binder 绑定"
+        
         testBinderFontSize()
         
     }
@@ -50,13 +52,10 @@ class YDDRxBinderVC: YDDBaseViewController {
         
         let obser = Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance)
         obser.map { (a) -> CGFloat in
-            if a > 30 {
-                return 30
-            }
-            return CGFloat(a)
+            return CGFloat(a % 30 + 1)
         }.bind(to: self.fontSizeLabel.fontSize).disposed(by: disposeBag)
         
-        obser.map({ "current fontSize : \($0)" }).subscribe(onNext: { [weak self] a in
+        obser.map({ "current fontSize : \($0 % 30 + 1)" }).subscribe(onNext: { [weak self] a in
             self?.fontSizeLabel.text = a
         }).disposed(by: disposeBag)
      
