@@ -13,6 +13,9 @@
 #import "YDDVideoGuideView.h"
 #import "YDDVideoEmptyView.h"
 
+#import "YDDExercise-Swift.h"
+
+
 @interface YDDVideoRecommendViewController ()<YDDVideoCollectionViewDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) YDDVideoCollectionView *collectionView;
@@ -150,6 +153,11 @@
 
 - (void)downloadVideo
 {
+    YDDShareManager *manager = [[YDDShareManager alloc] init];
+//
+   
+    [manager shareFile:[NSURL fileURLWithPath:[self.playerView locationUrl]]];
+    
     [self.playerView saveVideoCompleted:^(BOOL success) {
         if (success) {
 
@@ -334,6 +342,7 @@
     }
     return _playerView;
 }
+
 
 
 

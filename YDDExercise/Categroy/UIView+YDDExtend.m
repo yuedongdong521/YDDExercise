@@ -92,4 +92,38 @@
     return nil;
 }
 
+- (NSArray <UIView *>*)getSuperViews
+{
+    NSMutableArray<UIView *>* mutArr = [NSMutableArray array];
+    UIView *superView = self.superview;
+    while (superView) {
+        [mutArr addObject:superView];
+        superView = superView.superview;
+    }
+    return [mutArr copy];
+}
+
++ (NSArray <UIView *>*)commonSuperViewWithAView:(UIView *)aView bView:(UIView *)bView
+{
+    NSArray *aSuperViews = [aView getSuperViews];
+    NSArray *bSuperViews = [bView getSuperViews];
+    NSMutableArray<UIView *>* mutArr = [NSMutableArray array];
+    NSInteger aCount = aSuperViews.count;
+    NSInteger bCount = bSuperViews.count;
+    NSInteger count = MIN(aCount, bCount);
+    NSInteger i = 0;
+    while (i < count) {
+        UIView *aView = aSuperViews[aCount - i - 1];
+        UIView *bView = bSuperViews[bCount - i - 1];
+        if (aView == bView) {
+            [mutArr addObject:aView];
+            i++;
+        } else {
+            break;
+        }
+    }
+    return mutArr;
+}
+
+
 @end

@@ -19,7 +19,7 @@
 
 @property (nonatomic, strong) UIView *bgView;
 
-@property (nonatomic, weak) UINavigationController *navigationVC;
+//@property (nonatomic, weak) UINavigationController *navigationVC;
 
 @property (nonatomic, weak) UITabBarController *tabBar;
 
@@ -31,21 +31,24 @@
 
 @implementation YDDLeftSideBarView
 
-- (instancetype)initWithNavigationVC:(UINavigationController *)navigationVC;
+- (instancetype)initWithTabBarVC:(UITabBarController *)tabBarVC
 {
     self = [super init];
     if (self) {
-        self.navigationVC = navigationVC;
+//        self.navigationVC = navigationVC;
+//
+//        if ([self.navigationVC.viewControllers.firstObject isKindOfClass:[UITabBarController class]]) {
+//            self.tabBar = (UITabBarController *)self.navigationVC.viewControllers.firstObject;
+//        }
         
-        if ([self.navigationVC.viewControllers.firstObject isKindOfClass:[UITabBarController class]]) {
-            self.tabBar = (UITabBarController *)self.navigationVC.viewControllers.firstObject;
-        }
+        self.tabBar = tabBarVC;
         
         self.frame = self.sideBarFrame;
         self.backgroundColor = [UIColor grayColor];
         
-        [self.navigationVC.view addSubview:self.bgView];
-        [self.navigationVC.view addSubview:self];
+        UIView *window = [UIApplication sharedApplication].delegate.window;
+        [window addSubview:self.bgView];
+        [window addSubview:self];
         
         [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(UIEdgeInsetsMake(0, kLeftSideBarWidth, 0, 0));
@@ -55,7 +58,7 @@
         
         UIPanGestureRecognizer *panGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesAction:)];
         panGes.delegate = self;
-        [self.navigationVC.view addGestureRecognizer:panGes];
+        [window addGestureRecognizer:panGes];
     }
     return self;
 }
@@ -92,7 +95,7 @@
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
-    if (self.tabBar.selectedIndex == 0 && self.navigationVC.viewControllers.count == 1) {
+    if (self.tabBar.selectedIndex == 0 && ((UINavigationController *)(self.tabBar.selectedViewController)).viewControllers.count == 1) {
         return YES;
     }
     return NO;
@@ -131,10 +134,10 @@
 
 - (void)panGesAction:(UIPanGestureRecognizer *)pan
 {
-    CGPoint moveP = [pan translationInView:self.navigationVC.view];
+    CGPoint moveP = [pan translationInView:pan.view];
     
     // 获取到本次滑动距离后重置当前位置
-    [pan setTranslation:CGPointZero inView:self.navigationVC.view];
+    [pan setTranslation:CGPointZero inView:pan.view];
 
     NSLog(@"moveP : %@", NSStringFromCGPoint(moveP));
     

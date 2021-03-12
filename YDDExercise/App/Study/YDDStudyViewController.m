@@ -65,6 +65,8 @@ typedef struct {
 
 @property (nonatomic, strong) NSArray <NSString *>* dataArray;
 
+@property (nonatomic, copy) void(^studyBlock)(BOOL a);
+
 
 @end
 
@@ -78,18 +80,18 @@ typedef struct {
     
     Objc2 obj2 = {1, YES, 1};
     Objc1 obj1 = {YES, 1, 1};
-
+    
     Class1 *test1 = [[Class1 alloc] init];
     
     Class2 *test2 = [[Class2 alloc] init];
     
-//    test1.a = 1.0;
+    //    test1.a = 1.0;
     
     
     NSLog(@" test1 malloc_size: %lu sizeof : %lu", malloc_size((__bridge const void *)(test1)), sizeof(test1));
     
     NSLog(@" test2 malloc_size: %lu sizeof : %lu", malloc_size((__bridge const void *)(test2)), sizeof(test2));
-
+    
     NSLog(@"objc1 分配 ： %lu", malloc_size(&obj1));
     
     NSLog(@"objc2 分配 ： %lu", malloc_size(&obj2));
@@ -97,7 +99,7 @@ typedef struct {
     NSLog(@" object1 : %lu", sizeof(obj1));
     
     NSLog(@" object2 : %lu", sizeof(obj2));
-
+    
     [self.view addSubview:self.tableView];
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -107,6 +109,20 @@ typedef struct {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:7 inSection:0]];
     });
+     self.studyBlock = [self testBlock];
+    _studyBlock(NO);
+}
+
+- (void(^)(BOOL))testBlock
+{
+    NSString *text = @"11111";
+    void(^block)(BOOL) = ^(BOOL a){
+        NSLog(@"testBlock block : %d, %@", a, text);
+    };
+    
+    block(YES);
+    
+    return block;
 }
 
 
@@ -180,7 +196,7 @@ typedef struct {
 - (NSArray<NSString *> *)dataArray
 {
     if (!_dataArray) {
-        _dataArray = @[@"YDDAnimationViewController", @"YDDRACViewController", @"YDDTextureViewController", @"YDDGradientColorTextViewController", @"YDDMenueObjVC", @"YDDOffScreenRenderViewController", @"YDDUserListViewController", @"YDDSwiftViewController"];
+        _dataArray = @[@"YDDAnimationViewController", @"YDDRACViewController", @"YDDTextureViewController", @"YDDGradientColorTextViewController", @"YDDMenueObjVC", @"YDDOffScreenRenderViewController", @"YDDUserListViewController", @"YDDSwiftViewController", @"YDDRunLoopUserViewController"];
     }
     return _dataArray;
 }

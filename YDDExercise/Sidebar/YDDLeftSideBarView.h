@@ -17,8 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) YDDUserBaseInfoModel *userInfo;
 
 
-- (instancetype)initWithNavigationVC:(UINavigationController *)navigationVC;
-
+- (instancetype)initWithTabBarVC:(UITabBarController *)tabBarVC;
 
 - (void)hiddenSideBar:(BOOL)hidden animation:(BOOL)animation;
 

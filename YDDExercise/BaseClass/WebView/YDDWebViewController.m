@@ -112,7 +112,7 @@
     if (!_webView) {
         _webView = [[YDDWebView alloc] init];
         _webView.delegate = self;
-        __weak typeof(self) weakself = self;
+        @weakify(self);
         [_webView addJavaScriptAction:@"jumpRechargeXieyi" actionBlock:^(id  _Nonnull body) {
             NSLog(@"javaScriptAction : jumpRechargeXieyi (%@)", body);
         }];
@@ -121,7 +121,8 @@
         }];
         [_webView addJavaScriptAction:@"ocQuiteAction" actionBlock:^(id  _Nonnull body) {
             NSLog(@"ocQuiteAction : (%@)", body);
-            [weakself backAction];
+            @strongify(self);
+            [self backAction];
         }];
         
     }

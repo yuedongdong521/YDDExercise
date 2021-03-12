@@ -8,4 +8,4 @@
 
 #import "UIImageView+WebCache.h"
 
-//#import <KTVHTTPCache/KTVHTTPCache.h>
+#import <KTVHTTPCache/KTVHTTPCache.h>

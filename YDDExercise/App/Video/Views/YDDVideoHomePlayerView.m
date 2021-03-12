@@ -64,6 +64,12 @@
     }];
 }
 
+- (NSString *)locationUrl
+{
+    return [YDDFileManager ydd_readKTVCacheWithPath:self.player.curUrl];
+}
+
+
 - (NSString *)downloadDire
 {
     NSString *dire = NSTemporaryDirectory();

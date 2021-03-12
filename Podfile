@@ -32,6 +32,7 @@ def kSwiftPods
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'SnapKit'
+  pod 'Kingfisher'
   
 end
 

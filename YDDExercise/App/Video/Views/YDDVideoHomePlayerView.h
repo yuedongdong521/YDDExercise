@@ -32,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)saveVideoCompleted:(void (^)(BOOL))completed;
 
+- (NSString *)locationUrl;
+
 @end
 
 NS_ASSUME_NONNULL_END

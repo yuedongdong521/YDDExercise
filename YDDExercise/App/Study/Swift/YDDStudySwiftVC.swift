@@ -13,7 +13,8 @@ import UIKit
 class YDDStudySwiftVC: YDDBaseViewController {
 
     fileprivate lazy var dataArr: Array<String> = {
-       return ["YDDRxSwiftVC", "YDDRxObservable", "YDDRxBinderVC", "YDDRxSubjectsVC", "YDDRxTransformingVC"]
+       return ["YDDRxSwiftVC", "YDDRxObservable", "YDDRxBinderVC",
+               "YDDRxSubjectsVC", "YDDRxTransformingVC", "YDDRxCollectionViewController", "YDDRunLoopUserVC", "YDDAudioViewController", "YDDAlgorithmViewController"]
     }()
     
     private lazy var tableView: UITableView = {
@@ -43,7 +44,9 @@ class YDDStudySwiftVC: YDDBaseViewController {
         
         setUpUI()
         
-        
+        DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now() + 0.5) {
+            self.tableView(self.tableView, didSelectRowAt: IndexPath(row: 8, section: 0))
+        }
         
     }
     

@@ -37,6 +37,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nullable UIViewController *)superViewController;
 
+/// 获取两个View共同的superView
++ (NSArray <UIView *>*)commonSuperViewWithAView:(UIView *)aView bView:(UIView *)bView;
+
+/// 获取所有superview
+- (NSArray <UIView *>*)getSuperViews;
+
 @end
 
 NS_ASSUME_NONNULL_END

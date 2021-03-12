@@ -31,6 +31,9 @@
     [CocoaDebugTool logWithString:@"Custom Messages...."];
     [CocoaDebugTool logWithString:@"Custom Messages...." color:[UIColor redColor]];
     
+
+    
+    
     return YES;
 }
 
@@ -60,7 +63,6 @@
     NSArray *arr = [KTVHTTPCache downloadAcceptableContentTypes];
     NSLog(@"arr : %@", arr);
 }
-
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

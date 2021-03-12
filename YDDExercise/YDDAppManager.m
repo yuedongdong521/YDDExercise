@@ -11,6 +11,7 @@
 #import "YDDTabBarController.h"
 #import "YDDLeftSideBarView.h"
 #import "NSObject+YDDExtend.h"
+#import "KeychainItemWrapper.h"
 
 static YDDAppManager *_manager;
 
@@ -65,7 +66,7 @@ static YDDAppManager *_manager;
         _tabBar = [[YDDTabBarController alloc] init];
 //        _navigation = [[UINavigationController alloc] initWithRootViewController:_tabBar];
         self.window.rootViewController = _tabBar;
-//        [self addleftSideBar];
+        [self addleftSideBar];
         
     } else {
         YDDLoginViewController *logInVC = [[YDDLoginViewController alloc] init];
@@ -97,13 +98,47 @@ static YDDAppManager *_manager;
         _leftSideBar = nil;
     }
     
-    _leftSideBar = [[YDDLeftSideBarView alloc] initWithNavigationVC:self.tabBar];
+    _leftSideBar = [[YDDLeftSideBarView alloc] initWithTabBarVC:self.tabBar];
     weakObj(self);
     _leftSideBar.logonBlock = ^{
         strongObj(self, weakself);
         [strongself userLogon];
     };
     _leftSideBar.userInfo = _userInfo;
+}
+
+
++ (YDDUserBaseInfoModel *)keychainAccountInfo
+{
+    /// KeychainItemWrapper 读取钥匙链存储信息
+    KeychainItemWrapper *app = [[KeychainItemWrapper alloc] initWithIdentifier:@"YDDExerciseKey" accessGroup:nil];
+    
+    NSNumber *account = [app objectForKey:(id)kSecAttrAccount];
+    NSString *password = [app objectForKey:(id)kSecValueData];
+
+    NSLog(@"account : %@, password : %@", account, password);
+    
+    if (account.integerValue > 0 && password.length > 0) {
+        YDDUserBaseInfoModel *infoModel = [[YDDUserBaseInfoModel alloc] init];
+        infoModel.userId = [account integerValue];
+        infoModel.password = password;
+        return infoModel;
+    }
+    return nil;
+}
+
++ (void)updateKeychainAccountInfo:(YDDUserBaseInfoModel *)info
+{
+    if (info.password.length == 0 || info.userId == 0) {
+        return;
+    }
+    /// KeychainItemWrapper 钥匙链存储信息
+    KeychainItemWrapper *app = [[KeychainItemWrapper alloc] initWithIdentifier:@"YDDExerciseKey" accessGroup:nil];
+    [app setObject:@(info.userId) forKey:(id)kSecAttrAccount];
+    [app setObject:info.password forKey:(id)kSecValueData];
+    /// 清空钥匙链
+//        [app resetKeychainItem];
+    
 }
 
 
