@@ -41,13 +41,7 @@ class YDDStudySwiftVC: YDDBaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         setUpUI()
-        
-        DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now() + 0.5) {
-            self.tableView(self.tableView, didSelectRowAt: IndexPath(row: 8, section: 0))
-        }
-        
     }
     
     deinit {

@@ -106,9 +106,7 @@ typedef struct {
         make.edges.mas_equalTo(UIEdgeInsetsMake(kNavBarHeight, 0, kTabBarHeight, 0));
     }];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:7 inSection:0]];
-    });
+
      self.studyBlock = [self testBlock];
     _studyBlock(NO);
 }
@@ -196,7 +194,7 @@ typedef struct {
 - (NSArray<NSString *> *)dataArray
 {
     if (!_dataArray) {
-        _dataArray = @[@"YDDAnimationViewController", @"YDDRACViewController", @"YDDTextureViewController", @"YDDGradientColorTextViewController", @"YDDMenueObjVC", @"YDDOffScreenRenderViewController", @"YDDUserListViewController", @"YDDSwiftViewController", @"YDDRunLoopUserViewController"];
+        _dataArray = @[@"YDDAnimationViewController", @"YDDRACViewController", @"YDDTextureViewController", @"YDDGradientColorTextViewController", @"YDDMenueObjVC", @"YDDOffScreenRenderViewController", @"YDDUserListViewController", @"YDDSwiftViewController", @"YDDRunLoopUserViewController", @"YDDTimerViewController", @"YDDLookViewController"];
     }
     return _dataArray;
 }
