@@ -22,6 +22,12 @@ class YDDAlgorithmViewController: YDDBaseViewController {
         testString()
         
         testArr()
+        
+//        let arr = [3,2,1,5,6,4, 9, 8, 10, 7, 6]
+        let arr = [2, 1]
+        let k = findKthLargest2(arr, 2)
+        print(k)
+        
     }
     
     func testString() {
@@ -81,6 +87,76 @@ class YDDAlgorithmViewController: YDDBaseViewController {
         
         SwiftLog("merge2 arr : \(cArr.merge(otherArr: dArr, order: .desc))")
     }
+    
+    
+    func findKthLargest(_ nums: [Int], _ k: Int) -> Int {
+      
+        let count = nums.count
+        
+        if k > count || k < 0 {
+            return 0
+        }
+        
+        if count == 1 {
+            return nums[0]
+        }
+        var mutArr = nums
+        
+        for i in 0..<(count - 1) {
+            for j in 0..<(count - i - 1) {
+                if mutArr[j] > mutArr[j+1] {
+                    (mutArr[j],mutArr[j+1]) = (mutArr[j+1], mutArr[j])
+                }
+            }
+            if i == (k - 1) {
+                print(mutArr)
+                return mutArr[count - k]
+            }
+        }
+        
+        return mutArr[count - k]
+    }
+    
+    
+    func findKthLargest2(_ nums: [Int], _ k: Int) -> Int {
+        
+        let count = nums.count
+        if k > count || k < 0 {
+            return 0
+        }
+        var mutArr = Array<Int>()
+        for i in 0..<count {
+            let a = nums[i]
+            let mutCount = mutArr.count
+            if mutCount == 0 {
+                mutArr.append(a)
+            } else {
+                let num = mutArr.count
+                
+                if num == k && a < mutArr[num - 1] {
+                    continue
+                }
+                
+                for i in 0..<num {
+                    if a > mutArr[i] {
+                        mutArr.insert(a, at: i)
+                        break
+                    }
+                }
+            }
+                
+            if mutArr.count < i + 1 {
+                mutArr.append(a)
+            }
+            
+            if mutArr.count > k {
+                mutArr.removeLast()
+            }
+        }
+        return mutArr[k - 1]
+    }
+    
+  
     
 
     /*

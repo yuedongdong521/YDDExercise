@@ -14,6 +14,7 @@ enum ArrayOrderType {
 }
 
 extension Array where Element: Comparable {
+    /// 冒泡排序
     mutating func bublleSort(desc isDesc: Bool = false) {
         let count = self.count
         for i in 0..<(count - 1) {
@@ -30,7 +31,7 @@ extension Array where Element: Comparable {
             }
         }
     }
-    
+    /// 选择排序
     mutating func selectSort(desc isDesc: Bool = false) {
         let count = self.count
         for i in 0..<(count - 1) {
@@ -48,6 +49,40 @@ extension Array where Element: Comparable {
         }
     }
     
+    mutating func insertSort() {
+        
+        let count = self.count
+        
+        for i in 1..<count {
+            let a = self[i]
+            var r = Range(uncheckedBounds: (lower: i, upper: i+1))
+            self.removeSubrange((i..<(i+1)))
+            for j in 0..<i {
+                
+            }
+        }
+        
+        
+        
+        
+    }
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /// 快速排序
     mutating func fastSort(desc isDesc: Bool = false) {
         
         func fastSort(low: Int, high: Int) {
@@ -239,6 +274,57 @@ extension Array where Element: Comparable {
         }
         return arr
     }
+    
+    mutating func merge_sort() -> Array<Element> {
+        var arr = Array<Element>()
+        let count = self.count
+        
+        var seg = 1
+        while seg < count {
+            
+            var start = 0
+            while start < count {
+
+                var low = start, mid = Swift.min(start + seg, count)
+                var high = Swift.min(start + seg + seg, count)
+                var k = low
+                var start1 = low, end1 = mid
+                var start2 = mid, end2 = high
+                
+                while start1 < end1 && start2 < end2 {
+                    
+                }
+                
+                
+                start += seg + seg
+            }
+            
+            
+            seg += seg
+        }
+        
+        
+        return arr
+    }
+    
+    
+    
+    
+    
+//    mutating func selectedMax(k: Int) -> Element {
+//     
+//        for <#item#> in <#items#> {
+//            <#code#>
+//        }
+//        
+//        return self[k]
+//    }
+//    
+    
+    
+    
+    
+    
     
     
 }

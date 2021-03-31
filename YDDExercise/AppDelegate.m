@@ -30,8 +30,13 @@
     
     [CocoaDebugTool logWithString:@"Custom Messages...."];
     [CocoaDebugTool logWithString:@"Custom Messages...." color:[UIColor redColor]];
-    
 
+    if (@available(iOS 13.0, *)) {
+        /// 强行关闭暗黑模式
+        self.window.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+    } else {
+        // Fallback on earlier versions
+    }
     
     
     return YES;
