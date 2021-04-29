@@ -13,11 +13,12 @@ import RxCocoa
 
 let RxNotifyName = Notification.Name(rawValue: "RxNotifyNameKey")
 
+
+
+
 class YDDRxSwiftVC: YDDBaseViewController {
     
     var disposeBag = DisposeBag()
-    
-    
     
     var button = UIButton()
     
@@ -189,7 +190,6 @@ class YDDRxSwiftVC: YDDBaseViewController {
             make.width.equalTo(80)
             make.height.equalTo(40)
         }
-        
     }
     
     private func setUpNav() {

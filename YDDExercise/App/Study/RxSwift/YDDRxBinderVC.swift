@@ -11,6 +11,14 @@ import RxCocoa
 import RxSwift
 
 
+class YDDRxBinderModel: NSObject {
+    
+    var content: BehaviorRelay<String> = BehaviorRelay<String>(value: "456")
+    
+    
+    
+    
+}
 
 class YDDRxBinderVC: YDDBaseViewController {
 
@@ -22,6 +30,20 @@ class YDDRxBinderVC: YDDBaseViewController {
         label.textColor = .black
         return label
     }()
+    
+    lazy var bindLabel: UITextField = {
+        let label = UITextField()
+        label.textAlignment = .center
+        label.textColor = .black
+        return label
+    }()
+    
+    lazy var binderModel: YDDRxBinderModel = {
+        let model = YDDRxBinderModel()
+       
+        return model
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +58,8 @@ class YDDRxBinderVC: YDDBaseViewController {
         self.navBarView.title = "binder 绑定"
         
         testBinderFontSize()
+        
+        testBinder()
         
     }
     
@@ -64,8 +88,65 @@ class YDDRxBinderVC: YDDBaseViewController {
     }
     
     
+    func testBinder()  {
+        
+        self.view.addSubview(self.bindLabel)
+        
+        self.bindLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(20)
+            make.width.equalTo(100)
+            make.height.equalTo(50)
+            make.top.equalTo(200)
+        }
+        
+        let btn = UIButton(type: .system)
+        self.view.addSubview(btn)
+        btn.setTitle("点击", for: .normal)
+        var change = false
+        btn.rx.tap.subscribe(onNext:{ [weak self] in
+            guard let self = self else {
+                return
+            }
+            change = !change
+            if change {
+                self.bindLabel.text = "123"
+                SwiftLog("当前model 的值 ： \(self.binderModel.content.value)")
+            } else {
+                self.binderModel.content = BehaviorRelay<String>(value: "456")
+            }
+        }).disposed(by: disposeBag)
+        
+        btn.snp.makeConstraints { (make) in
+            make.left.equalTo(140)
+            make.width.equalTo(50)
+            make.height.equalTo(50)
+            make.top.equalTo(200)
+        }
+
+        
+        self.binderModel.content.asObservable().bind(to: self.bindLabel.rx.text).disposed(by: disposeBag)
+        self.bindLabel.rx.text.orEmpty.bind(to: self.binderModel.content).disposed(by: disposeBag)
+        
+        let label = UILabel()
+        label.textColor = .blue
+        self.view.addSubview(label)
+        
+        label.snp.makeConstraints { (make) in
+            make.left.equalTo(140)
+            make.width.equalTo(50)
+            make.height.equalTo(50)
+            make.top.equalTo(250)
+        }
+        
+        self.binderModel.content.asObservable().bind(to: label.rx.text).disposed(by: disposeBag)
+        
+    }
     
 
+    deinit {
+        SwiftLog("dealloc")
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -86,3 +167,4 @@ extension UILabel {
         }
     }
 }
+

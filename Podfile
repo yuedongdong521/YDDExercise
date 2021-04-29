@@ -33,6 +33,7 @@ def kSwiftPods
   pod 'RxCocoa'
   pod 'SnapKit'
   pod 'Kingfisher'
+  pod 'TensorFlowLiteSwift'
   
 end
 

@@ -146,6 +146,7 @@ static YDDTabBarController *_tabBar;
         studyImage = [studyImage scallImageWidthScallSize:CGSizeMake(20, 20)];
         studySelectImage = [studySelectImage scallImageWidthScallSize:CGSizeMake(20, 20)];
         
+        
         UINavigationController *studyNav = [self addChildVc:studyVC title:@"学习" normalImg:studyImage selectImg:studySelectImage];
         
         YDDMineViewController *mineVC = [[YDDMineViewController alloc] init];

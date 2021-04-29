@@ -58,6 +58,13 @@ PODS:
     - SDWebImage/Core (= 5.10.4)
   - SDWebImage/Core (5.10.4)
   - SnapKit (4.2.0)
+  - TensorFlowLiteC (2.4.0):
+    - TensorFlowLiteC/Core (= 2.4.0)
+  - TensorFlowLiteC/Core (2.4.0)
+  - TensorFlowLiteSwift (2.4.0):
+    - TensorFlowLiteSwift/Core (= 2.4.0)
+  - TensorFlowLiteSwift/Core (2.4.0):
+    - TensorFlowLiteC (= 2.4.0)
   - Texture (3.0.0):
     - Texture/AssetsLibrary (= 3.0.0)
     - Texture/Core (= 3.0.0)
@@ -107,6 +114,7 @@ DEPENDENCIES:
   - RxSwift
   - SDCycleScrollView (~> 1.80)
   - SnapKit
+  - TensorFlowLiteSwift
   - Texture
   - TOCropViewController (~> 2.5.1)
   - TZImagePickerController (~> 3.2.1)
@@ -139,6 +147,8 @@ SPEC REPOS:
     - SDCycleScrollView
     - SDWebImage
     - SnapKit
+    - TensorFlowLiteC
+    - TensorFlowLiteSwift
     - Texture
     - TOCropViewController
     - TZImagePickerController
@@ -170,6 +180,8 @@ SPEC CHECKSUMS:
   SDCycleScrollView: a0d74c3384caa72bdfc81470bdbc8c14b3e1fbcf
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  TensorFlowLiteC: 09f8ac75a76caeadb19bcfa694e97454cc1ecf87
+  TensorFlowLiteSwift: f062dc1178120100d825d7799fd9f115b4a37fee
   Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
   TOCropViewController: da59f531f8ac8a94ef6d6c0fc34009350f9e8bfe
   TZImagePickerController: 1f92968aa0e98a06b9e2eccca8560acc19254257
@@ -179,6 +191,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 6a5344002191bb264da80e14c424d06debedd05e
+PODFILE CHECKSUM: 30544a2d6d4780ba9ae3dff97975c430b62525db
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1

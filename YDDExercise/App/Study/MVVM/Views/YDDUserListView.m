@@ -7,8 +7,8 @@
 //
 
 #import "YDDUserListView.h"
-#import <MJRefresh/MJRefresh.h>
 #import "YDDUserInfoCell.h"
+#import "UIScrollView+YDDMJRefresh.h"
 
 @interface YDDUserListView ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -61,24 +61,34 @@
     [self.viewModel.refreshEndSubject subscribeNext:^(id  _Nullable x) {
         @strongify(self);
         
-        [self.tableView reloadData];
-        
         YDDRefreshStatue statue = [x integerValue];
         
         if (statue & YDDRefreshStatue_refresh) {
-            [self.tableView.mj_header endRefreshing];
+            [self.tableView endRefreshing];
+            [self.tableView reloadData];
         }
         
         if (statue & YDDRefreshStatue_loadMore) {
-            [self.tableView.mj_footer endRefreshing];
+            [self.tableView endRefreshing];
         }
         
         if (statue & YDDRefreshStatue_noMore) {
-            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            [self.tableView noMoreData];
+            
         } else {
-            [self.tableView.mj_footer resetNoMoreData];
+            self.tableView.hasLoadMore = YES;
         }
     
+    }];
+    
+    [self.viewModel.loadMoreSubject subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        if ([x isKindOfClass:[NSArray class]]) {
+            NSArray *paths = (NSArray *)x;
+            if (paths.count > 0) {
+                [self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
+            }
+        }
     }];
 }
 
@@ -98,12 +108,11 @@
         [_tableView registerClass:[YDDUserInfoCell class] forCellReuseIdentifier:@"cell"];
         
         @weakify(self);
-        _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [_tableView mj_pullRefresh:^{
             @strongify(self);
             [self.viewModel.refreshCommand execute:nil];
-        }];
-        
-        _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        } loadMoreRefresh:^{
             @strongify(self);
             [self.viewModel.loadMoreCommand execute:nil];
         }];

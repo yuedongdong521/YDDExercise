@@ -11,6 +11,12 @@
 #import "CocoaDebugTool.h"
 #import <KTVHTTPCache/KTVHTTPCache.h>
 
+#import "YDDTabBarController.h"
+#import "YDDLoginViewController.h"
+
+
+
+
 @interface AppDelegate ()
 
 @end
@@ -24,24 +30,32 @@
     // 禁用多点触控
     [[UIButton appearance] setExclusiveTouch:YES];
     
-    [self configKTVHTTPCache];
-    
-    [YDDAppManager checkLoginState];
-    
-    [CocoaDebugTool logWithString:@"Custom Messages...."];
-    [CocoaDebugTool logWithString:@"Custom Messages...." color:[UIColor redColor]];
-
     if (@available(iOS 13.0, *)) {
         /// 强行关闭暗黑模式
         self.window.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
     } else {
         // Fallback on earlier versions
     }
+
+    [self configKTVHTTPCache];
+    
+    [YDDAppManager checkLoginState];
+    
+//    YDDLoginViewController *logInVC = [[YDDLoginViewController alloc] init];
+//    UINavigationController *navig = [[UINavigationController alloc] initWithRootViewController:logInVC];
+//    self.window.rootViewController = navig;
+//
+//[self.window makeKeyWindow];
+//[self.window makeKeyAndVisible];
+
+    [CocoaDebugTool logWithString:@"Custom Messages...."];
+    [CocoaDebugTool logWithString:@"Custom Messages...." color:[UIColor redColor]];
+
+    
     
     
     return YES;
 }
-
 
 - (void)configKTVHTTPCache
 {

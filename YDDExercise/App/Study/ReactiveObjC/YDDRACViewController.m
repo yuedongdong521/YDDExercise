@@ -247,6 +247,7 @@
         [signal subscribeNext:^(id  _Nullable x) {
             NSLog(@"RACDisposable ：重新添加订阅被执行");
         }];
+        
         [self.testRACDisposableSub sendNext:@"重新发送信号"];
         
     });
@@ -293,6 +294,8 @@
     [replaySubject subscribeNext:^(id  _Nullable x) {
         NSLog(@"RACReplaySubject : 订阅被执行 - %@", x);
     }];
+    
+    [replaySubject sendNext:@"订阅后发信号"];
 }
 
 
@@ -358,12 +361,21 @@
     [connection connect];
     
     /**
-     RACMulticastConnection 信号连接类可以使信号在订阅时不立即调用创建信号的block，当调用connect方法时再调用block，且添加多个订阅只会调用一次创建信号block
+     RACMulticastConnection 信号连接类可以使信号在订阅时不立即调用创建信号的block，当调用connect方法时再调用block，且添加多个订阅只会调用一次创建信号block，将冷信号转化成热信号。
+     
+     冷信号：RACDynamicSignal
+           只能主动订阅才会收到信号，每次订阅的时候会发送信号，订阅和发送信号是一对一的关系，
+            
+     热信号：RACSubject
+           本身实现RACSubscriber协议，可以自己发送信号，订阅和发送信号是一对多的关系，可以多次订阅
+     
      */
 }
 
 - (void)testRACCommand
 {
+    __block RACSubject *subscriber1 = nil;
+    
     NSLog(@"RACCommand 创建command");
     RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
        
@@ -371,6 +383,8 @@
         
         return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
             NSLog(@"RACCommand : create signal block");
+            
+           
             
             [subscriber sendNext:[NSString stringWithFormat:@" : input  %@", input]];
             
@@ -381,6 +395,8 @@
     NSLog(@"RACCommand executionSignals 订阅信号");
     [command.executionSignals subscribeNext:^(id  _Nullable x) {
         NSLog(@"RACCommand executionSignals 接受信号 ： %@", x);
+        
+        subscriber1 = x;
         
         NSLog(@"RACCommand executionSignals 订阅信号");
         [x subscribeNext:^(id  _Nullable x) {
@@ -393,21 +409,26 @@
     
     RACSignal *signal = [command execute:@"🍑"];
     NSLog(@"RACCommand 订阅信号");
+    
+   
     [signal subscribeNext:^(id  _Nullable x) {
         NSLog(@"RACCommand 接受信号 ： %@", x);
     }];
     
+   
+    
+    
     /// 错误示范
-    [command.executionSignals subscribeNext:^(id  _Nullable x) {
-        NSLog(@"RACCommand executionSignals 在execute后订阅");
-        [x subscribeNext:^(id  _Nullable x) {
-            NSLog(@"RACCommand executionSignals 在execute后订阅 %@", x);
-        }];
-    }];
+//    [command.executionSignals subscribeNext:^(id  _Nullable x) {
+//        NSLog(@"RACCommand executionSignals 在execute后订阅");
+//        [x subscribeNext:^(id  _Nullable x) {
+//            NSLog(@"RACCommand executionSignals 在execute后订阅 %@", x);
+//        }];
+//    }];
     
     
     /**
-     execute: 方法会调用 RACCommand初始化是创建的signalBlock,
+     execute: 方法会调用 RACCommand初始化时创建的signalBlock,
            通过signalBlock返回RACSignal信号对象，使用RACMulticastConnection 链接信号对象，实现先发信号后订阅的功能。
             如果使用 executionSignals订阅，必需先订阅后使用execute：发信号。
      */

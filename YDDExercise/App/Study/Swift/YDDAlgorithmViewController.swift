@@ -28,6 +28,8 @@ class YDDAlgorithmViewController: YDDBaseViewController {
         let k = findKthLargest2(arr, 2)
         print(k)
         
+        self.isValid("{}()[]")
+        
     }
     
     func testString() {
@@ -157,7 +159,21 @@ class YDDAlgorithmViewController: YDDBaseViewController {
     }
     
   
-    
+    func isValid(_ s: String) -> Bool {
+        var str = s
+        while str.count > 0 {
+            if let range = str.range(of: "{}") {
+                str.removeSubrange(range)
+            } else if let range = str.range(of: "[]") {
+                str.removeSubrange(range)
+            } else if let range = str.range(of: "()") {
+                str.removeSubrange(range)
+            } else {
+                return false
+            }
+        }
+        return true
+    }
 
     /*
     // MARK: - Navigation

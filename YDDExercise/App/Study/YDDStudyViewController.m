@@ -60,7 +60,6 @@ typedef struct {
 
 @interface YDDStudyViewController ()<UITableViewDelegate, UITableViewDataSource>
 
-
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSArray <NSString *>* dataArray;
@@ -69,6 +68,7 @@ typedef struct {
 
 
 @end
+
 
 @implementation YDDStudyViewController
 
@@ -186,7 +186,6 @@ typedef struct {
             self.automaticallyAdjustsScrollViewInsets = NO;
         }
         
-        
     }
     return _tableView;
 }
@@ -199,7 +198,9 @@ typedef struct {
                        @"YDDMenueObjVC", @"YDDOffScreenRenderViewController",
                        @"YDDUserListViewController", @"YDDSwiftViewController",
                        @"YDDRunLoopUserViewController", @"YDDTimerViewController",
-                       @"YDDLookViewController", @"YDDThreadMsgViewController"];
+                       @"YDDLookViewController", @"YDDThreadMsgViewController",
+                       @"YDDThreadUIViewController", @"YDDPrivateViewController",
+                       @"YDDThreadViewController", @"YDDLRUViewController"];
     }
     return _dataArray;
 }

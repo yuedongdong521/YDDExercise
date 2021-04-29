@@ -11,6 +11,12 @@
 const NSInteger TaskMax = 10;
 
 @interface YDDRunLoopUserViewController ()<UITableViewDelegate, UITableViewDataSource>
+{
+    CFRunLoopObserverRef _taskObserver;
+    
+    CFRunLoopObserverRef _runLoopActivityObserver;
+}
+
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -64,7 +70,11 @@ void callBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *i
 @implementation YDDRunLoopUserViewController
 
 
-
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self removeObser];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -73,10 +83,10 @@ void callBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *i
     @weakify(self);
     self.navBarView.leftBlock = ^{
         @strongify(self);
+        
         [self.navigationController popViewControllerAnimated:YES];
     };
     
-   
     
     [self addRunLoopObserver];
     
@@ -91,6 +101,26 @@ void callBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *i
     
 }
 
+- (void)dealloc
+{
+    NSLog(@"dealloc %@", NSStringFromClass(self.class));
+}
+
+- (void)removeObser
+{
+    if (_taskObserver) {
+        CFRunLoopRef runLoop = CFRunLoopGetCurrent();
+        CFRunLoopRemoveObserver(runLoop, _taskObserver, kCFRunLoopDefaultMode);
+        CFRelease(_taskObserver);
+    }
+    
+    if (_runLoopActivityObserver) {
+        CFRunLoopRemoveObserver(CFRunLoopGetMain(), _runLoopActivityObserver, kCFRunLoopCommonModes);
+        CFRelease(_runLoopActivityObserver);
+    }
+   
+}
+
 - (void)addRunLoopObserver
 {
     //获取当前的RunLoop
@@ -102,8 +132,11 @@ void callBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *i
     //添加观察者到当前runloop kCFRunLoopDefaultMode可以改为kCFRunLoopCommonModes
     CFRunLoopAddObserver(runLoop, observer, kCFRunLoopDefaultMode);
     //C语言中 有create就需要release
-    CFRelease(observer);
+//    CFRelease(observer);
+    _taskObserver = observer;
 }
+
+
 
 /// runloop监听
 - (void)addRunloopObser
@@ -143,7 +176,8 @@ void callBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *i
         
     });
     CFRunLoopAddObserver(CFRunLoopGetMain(), observer, kCFRunLoopCommonModes);
-    CFRelease(observer);
+//    CFRelease(observer);
+    _runLoopActivityObserver = observer;
 }
 
 
@@ -216,7 +250,7 @@ void callBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *i
         
         void(^task)(void) = ^{
             UIImage *image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"BigImage" ofType:@"jpg"]];
-            imageView.image = image;
+            imageView.image = [UIImage imageNamed:@"BigImage.jpg"];
         };
         [self.tasks addObject:task];
         if (self.tasks.count > TaskMax) {

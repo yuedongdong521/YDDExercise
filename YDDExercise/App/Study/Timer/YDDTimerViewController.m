@@ -257,10 +257,15 @@
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
         [self performSelector:@selector(performDealyAction) withObject:nil afterDelay:2];
+        
+        [[NSRunLoop currentRunLoop] addPort:[[NSPort alloc] init] forMode:NSDefaultRunLoopMode];
        
 //        [[NSRunLoop currentRunLoop] run];
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
         NSLog(@"退出 perform runloop");
+        
+        [self performSelector:@selector(performDealyAction) afterDelay:3];
+        
     });
 }
 

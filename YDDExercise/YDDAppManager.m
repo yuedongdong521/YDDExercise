@@ -73,6 +73,10 @@ static YDDAppManager *_manager;
         UINavigationController *navig = [[UINavigationController alloc] initWithRootViewController:logInVC];
         self.window.rootViewController = navig;
     }
+    
+    [self.window makeKeyWindow];
+    [self.window makeKeyAndVisible];
+    
 }
 
 - (void)userLogon

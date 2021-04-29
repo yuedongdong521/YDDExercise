@@ -148,6 +148,7 @@ class YDDRxTransformingVC: YDDBaseViewController {
         subject1.onNext("subject1 信号1")
         subject1.onNext("subject1 信号2")
         subject2.onNext("subject2 信号3")
+        subject2.onNext("subject2 信号33")
         SwiftLog("flatMap BehaviorRelay 切换 subject2 ")
         sub.onNext(subject2)
         
@@ -172,6 +173,7 @@ class YDDRxTransformingVC: YDDBaseViewController {
         
         subject1.onNext("sub1 信号1")
         subject2.onNext("sub2 信号1")
+        subject2.onNext("sub2 信号11")
         SwiftLog("flatMapLatest 切换sub2")
         sub.onNext(subject2)
         
@@ -226,9 +228,7 @@ class YDDRxTransformingVC: YDDBaseViewController {
             switch evnet {
             case .next(let group):
                 group.asObservable().subscribe({event in
-                    
                     SwiftLog("groupBy : key : \(group.key), value : \(event.element ?? 0)")
-                    
                 }).disposed(by: self.disposeBag)
             default:
                 SwiftLog("groupBy : default ")
@@ -293,14 +293,17 @@ class YDDRxTransformingVC: YDDBaseViewController {
             .subscribe(onNext: { a in
                 SwiftLog("sample : \(a)")
             }).disposed(by: disposeBag)
-        SwiftLog("sample source 1")
+//        SwiftLog("sample source 1")
         source.onNext(1)
-        SwiftLog("sample source 2")
+//        SwiftLog("sample source 2")
+        source.onNext(1)
         source.onNext(2)
-        SwiftLog("sample notifier A")
+//        SwiftLog("sample notifier A")
         notifier.onNext("A")
-        SwiftLog("sample notifier B")
-        notifier.onNext("B")
+//        SwiftLog("sample notifier B")
+        notifier.onNext("A")
+//        notifier.onNext("B")
+//        notifier.onNext("C")
     }
     /// Debounce : 过滤高频操作，指定相邻两个信号发送时间间隔，小于这个时间两个信号都不触发订阅闭包，大于这个时间才会响应
     private func testDebounce() {

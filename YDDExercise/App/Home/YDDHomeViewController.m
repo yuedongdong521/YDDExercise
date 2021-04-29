@@ -56,6 +56,9 @@
     }
     
     [self.collectionView reloadData];
+    
+
+    
 }
 
 - (void)createUI
@@ -124,10 +127,10 @@
     return 200;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView layout:(YDDWaterfallFlowLayout *)collectionViewLayout columnCountForSection:(NSInteger)section
-{
-    return 2;
-}
+//- (NSInteger)collectionView:(UICollectionView *)collectionView layout:(YDDWaterfallFlowLayout *)collectionViewLayout columnCountForSection:(NSInteger)section
+//{
+//    return 2;
+//}
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(YDDWaterfallFlowLayout*)collectionViewLayout rowMarginForSectionAtIndex:(NSInteger)section
 {
     return 10;
@@ -152,6 +155,7 @@
 {
     if (!_collectionView) {
         YDDWaterfallFlowLayout *flowLayout = [[YDDWaterfallFlowLayout alloc] init];
+        flowLayout.columnCount = 2;
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
@@ -175,6 +179,26 @@
 - (void)setNavigBar
 {
     self.navBarView.title = @"首页";
+    
+    [self.navBarView.rightBtn setTitle:@"切换" forState:UIControlStateNormal];
+    @weakify(self);
+    self.navBarView.rightBlock = ^{
+        @strongify(self);
+        
+        YDDWaterfallFlowLayout *flowLayout = (YDDWaterfallFlowLayout *)self.collectionView.collectionViewLayout;
+        
+        if (flowLayout) {
+            /// 直接修改collectionView layout布局，不用重走cellforItem方法赋值
+            
+            [self.collectionView.collectionViewLayout invalidateLayout];
+            if (flowLayout.columnCount == 2) {
+                flowLayout.columnCount = 3;
+            } else {
+                flowLayout.columnCount = 2;
+            }
+            [self.collectionView setCollectionViewLayout:flowLayout animated:YES];
+        }
+    };
 }
 
 

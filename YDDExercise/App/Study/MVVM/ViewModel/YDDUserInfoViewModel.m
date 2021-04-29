@@ -24,11 +24,9 @@
     @weakify(self);
     [self.refreshCommand.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
         @strongify(self);
-        
         if ([x isKindOfClass:[NSArray class]]) {
             self.dataArray = [NSMutableArray arrayWithArray:(NSArray *)x];
         }
-        
         [self.refreshEndSubject sendNext:@(YDDRefreshStatue_refresh)];
     }];
     
@@ -42,7 +40,16 @@
     [self.loadMoreCommand.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
         @strongify(self);
         if ([x isKindOfClass:[NSArray class]]) {
+            
+            NSArray *newArr = (NSArray *)x;
+            NSInteger count = self.dataArray.count;
+            NSInteger num = newArr.count;
+            NSMutableArray *paths = [NSMutableArray array];
+            for (NSInteger i = count; i < count + num; i++) {
+                [paths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+            }
             [self.dataArray addObjectsFromArray:(NSArray *)x];
+            [self.loadMoreSubject sendNext:paths];
         }
         
         [self.refreshEndSubject sendNext:@(YDDRefreshStatue_loadMore)];
@@ -113,6 +120,14 @@
         }];
     }
     return _loadMoreCommand;
+}
+
+- (RACSubject *)loadMoreSubject
+{
+    if (!_loadMoreSubject) {
+        _loadMoreSubject = [RACSubject subject];
+    }
+    return _loadMoreSubject;
 }
 
 
