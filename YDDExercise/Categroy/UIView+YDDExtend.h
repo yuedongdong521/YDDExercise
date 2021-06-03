@@ -43,6 +43,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 获取所有superview
 - (NSArray <UIView *>*)getSuperViews;
 
+- (void)addTapDebounce:(CGFloat)debounce action:(void(^)(UITapGestureRecognizer *tap))action;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

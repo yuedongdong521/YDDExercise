@@ -7,6 +7,8 @@
 //
 
 #import "UIView+YDDExtend.h"
+#import "NSObject+YDDFunction.m"
+#import <objc/runtime.h>
 
 @implementation UIView (YDDExtend)
 
@@ -124,6 +126,31 @@
     }
     return mutArr;
 }
+
+
+static const void* kTapActionBlock = &kTapActionBlock;
+static const void* kDebounce = &kDebounce;
+- (void)addTapDebounce:(CGFloat)debounce action:(void(^)(UITapGestureRecognizer *tap))action
+{
+    objc_setAssociatedObject(self, kTapActionBlock, action, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, kDebounce, @(debounce), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDebounceAction:)];
+    [self addGestureRecognizer:tap];
+}
+
+- (void)tapDebounceAction:(UITapGestureRecognizer *)tap
+{
+    void(^block)(UITapGestureRecognizer *tap) = objc_getAssociatedObject(self, kTapActionBlock);
+    id debounceObjc = objc_getAssociatedObject(self, kDebounce);
+    CGFloat debounce = [debounceObjc floatValue];
+    [self debounce:debounce back:^{
+        if (block) {
+            block(tap);
+        }
+    }];
+}
+
+
 
 
 @end

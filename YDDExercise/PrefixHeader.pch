@@ -35,6 +35,8 @@
 
 #import <ReactiveObjC/ReactiveObjC.h>
 
+#import "YDDDeviceManager.h"
+
 #endif
 
 #endif /* PrefixHeader_pch */

@@ -133,10 +133,8 @@
         
         /** 判断是否是隐藏文件 */
         
-        if ([fileName hasPrefix:@".DS"]) {
-            
+        if ([fileName hasPrefix:@".DS"]) {            
             continue;
-            
         }
         
         /** 判断是否是文件夹 */
@@ -146,9 +144,7 @@
         [manager fileExistsAtPath:subPath isDirectory:&isDirectory];
         
         if (isDirectory) {
-            
             continue;
-            
         }
         
         /** 获取文件属性 */

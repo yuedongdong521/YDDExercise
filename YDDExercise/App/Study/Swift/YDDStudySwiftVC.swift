@@ -62,6 +62,8 @@ class YDDStudySwiftVC: YDDBaseViewController {
         }
         
         self.tableView.reloadData()
+        
+        
     }
     
 

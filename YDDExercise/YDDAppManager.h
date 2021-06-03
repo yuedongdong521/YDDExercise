@@ -28,7 +28,7 @@ typedef enum : NSUInteger {
 + (void)checkLoginState;
 - (void)loginStateDidChanage:(AppState)state;
 
-+ (YDDUserBaseInfoModel *)keychainAccountInfo;
++ (YDDUserBaseInfoModel *)keychainAccountInfo:(NSString *)account;
 
 + (void)updateKeychainAccountInfo:(YDDUserBaseInfoModel *)info;
 

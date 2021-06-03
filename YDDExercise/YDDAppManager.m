@@ -68,6 +68,8 @@ static YDDAppManager *_manager;
         self.window.rootViewController = _tabBar;
         [self addleftSideBar];
         
+        [YDDAppManager updateKeychainAccountInfo:self.userInfo];
+        
     } else {
         YDDLoginViewController *logInVC = [[YDDLoginViewController alloc] init];
         UINavigationController *navig = [[UINavigationController alloc] initWithRootViewController:logInVC];
@@ -112,13 +114,17 @@ static YDDAppManager *_manager;
 }
 
 
-+ (YDDUserBaseInfoModel *)keychainAccountInfo
++ (YDDUserBaseInfoModel *)keychainAccountInfo:(NSString *)account
 {
+    if (!account) {
+        return nil;
+    }
     /// KeychainItemWrapper 读取钥匙链存储信息
-    KeychainItemWrapper *app = [[KeychainItemWrapper alloc] initWithIdentifier:@"YDDExerciseKey" accessGroup:nil];
+    NSString *identifier = [NSString stringWithFormat:@"YDDExercise_%@", account];
+   
+    KeychainItemWrapper *app = [[KeychainItemWrapper alloc] initWithIdentifier:identifier accessGroup:nil];
     
-    NSNumber *account = [app objectForKey:(id)kSecAttrAccount];
-    NSString *password = [app objectForKey:(id)kSecValueData];
+    NSString *password = [app objectForKey:(id)kSecAttrAccount];
 
     NSLog(@"account : %@, password : %@", account, password);
     
@@ -137,9 +143,10 @@ static YDDAppManager *_manager;
         return;
     }
     /// KeychainItemWrapper 钥匙链存储信息
-    KeychainItemWrapper *app = [[KeychainItemWrapper alloc] initWithIdentifier:@"YDDExerciseKey" accessGroup:nil];
-    [app setObject:@(info.userId) forKey:(id)kSecAttrAccount];
-    [app setObject:info.password forKey:(id)kSecValueData];
+    NSString *identifier = [NSString stringWithFormat:@"YDDExercise_%ld", (long)info.userId];
+
+    KeychainItemWrapper *app = [[KeychainItemWrapper alloc] initWithIdentifier:identifier accessGroup:nil];
+    [app setObject:info.password forKey:(id)kSecAttrAccount];
     /// 清空钥匙链
 //        [app resetKeychainItem];
     

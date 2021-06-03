@@ -27,5 +27,4 @@
     return self.weakTarget;
 }
 
-
 @end

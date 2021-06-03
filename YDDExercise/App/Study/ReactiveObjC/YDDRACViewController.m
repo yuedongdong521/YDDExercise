@@ -10,6 +10,7 @@
 
 #import "YDDInputView.h"
 #import <RACReturnSignal.h>
+#import "YDDRequestTool.h"
 
 @interface TestView : UIView
 
@@ -49,6 +50,10 @@
 @property (nonatomic, strong) RACSubject *testRACDisposableSub;
 
 @property (nonatomic, strong) RACDisposable *racTimeDisposable;
+
+@property (nonatomic, strong) RACCommand *rac_command;
+
+@property (nonatomic, strong) YDDRequestTool *request ;
 
 @end
 
@@ -115,6 +120,9 @@
     [self testRACList];
     
     [self test_RACObser];
+    
+    [self test_RACCommandRequest];
+    
 }
 
 - (void)setupUI
@@ -178,6 +186,21 @@
     }];
     
     
+    UIButton *bufferBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [bufferBtn setTitle:@"间隔点击" forState:UIControlStateNormal];
+    [bufferBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [self.view addSubview:bufferBtn];
+    /// 1秒只响应一次
+    [[[bufferBtn rac_signalForControlEvents:UIControlEventTouchUpInside] bufferWithTime:1 onScheduler:[RACScheduler mainThreadScheduler]] subscribeNext:^(RACTuple * _Nullable x) {
+        NSLog(@"111111111111111");
+    }];
+    [bufferBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.testView);
+        make.left.mas_equalTo(requestBtn.mas_right).mas_offset(10);
+        make.size.mas_equalTo(CGSizeMake(100, 30));
+    }];
+    
+    [self rac_commandTest];
     
     
 }
@@ -376,7 +399,7 @@
 {
     __block RACSubject *subscriber1 = nil;
     
-    NSLog(@"RACCommand 创建command");
+//    NSLog(@"RACCommand 创建command");
     RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
        
         NSLog(@"RACCommand : init block %@", input);
@@ -392,23 +415,23 @@
         }];
         
     }];
-    NSLog(@"RACCommand executionSignals 订阅信号");
+//    NSLog(@"RACCommand executionSignals 订阅信号");
     [command.executionSignals subscribeNext:^(id  _Nullable x) {
         NSLog(@"RACCommand executionSignals 接受信号 ： %@", x);
         
-        subscriber1 = x;
-        
-        NSLog(@"RACCommand executionSignals 订阅信号");
-        [x subscribeNext:^(id  _Nullable x) {
-            NSLog(@"RACCommand executionSignals 订阅者 接受信号 ： %@", x);
-        }];
+//        subscriber1 = x;
+//
+//        NSLog(@"RACCommand executionSignals 订阅信号");
+//        [x subscribeNext:^(id  _Nullable x) {
+//            NSLog(@"RACCommand executionSignals 订阅者 接受信号 ： %@", x);
+//        }];
         
     }];
     
-    NSLog(@"RACCommand 发送信号");
+//    NSLog(@"RACCommand 发送信号");
     
     RACSignal *signal = [command execute:@"🍑"];
-    NSLog(@"RACCommand 订阅信号");
+//    NSLog(@"RACCommand 订阅信号");
     
    
     [signal subscribeNext:^(id  _Nullable x) {
@@ -513,6 +536,11 @@
     
     [singal subscribeNext:^(id  _Nullable x) {
         NSLog(@"RACSignalBind : %@", x);
+    }];
+    
+    
+    [subject subscribeNext:^(id  _Nullable x) {
+        NSLog(@"RACSignalBind 111 : %@", x);
     }];
     
     [subject sendNext:@"信号绑定"];
@@ -822,6 +850,8 @@
     }];
     
     
+    
+    
 }
 /// 通过监听内容改变按钮状态
 - (void)test_RACObser
@@ -877,6 +907,90 @@
         _testView.backgroundColor = [UIColor redColor];
     }
     return _testView;
+}
+
+- (RACCommand *)rac_command
+{
+    if (!_rac_command) {
+        _rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+            
+            return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    [NSThread sleepForTimeInterval:0.5];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [subscriber sendNext:input];
+//                        [subscriber sendCompleted];
+                        [subscriber sendError:[[NSError alloc] initWithDomain:@"sendError" code:1 userInfo:nil]];
+                    });
+                });
+                
+                return [RACDisposable disposableWithBlock:^{
+                    NSLog(@"rac_command disposable");
+                }];
+            }] ;
+        }];
+    }
+    return _rac_command;
+}
+
+- (void)rac_commandTest
+{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [btn setTitle:@"RACCommand" forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor cyanColor] forState:UIControlStateNormal];
+    [self.view addSubview:btn];
+    
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(-300);
+        make.right.mas_equalTo(-20);
+        make.size.mas_equalTo(CGSizeMake(100, 50));
+    }];
+    @weakify(self);
+    [[btn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        @strongify(self);
+        [self.rac_command execute:@(10)];
+    }];
+    
+    
+    [[self.rac_command.executionSignals flattenMap:^__kindof RACSignal * _Nullable(id  _Nullable value) {
+        return value;
+    }] subscribeNext:^(id  _Nullable x) {
+        NSLog(@"rac_command executionSignals : %@", x);
+    }];
+    
+//    [self.rac_command.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
+//        NSLog(@"rac_command executionSignals : %@", x);
+//
+//    }];
+    
+    [self.rac_command.executing subscribeNext:^(NSNumber * _Nullable x) {
+        NSLog(@"rac_command executing : %@", x);
+    }];
+    
+    [self.rac_command.errors subscribeNext:^(NSError * _Nullable x) {
+        NSLog(@"rac_command errors : %@", x);
+    }];
+    
+    [self.rac_command.enabled subscribeNext:^(NSNumber * _Nullable x) {
+        NSLog(@"rac_command enabled : %@", x);
+    }];
+    
+}
+
+- (void)test_RACCommandRequest
+{
+    YDDRequestTool *request = [[YDDRequestTool alloc] init];
+    request.requestUrl = @"http://baidu.com";
+    request.success = ^(id  _Nonnull data) {
+        NSLog(@"request data : %@", data);
+    };
+    request.failuer = ^(NSError * _Nonnull error) {
+        NSLog(@"request errpr : %@", error);
+    };
+    [request start];
+    self.request = request;
+    
+    
 }
 
 

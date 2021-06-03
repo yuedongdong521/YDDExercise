@@ -200,7 +200,8 @@ typedef struct {
                        @"YDDRunLoopUserViewController", @"YDDTimerViewController",
                        @"YDDLookViewController", @"YDDThreadMsgViewController",
                        @"YDDThreadUIViewController", @"YDDPrivateViewController",
-                       @"YDDThreadViewController", @"YDDLRUViewController"];
+                       @"YDDThreadViewController", @"YDDLRUViewController",
+                       @"YDDWebCellViewController", @"YDDRespondsViewController"];
     }
     return _dataArray;
 }

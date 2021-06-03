@@ -29,10 +29,6 @@
     }];
 
     self.loginView.infoModel = kAppManager.userInfo;
-    
-    
-    
-    
 }
 
 - (YDDLogView *)loginView
@@ -54,9 +50,6 @@
 
 - (void)login:(YDDUserBaseInfoModel *)userInfo
 {
-    
-    
-    
     YDDUserBaseInfoModel *serverInfo = (YDDUserBaseInfoModel*)[NSObject ydd_readModelForKey:kUserInfoWriteKey(userInfo.userId)];
     
     if (!serverInfo) {
@@ -69,9 +62,6 @@
         kAppManager.userInfo = serverInfo;
         [kAppManager loginStateDidChanage:AppState_login];
         [serverInfo ydd_writeModelForKey:kUserLastLoginInfo];
-        
-      
-        
     } else {
         [self.view hud_showTips:@"账户或密码错误"];
     }

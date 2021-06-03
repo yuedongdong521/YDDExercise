@@ -157,7 +157,7 @@
 
 - (void)checkClearWebViewWithURL:(NSString *)url
 {
-    if (![self.lastUrl isEqualToString:url]) {
+    if (self.lastUrl && ![self.lastUrl isEqualToString:url]) {
         //清空内容
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
         //清除缓存
@@ -303,11 +303,19 @@
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     NSTimeInterval requestTime = [[NSDate date] timeIntervalSinceDate:_startLoadDate];
     NSLog(@"网页===加载%@总共耗时%f",navigation,requestTime);
-  
+    
     NSLog(@"WKNavigationDelegate - %s", __func__);
     if ([_delegate respondsToSelector:@selector(webView:didFinishNavigation:)]) {
         [_delegate webView:self didFinishNavigation:navigation];
     }
+
+    __weak typeof(self) weakself = self;
+    [self getWebHeightCompleted:^(CGFloat height) {
+        __strong typeof(weakself) strongself = weakself;
+        if ([strongself.delegate respondsToSelector:@selector(webView:didChangedHeight:)]) {
+            [strongself.delegate webView:strongself didChangedHeight:height];
+        }
+    }];
 }
 
 /* 主页面加载新的url失败 */
@@ -416,6 +424,15 @@
 {
     
     NSLog(@"WKUIDelegate - %s", __func__);
+}
+
+- (void)getWebHeightCompleted:(void(^)(CGFloat height))completed
+{
+    [self callJavaScriptAction:@"document.body.offsetHeight" completionHandler:^(id  _Nonnull result, NSError * _Nonnull error) {
+        if (result && completed) {
+            completed([result floatValue]);
+        }
+    }];
 }
 
 

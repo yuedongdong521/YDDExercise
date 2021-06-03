@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define kUserInfoWriteKey(userId) [NSString stringWithFormat:@"UserInfoWrite_%ld", userId]
+#define kUserInfoWriteKey(userId) [NSString stringWithFormat:@"UserInfoWrite_%ld", (long)userId]
 
 NS_ASSUME_NONNULL_BEGIN
 

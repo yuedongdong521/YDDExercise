@@ -33,6 +33,9 @@ typedef void(^JavasprictBlock)(id body);
 
 - (void)webView:(YDDWebView *)webView openNewWebUrl:(NSString *)urlStr;
 
+
+- (void)webView:(YDDWebView *)webView didChangedHeight:(CGFloat)height;
+
 @end
 
 

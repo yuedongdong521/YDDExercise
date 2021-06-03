@@ -56,7 +56,7 @@
     }];
     
     
-    
+
 }
 
 - (RACSubject *)didClickedSubject

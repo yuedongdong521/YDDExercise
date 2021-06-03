@@ -9,6 +9,7 @@
 #import "YDDLogView.h"
 #import "YDDUserBaseInfoModel.h"
 #import "YDDAddImageTools.h"
+#import "YDDAppManager.h"
 
 #define kHeadSize 80
 
@@ -59,6 +60,11 @@
         
     }
     return self;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self endEditing:YES];
 }
 
 - (void)keyboardWillShowNotification:(NSNotification *)notify
@@ -131,8 +137,11 @@
 //    UIImage *image = [UIImage imageWithContentsOfFile:infoModel.userIcon];
     [_headImage yy_setImageWithURL:[_infoModel.userIcon ydd_coverUrl] placeholder:kHeadIconDefault];
     _nameLabel.text = infoModel.userName;
-    _userIdTextField.text = [NSString stringWithFormat:@"%ld", (long)infoModel.userId];
-    
+    if (infoModel.userId > 0) {
+        _userIdTextField.text = [NSString stringWithFormat:@"%ld", (long)infoModel.userId];
+    } else {
+        _userIdTextField.text = @"";
+    }
 }
 
 
@@ -215,6 +224,20 @@
         [_passwordTextField becomeFirstResponder];
     } else if (textField == _passwordTextField) {
         
+    }
+    return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if (textField == _passwordTextField) {
+        if (_userIdTextField.text.length > 0 && textField.text.length == 0) {
+            YDDUserBaseInfoModel *model = [YDDAppManager keychainAccountInfo:_userIdTextField.text];
+            if (model.password.length > 0) {
+                textField.text = model.password;
+                return NO;
+            }
+        }
     }
     return YES;
 }

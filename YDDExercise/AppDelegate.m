@@ -15,8 +15,6 @@
 #import "YDDLoginViewController.h"
 
 
-
-
 @interface AppDelegate ()
 
 @end
@@ -51,7 +49,7 @@
     [CocoaDebugTool logWithString:@"Custom Messages...."];
     [CocoaDebugTool logWithString:@"Custom Messages...." color:[UIColor redColor]];
 
-    
+    NSLog(@"uuid : %@", [YDDDeviceManager shareManager].uuid);
     
     
     return YES;

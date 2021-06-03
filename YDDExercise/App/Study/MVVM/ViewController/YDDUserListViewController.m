@@ -42,6 +42,9 @@
 - (void)bindingViewModel
 {
     @weakify(self);
+    /// self.rac_willDeallocSignal 当self 被释放是触发信号，
+    /// takeUntil：当rac_willDeallocSignal被调用时didClickedSubject终止订阅，不再接受信号，
+    /// 所以这里的意思是self释放时终止订阅信号
     [[self.viewModel.didClickedSubject takeUntil:self.rac_willDeallocSignal] subscribeNext:^(id  _Nullable x) {
         @strongify(self);
         NSLog(@"did selected");
