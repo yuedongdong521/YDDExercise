@@ -13,6 +13,22 @@ import RxCocoa
 
 let RxNotifyName = Notification.Name(rawValue: "RxNotifyNameKey")
 
+
+class YDDRxProtocolView: UIView {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+
 class YDDRxSwiftVC: YDDBaseViewController {
     
     var disposeBag = DisposeBag()

@@ -14,7 +14,7 @@ class YDDStudySwiftVC: YDDBaseViewController {
 
     fileprivate lazy var dataArr: Array<String> = {
        return ["YDDRxSwiftVC", "YDDRxObservable", "YDDRxBinderVC",
-               "YDDRxSubjectsVC", "YDDRxTransformingVC", "YDDRxCollectionViewController", "YDDRunLoopUserVC", "YDDAudioViewController", "YDDAlgorithmViewController"]
+               "YDDRxSubjectsVC", "YDDRxTransformingVC", "YDDRxCollectionViewController", "YDDRunLoopUserVC", "YDDAudioViewController", "YDDAlgorithmViewController", "OCSwiftRuntimeVC"]
     }()
     
     private lazy var tableView: UITableView = {

@@ -36,10 +36,18 @@ def kSwiftPods
   
 end
 
+def kYDDPods
+    
+    pod 'YDDWebView', :path => '../YDDPods/YDDWebView'
+  
+end
+
 target 'YDDExercise' do
   
   kOCPods
 
   kSwiftPods
+  
+  kYDDPods
   
 end

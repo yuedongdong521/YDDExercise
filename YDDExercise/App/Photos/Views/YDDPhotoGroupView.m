@@ -139,7 +139,7 @@
 
 @interface PhotoGroupCell : UIScrollView <UIScrollViewDelegate>
 @property (nonatomic, strong) UIView *imageContainerView;
-@property (nonatomic, strong) YYAnimatedImageView *imageView;
+@property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, weak) id<PhotoGroupCellDelegate> cellDelegate;
 @property (nonatomic, assign) BOOL showProgress;
@@ -170,9 +170,10 @@
     _imageContainerView.clipsToBounds = YES;
     [self addSubview:_imageContainerView];
     
-    _imageView = [YYAnimatedImageView new];
+    _imageView = [[UIImageView alloc] init];
     _imageView.clipsToBounds = YES;
     _imageView.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.500];
+    _imageView.backgroundColor = [UIColor redColor];
     [_imageContainerView addSubview:_imageView];
     
     _progressLayer = [CAShapeLayer layer];
@@ -747,8 +748,15 @@
 - (void)dismissAnimated:(BOOL)animated completion:(void (^)(void))completion {
     [UIView setAnimationsEnabled:YES];
     
+    [self cancelAllImageLoad];
+
+    if (!animated) {
+        [self removeFromSuperview];
+        if (completion) completion();
+        return;
+    }
+    
     NSInteger currentIndex = self.currentIndex;
-    PhotoGroupCell *cell = [self cellForPage:self.currentPage];
     UIView *fromView = nil;
     if (_fromItemIndex == currentIndex) {
         fromView = _fromView;
@@ -756,20 +764,7 @@
         fromView = [self getThumbViewWithPage:currentIndex];
     }
     
-    [self cancelAllImageLoad];
     _isPresented = NO;
-    BOOL isFromImageClipped = fromView.layer.contentsRect.size.height < 1;
-    
-    [CATransaction begin];
-    [CATransaction setDisableActions:YES];
-    if (isFromImageClipped) {
-        CGRect frame = cell.imageContainerView.frame;
-        cell.imageContainerView.layer.anchorPoint = CGPointMake(0.5, 0);
-        cell.imageContainerView.frame = frame;
-    }
-    cell.progressLayer.hidden = YES;
-    [CATransaction commit];
-    
     if (fromView == nil) {
         self.background.image = _snapshotImage;
         [UIView animateWithDuration:animated ? 0.25 : 0 delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseOut animations:^{
@@ -781,11 +776,13 @@
         }completion:^(BOOL finished) {
             self.scrollView.layer.transformScale = 1;
             [self removeFromSuperview];
-            [self cancelAllImageLoad];
             if (completion) completion();
         }];
         return;
     }
+    
+    PhotoGroupCell *cell = [self cellForPage:self.currentPage];
+    cell.progressLayer.hidden = YES;
     
     if (_fromItemIndex != currentIndex) {
         _background.image = _snapshotImage;
@@ -794,36 +791,20 @@
         _background.image = _snapshorImageHideFromView;
     }
     
-    
-    if (isFromImageClipped) {
-        [cell scrollToTopAnimated:NO];
-    }
+    CGRect fromFrame = [fromView convertRect:fromView.bounds toView:self];
+
+    CGRect curFrame = self.scrollView.frame;
+    self.scrollView.transform = CGAffineTransformIdentity;
+    self.scrollView.frame = curFrame;
     
     [UIView animateWithDuration:animated ? 0.2 : 0 delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseOut animations:^{
         self.pager.alpha = 0.0;
         self.blurBackground.alpha = 0.0;
-        if (isFromImageClipped) {
-            
-            CGRect fromFrame = [fromView convertRect:fromView.bounds toView:cell];
-            CGFloat scale = fromFrame.size.width / cell.imageContainerView.width * cell.zoomScale;
-            CGFloat height = fromFrame.size.height / fromFrame.size.width * cell.imageContainerView.width;
-            if (isnan(height)) height = cell.imageContainerView.height;
-            
-            cell.imageContainerView.height = height;
-            cell.imageContainerView.center = CGPointMake(CGRectGetMidX(fromFrame), CGRectGetMinY(fromFrame));
-            cell.imageContainerView.layer.transformScale = scale;
-            
-        } else {
-            CGRect fromFrame = [fromView convertRect:fromView.bounds toView:cell.imageContainerView];
-            cell.imageContainerView.clipsToBounds = NO;
-            cell.imageView.contentMode = fromView.contentMode;
-            cell.imageView.frame = fromFrame;
-        }
+        self.scrollView.frame = fromFrame;
     }completion:^(BOOL finished) {
         [UIView animateWithDuration:animated ? 0.15 : 0 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
             self.alpha = 0;
         } completion:^(BOOL finished) {
-            cell.imageContainerView.layer.anchorPoint = CGPointMake(0.5, 0.5);
             [self removeFromSuperview];
             if (completion) completion();
         }];

@@ -69,6 +69,8 @@
 - (void)addSubView
 {
     NSLog(@"加载视图");
+    
+
 }
 
 
@@ -655,7 +657,7 @@
         return responds;
     }]
      subscribeNext:^(id  _Nullable x) {
-        NSLog(@"inputView : %@", x);
+        NSLog(@"inputView1: %@", x);
     }];
 }
 /// 代替button点击事件

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5468A4BA28A4979D00AFAF7B /* YDDGradientLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5468A4B928A4979D00AFAF7B /* YDDGradientLayerViewController.m */; };
+		5468A50028ACED3800AFAF7B /* YDDScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5468A4FF28ACED3800AFAF7B /* YDDScrollViewController.m */; };
 		840672A625D2221600E1D1DC /* YDDFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 840672A525D2221600E1D1DC /* YDDFileManager.m */; };
 		840B20F225A2DF8B00851385 /* YDDCollectionStyleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B20F125A2DF8B00851385 /* YDDCollectionStyleVC.swift */; };
 		840B210425A2E39200851385 /* YDDCollectionStyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B210325A2E39200851385 /* YDDCollectionStyleCell.swift */; };
@@ -46,6 +48,7 @@
 		847611C925A41304009B9B26 /* YDDFlowLayoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847611C725A41304009B9B26 /* YDDFlowLayoutProtocol.swift */; };
 		847611CA25A41304009B9B26 /* YDDPlainFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847611C825A41304009B9B26 /* YDDPlainFlowLayout.swift */; };
 		847BBAF626087837007736C6 /* YDDLookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847BBAF526087837007736C6 /* YDDLookViewController.m */; };
+		847BBC05260B07E9007736C6 /* OC&SwiftRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BBC04260B07E9007736C6 /* OC&SwiftRuntime.swift */; };
 		84818D4425FB068E00224C5E /* YDDArrayExtend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84818D4325FB068E00224C5E /* YDDArrayExtend.swift */; };
 		84818D4925FB450E00224C5E /* YDDAlgorithmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84818D4825FB450E00224C5E /* YDDAlgorithmViewController.swift */; };
 		848549C025F9BF2800AC1BB6 /* YDDAudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848549BF25F9BF2800AC1BB6 /* YDDAudioViewController.swift */; };
@@ -207,6 +210,10 @@
 
 /* Begin PBXFileReference section */
 		4F79763665661EB8916A9698 /* Pods_YDDExercise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YDDExercise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5468A4B828A4979D00AFAF7B /* YDDGradientLayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDGradientLayerViewController.h; sourceTree = "<group>"; };
+		5468A4B928A4979D00AFAF7B /* YDDGradientLayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDGradientLayerViewController.m; sourceTree = "<group>"; };
+		5468A4FE28ACED3800AFAF7B /* YDDScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDScrollViewController.h; sourceTree = "<group>"; };
+		5468A4FF28ACED3800AFAF7B /* YDDScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDScrollViewController.m; sourceTree = "<group>"; };
 		840672A425D2221600E1D1DC /* YDDFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDFileManager.h; sourceTree = "<group>"; };
 		840672A525D2221600E1D1DC /* YDDFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDFileManager.m; sourceTree = "<group>"; };
 		840B20F025A2DF8A00851385 /* YDDExercise-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YDDExercise-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -271,6 +278,7 @@
 		847611C825A41304009B9B26 /* YDDPlainFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDDPlainFlowLayout.swift; sourceTree = "<group>"; };
 		847BBAF426087837007736C6 /* YDDLookViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDDLookViewController.h; sourceTree = "<group>"; };
 		847BBAF526087837007736C6 /* YDDLookViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDDLookViewController.m; sourceTree = "<group>"; };
+		847BBC04260B07E9007736C6 /* OC&SwiftRuntime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OC&SwiftRuntime.swift"; sourceTree = "<group>"; };
 		84818D4325FB068E00224C5E /* YDDArrayExtend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDDArrayExtend.swift; sourceTree = "<group>"; };
 		84818D4825FB450E00224C5E /* YDDAlgorithmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDDAlgorithmViewController.swift; sourceTree = "<group>"; };
 		848549BF25F9BF2800AC1BB6 /* YDDAudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YDDAudioViewController.swift; sourceTree = "<group>"; };
@@ -545,6 +553,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5468A4B728A4973A00AFAF7B /* GradientLayer */ = {
+			isa = PBXGroup;
+			children = (
+				5468A4B828A4979D00AFAF7B /* YDDGradientLayerViewController.h */,
+				5468A4B928A4979D00AFAF7B /* YDDGradientLayerViewController.m */,
+			);
+			path = GradientLayer;
+			sourceTree = "<group>";
+		};
+		5468A4FD28ACECEB00AFAF7B /* ScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				5468A4FE28ACED3800AFAF7B /* YDDScrollViewController.h */,
+				5468A4FF28ACED3800AFAF7B /* YDDScrollViewController.m */,
+			);
+			path = ScrollView;
+			sourceTree = "<group>";
+		};
 		80F802047900704BB92DD37F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -750,6 +776,14 @@
 				847BBAF526087837007736C6 /* YDDLookViewController.m */,
 			);
 			path = Look;
+			sourceTree = "<group>";
+		};
+		847BBC03260B07B1007736C6 /* Runtime */ = {
+			isa = PBXGroup;
+			children = (
+				847BBC04260B07E9007736C6 /* OC&SwiftRuntime.swift */,
+			);
+			path = Runtime;
 			sourceTree = "<group>";
 		};
 		848A200625C1363D000E2771 /* Menue */ = {
@@ -1113,6 +1147,9 @@
 		84E36BE02577B708009C6C9F /* Study */ = {
 			isa = PBXGroup;
 			children = (
+				5468A4FD28ACECEB00AFAF7B /* ScrollView */,
+				5468A4B728A4973A00AFAF7B /* GradientLayer */,
+				847BBC03260B07B1007736C6 /* Runtime */,
 				847BBAF326087822007736C6 /* Look */,
 				84C5920326022FDE004D4771 /* Timer */,
 				842502BE25F747D000230692 /* Runloop */,
@@ -1614,6 +1651,7 @@
 				8499D8B325C79DC100B848FD /* YDDVideoCommentView.m in Sources */,
 				844714C722DEEB2A00B69CE7 /* YDDPhotosCollectionViewCell.m in Sources */,
 				84E36C3E2578D70A009C6C9F /* YDDAnimationContentViewController.m in Sources */,
+				5468A4BA28A4979D00AFAF7B /* YDDGradientLayerViewController.m in Sources */,
 				848A21AF25C401A2000E2771 /* PPEmoji.m in Sources */,
 				8499D8B525C79DC100B848FD /* YDDVideoLiveingView.m in Sources */,
 				848A206625C2D14D000E2771 /* UIView+YDDCorner.m in Sources */,
@@ -1650,6 +1688,7 @@
 				844714B722DEE65C00B69CE7 /* YDDWaterfallFlowLayout.m in Sources */,
 				DF888EDD22E8AFAB00755CDE /* YDDDetailsViewController.m in Sources */,
 				8499D8B825C79DC100B848FD /* YDDVideoEmptyView.m in Sources */,
+				847BBC05260B07E9007736C6 /* OC&SwiftRuntime.swift in Sources */,
 				848A21A125C401A2000E2771 /* PPQueuingScrollView.m in Sources */,
 				84818D4425FB068E00224C5E /* YDDArrayExtend.swift in Sources */,
 				8499D8AE25C79DC100B848FD /* YDDVideoAnchorCell.m in Sources */,
@@ -1688,6 +1727,7 @@
 				8499D8BD25C79DC100B848FD /* YDDVideoCommentInputView.m in Sources */,
 				844714BD22DEE70000B69CE7 /* YDDPhotosViewController.m in Sources */,
 				8499D8C425C79EF900B848FD /* UIColor+YDDExtend.m in Sources */,
+				5468A50028ACED3800AFAF7B /* YDDScrollViewController.m in Sources */,
 				8499DA2D25D1435700B848FD /* YDDSettingTableViewCell.m in Sources */,
 				848A206E25C3B2F4000E2771 /* YDDOffScreenRenderViewController.m in Sources */,
 				DFCCF5CF22E43CDD00F15B62 /* NSString+YDDExtend.m in Sources */,

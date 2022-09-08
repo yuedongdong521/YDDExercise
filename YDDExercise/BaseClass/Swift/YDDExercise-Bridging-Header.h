@@ -9,3 +9,5 @@
 #import "UIImageView+WebCache.h"
 
 #import <KTVHTTPCache/KTVHTTPCache.h>
+
+#import <objc/runtime.h>

@@ -194,7 +194,7 @@ typedef struct {
 - (NSArray<NSString *> *)dataArray
 {
     if (!_dataArray) {
-        _dataArray = @[@"YDDAnimationViewController", @"YDDRACViewController", @"YDDTextureViewController", @"YDDGradientColorTextViewController", @"YDDMenueObjVC", @"YDDOffScreenRenderViewController", @"YDDUserListViewController", @"YDDSwiftViewController", @"YDDRunLoopUserViewController", @"YDDTimerViewController", @"YDDLookViewController"];
+        _dataArray = @[@"YDDAnimationViewController", @"YDDRACViewController", @"YDDTextureViewController", @"YDDGradientColorTextViewController", @"YDDMenueObjVC", @"YDDOffScreenRenderViewController", @"YDDUserListViewController", @"YDDSwiftViewController", @"YDDRunLoopUserViewController", @"YDDTimerViewController", @"YDDLookViewController", @"YDDGradientLayerViewController", @"YDDScrollViewController"];
     }
     return _dataArray;
 }

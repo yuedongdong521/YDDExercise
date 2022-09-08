@@ -16,9 +16,7 @@
  优化：通过NSProxy协议的runtime消息转发方法让timer与target之间弱应用，这样释放只需要调用invalidate断开runloop对timer的持有即可释放。
  
  2.NSTimer在子线程中使用：
- NSTimer的定时任务实际上是由RunLoop来管理的，runloop定时触发timer方法，在子线程中runloop默认是不启动，所有在子线程中NSTimer任务默认是无效的，必须要将timer添加到RunLoop中，并且调用[[NSRunLoop currentRunLoop] run]才能启动Timer的定时任务。
- 
- 
+ NSTimer的定时任务实际上是由RunLoop来管理的，runloop定时触发timer方法，在子线程中runloop默认是不启动，所有在子线程中NSTimer任务默认是无效的，必须调用currentRunLoop方法子线程中才会有runloop，并且调用[[NSRunLoop currentRunLoop] run]才能启动Timer的定时任务。
  */
 
 @interface YDDTimerViewController ()
@@ -167,12 +165,16 @@
         _threadTimer = nil;
         if (_curRunLoop) {
             CFRunLoopStop(_curRunLoop);
+            _curRunLoop = nil;
         }
         
     } else {
         _threadTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:[YDDProxy ydd_proxyWithTarget:self] selector:@selector(threadTimerMethod) userInfo:nil repeats:YES];
-        [[NSRunLoop currentRunLoop] addTimer:_threadTimer forMode:NSRunLoopCommonModes];
+        NSLog(@"threadTimerAction add befer");
+        /// 启动runloop后，timer不加入runloop也可以启动
+//        [[NSRunLoop currentRunLoop] addTimer:_threadTimer forMode:NSRunLoopCommonModes];
         _curRunLoop = CFRunLoopGetCurrent();
+        NSLog(@"threadTimerAction run befer");
         /**
          启动runloop：
          1： run； 不建议使用，使用run启动runloop后无法调用CFRunLoopStop()停止runloop，导致线程无法停止。
@@ -180,11 +182,13 @@
          3：- (BOOL)runMode:(NSRunLoopMode)mode beforeDate:(NSDate *)limitDate， 可以设置模式和超时时间，推荐使用。
          [NSDate distantFuture] 获得一个未来永远达不到的时间期限。
          [NSDate distantPast] 获得一个过去永远达不到的时间期限。
+         4：runloop调用run之后，后面的代码不会执行，只有调用 CFRunLoopStop()方法才会执行后面的代码。
          */
-        
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
         
        
+        NSLog(@"threadTimerAction run after");
+        NSLog(@"runLoop 停止运行");
        
     
         
@@ -279,6 +283,7 @@
         [_threadTimer invalidate];
         if (_curRunLoop) {
             CFRunLoopStop(_curRunLoop);
+            _curRunLoop = nil;
         }
     }
     [[self class] cancelPreviousPerformRequestsWithTarget:self];
